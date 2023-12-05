@@ -145,22 +145,15 @@
 			</div><!-- /Header Row 2 -->
 		</header>
 		<div class="head" style=" position:relative;width:100%;"></div>
-
 		<style>
 			.head {
 				height: 144px;
 			}
-
 			@media screen and (max-width:766px) {
-
-
 				.head {
 					height: 215px;
 				}
 			}
-
-
-
 			.header-row-2 {
 				background-color: white !important;
 			}
@@ -171,7 +164,7 @@
 				z-index: 9999;
 
 
-				transition: top 0.3s;
+				transition: top 0.65s;
 
 			}
 
@@ -200,16 +193,20 @@
 			jQuery(document).ready(function($) {
 				if ($(window).width() < 766 || $(window).height() < 480) {
 					var prevScrollpos = window.pageYOffset;
+					var sensitivity = 30; // Ajusta este valor
+
 					$(window).scroll(function() {
 						var currentScrollPos = window.pageYOffset;
-						if (prevScrollpos > currentScrollPos) {
-							$("#navbar").css("top", "0");
-							// $("#radio").css("bottom", "-140px");
-						} else {
-							$("#navbar").css("top", "-214px");
-							// $("#radio").css("bottom", "0px");
+						var scrollDifference = Math.abs(prevScrollpos - currentScrollPos);
+
+						if (scrollDifference > sensitivity) {
+							if (prevScrollpos > currentScrollPos) {
+								$("#navbar").css("top", "0");
+							} else {
+								$("#navbar").css("top", "-214px");
+							}
+							prevScrollpos = currentScrollPos;
 						}
-						prevScrollpos = currentScrollPos;
 					});
 				}
 			});
