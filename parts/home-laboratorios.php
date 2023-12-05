@@ -2,7 +2,7 @@
 printf('
 <div class="container">
 	<section class="tarjeta-inicio seccion-cultura">
-		<div class="entry bg-primary">
+		<div class="entry bg-primary labs">
 			<div class="row">');
 
 $nombre_categoria = "Laboratorios";
@@ -61,3 +61,15 @@ printf('</div><hr><a class="btn-ver-mas" href="%s">VER MÁS</a></div>',$enlace_c
 	
 
 </div></div></div></section></div>
+
+<style>
+ .labs a{
+color: white !important;
+
+}
+.labs
+{
+	background-color:#0f2f49;
+}
+
+</style>

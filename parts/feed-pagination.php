@@ -4,7 +4,15 @@
 <?php if($sirius_blog_feed_sidebar_show == 1) { ?>
 
 <div class="post-pagination clearfix">
-    <?php $args = array('prev_text' => __('Anterior', 'sirius-lite'), 'next_text' => __('Siguiente', 'sirius-lite'));  the_posts_navigation($args); ?>
+    <?php
+        $args = array(
+            'prev_text' => __('Anterior', 'sirius-lite'),
+            'next_text' => __('Siguiente', 'sirius-lite'),
+            'type'      => 'list',
+            'mid_size'      => 2,
+        );
+        echo '<div class="pagination">' . paginate_links($args) . '</div>';
+    ?>
 </div>
 
 <?php } else { ?>
@@ -12,9 +20,17 @@
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <div class="post-pagination clearfix">
-            <?php $args = array('prev_text' => __('Anterior', 'sirius-lite'), 'next_text' => __('Siguiente', 'sirius-lite'));  the_posts_navigation($args); ?>
+            <?php
+                $args = array(
+                    'prev_text' => __('Anterior', 'sirius-lite'),
+                    'next_text' => __('Siguiente', 'sirius-lite'),
+                    'type'      => 'list',
+                    'mid_size'      => 2,
+                );
+                echo '<div class="pagination">' . paginate_links($args) . '</div>';
+            ?>
         </div>
     </div>
 </div>
 
-<?php } }?>
+<?php } } ?>

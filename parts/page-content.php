@@ -1,4 +1,8 @@
+
+
+
 <?php 
+
 $sirius_pages_featured_image_show = sirius_get_option('sirius_pages_featured_image_show'); 
 $sirius_pages_featured_image_full = sirius_get_option('sirius_pages_featured_image_full');
 $banner_size = $sirius_pages_featured_image_full == 1 ? 'full' : 'sirius-banner';

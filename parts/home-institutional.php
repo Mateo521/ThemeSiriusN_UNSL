@@ -94,3 +94,4 @@ endif;
 
 printf('</div><hr><a class="btn-ver-mas" href="%s">VER MÁS</i></a></div>',$enlace_categoria);
 //Fin de Sección Institucional
+

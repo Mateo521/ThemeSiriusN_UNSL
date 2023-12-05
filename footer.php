@@ -1,6 +1,7 @@
     <!-- Footer -->
 	<footer>
-		<div class="container" id="footer">
+	
+	<div class="container" id="footer">
 			<div class="row">
 				<div class="col-md-3">
 					<h4 class="margen-titulo-footer">Información Institucional</h4>
@@ -8,6 +9,7 @@
 					<a title="Enlace al sitio web de la UNSL" href="http://www.unsl.edu.ar" target="_blank">
 						<img class="img-responsive footer-logo-unsl" alt="Logo de la UNSL" src="<?php echo get_template_directory_uri(); ?>/assets/img/isologo_unsl_color_footer.png">
 					</a>
+
 
 					<p><b>Teléfono:</b> +54 (0266) 4520300 - 4530000</p>
 					<p><b>Dirección:</b> Ejército de Los Andes 950, San Luis, Argentina</p>
@@ -17,7 +19,7 @@
 					<h4 class="margen-titulo-footer">Contacto</h4>
 
 					<a title="Enlace al sitio web Noticias UNSL" href="<?php echo esc_url(home_url('/')); ?>" target="_blank">
-						<img class="img-responsive footer-logo-unsl" alt="Logo de Noticias UNSL" src="<?php echo get_template_directory_uri(); ?>/assets/img/isologo-noticias-color-450.png">
+						<img class="img-responsive footer-logo-unsl" alt="Logo de Noticias UNSL" src="<?php echo get_template_directory_uri(); ?>/assets/img/logo%20noticias%20web.png">
 					</a>
 					
 					<p><b>Teléfono:</b> +54 (0266) 4520300</p>
@@ -79,6 +81,7 @@
                     
 				</div>
 			</div><!--/row-->
+
 
 			<!-- Atribuciones -->
 			<hr>

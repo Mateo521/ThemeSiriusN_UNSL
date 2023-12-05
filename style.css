@@ -4,7 +4,7 @@ Theme URI: https://www.lyrathemes.com/sirius/
 Author: LyraThemes
 Author URI: https://www.lyrathemes.com/
 Description: Sirius is a clean, simple, material design business theme. This multipurpose theme is built on the Bootstrap framework, making it fully responsive and mobile friendly. It has a special front page template that can be used to set up a one page website. With featured pages (with images and icons), two call to action sections, and two open content sections, Sirius is extremely flexible and easy to set up and use. It has a top navigation with an option to show social media icons and a smaller navigation. Sirius is a perfect choice to set up a small business website, landing page, business portfolio, or a creative agency website.  You can set the background color for each front page section, and control the filter/overlay color for the CTA sections. This simple theme gives you complete control and flexibility to create any kind of website. Backed by awesome one-on-one support, Sirius is an excellent choice for your next project.
-Version: 1.2.71
+Version: 1.2.75
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
 Text Domain: sirius-lite
@@ -455,7 +455,7 @@ header{position:relative;z-index:1000}
 /* ENTRY
 ------------------------------------------------------------------------*/		
 	
-.entry{/*max-width:500px;*/margin:0 auto 60px;background-color:#fff;-webkit-box-shadow:0 1px 8px rgba(0,0,0,0.2);-moz-box-shadow:0 1px 8px rgba(0,0,0,0.2);box-shadow:0 1px 8px rgba(0,0,0,0.2);-webkit-transition:all 0.2s cubic-bezier(0.4, 0, 1, 1);-moz-transition:all 0.2s cubic-bezier(0.4, 0, 1, 1);-ms-transition:all 0.2s cubic-bezier(0.4, 0, 1, 1);-o-transition:all 0.2s cubic-bezier(0.4, 0, 1, 1);transition:all 0.2s cubic-bezier(0.4, 0, 1, 1)}
+.entry{/*max-width:500px;*/margin:0 auto 60px;background-color:#fff/*#0f2f49*/;-webkit-box-shadow:0 1px 8px rgba(0,0,0,0.2);-moz-box-shadow:0 1px 8px rgba(0,0,0,0.2);box-shadow:0 1px 8px rgba(0,0,0,0.2);-webkit-transition:all 0.2s cubic-bezier(0.4, 0, 1, 1);-moz-transition:all 0.2s cubic-bezier(0.4, 0, 1, 1);-ms-transition:all 0.2s cubic-bezier(0.4, 0, 1, 1);-o-transition:all 0.2s cubic-bezier(0.4, 0, 1, 1);transition:all 0.2s cubic-bezier(0.4, 0, 1, 1)}
 /*.entry.md{max-width:525px}*/
 .entry:hover{-webkit-box-shadow:0 1px 15px rgba(0,0,0,0.5);-moz-box-shadow:0 1px 15px rgba(0,0,0,0.5);box-shadow:0 1px 15px rgba(0,0,0,0.5)}
 	
@@ -891,7 +891,7 @@ ul {
 /* margen superior del encabezado */
 .encabezado{margin: 20px 0;}
 /* Fondo Menú Principal */
-.fondo-menu {background-color:#08293C;}
+.fondo-menu {background-color:#1D70B7;}
 /* Elimina el margin sueperior e inferior del menu por defecto (Ver sin con el fondo lo necesito) */
 .menu-principal{margin: 0 0;color:#103f54;}
 /* Elimina el padding excesivo que tiene por defecto los enlaces del menú */
@@ -902,7 +902,7 @@ ul {
 ----------------------------------------------------------------------------*/
 .tarjeta-inicio .entry{margin-bottom:0;border-radius:2px;-webkit-border-radius:2px;-moz-border-radius:2px;}
 .tarjeta-inicio .entry-body{padding:0;}
-.tarjeta-inicio__fondo-azul{background:#1F2449;padding-bottom:30px;}
+.tarjeta-inicio__fondo-azul{background:#164f81; /*#1F2449 */padding-bottom:30px;}
 .tarjeta-inicio__fondo-azul h3, .tarjeta-inicio__fondo-azul h4{color:#F8F8F8}
 .tarjeta-inicio__fondo-azul a{color:#F8F8F8;}
 .tarjeta-inicio__fondo-azul p{line-height:24px;color:#F8F8F8;}

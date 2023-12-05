@@ -43,6 +43,10 @@ $latest_posts = get_posts($args);
     object-fit: cover;
   }
 </style>
+
+
+
+
 <div class="swiper mySwiper">
   <div class="swiper-wrapper">
     <?php foreach ($latest_posts as $post) : setup_postdata($post); ?>
@@ -51,8 +55,8 @@ $latest_posts = get_posts($args);
       $thumbnail_url = get_the_post_thumbnail_url($post->ID, 'full');
 
       if (!$thumbnail_url) {
-        // Si no hay imagen destacada, proporcionar una URL de imagen de respaldo
-        $thumbnail_url = 'img.img'; // Reemplaza esto con la URL de tu imagen de respaldo
+
+        $thumbnail_url = 'img.img'; 
       }
       ?>
 
@@ -75,7 +79,7 @@ $latest_posts = get_posts($args);
   </div>
   <div class="swiper-button-next"></div>
   <div class="swiper-button-prev"></div>
-  <div class="swiper-pagination"></div>
+  <div style="width:45px;" class="swiper-pagination"></div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -95,11 +99,12 @@ $latest_posts = get_posts($args);
 </script>
 
 <style>
-  .swiper-pagination{
+  .swiper-pagination {
     text-align: end;
     padding: 5px;
-    color:white;
-  } 
+    color: white;
+  }
+
   .swiper-slide a {
     color: white !important;
   }
@@ -131,104 +136,144 @@ $latest_posts = get_posts($args);
 
 
 
-get_template_part('parts/home', 'main');
+//get_template_part('parts/home', 'main');
 
 // Sección Institucional
 
 
 ?>
-    <div class="grid-container-1 w-full">
-                <div class="item1 relative">
 
-                    <div class="w-full h-full" style="background-image:url(https://picsum.photos/1200/700.jpg?page=3);">
-                        <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#0F577B;">UNIVERSIDAD PUBLICA</p>
-                        <div class="absolute bottom-0 text-left text-white p-2">
-                            <h5 class="text-sm relative" style="z-index:5;"> | Espacio de intercambio académico y prductivo</h5>
-                            <p class="text-xl relative" style="z-index:5;">Universidad Siglo 21 celebró “Semana 21” junto a múltiples empresas nacionales e internacionales</p>
+<div style="max-width:1170px; left:50%;transform:translateX(-50%);position:relative; padding:10px;">
+  <div class="grid-container-1 w-full" style="width:100%;">
 
+    <div class="item1 relative" style="position:relative;">
 
-                        </div>
-                        <div class="absolute left-0 bottom-0 w-full" style=" z-index:0; background: rgb(0,0,0);
-background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height:100%;">
-                        </div>
-                    </div>
-                </div>
-                <div class="item2 relative">
-
-                    <div class="w-full h-full" style="background-image:url(https://picsum.photos/1200/700.jpg?page=4);">
-                        <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#0F577B;">UNIVERSIDAD PUBLICA</p>
-                        <div class="absolute bottom-0 text-left text-white p-2">
-                            <h5 class="text-sm relative" style="z-index:5;"> | Espacio de intercambio académico y prductivo</h5>
-                            <p class="text-xl relative" style="z-index:5;">Universidad Siglo 21 celebró “Semana 21” junto a múltiples empresas nacionales e internacionales</p>
+      <div class="w-full h-full" style="background-image:url(https://picsum.photos/1200/700.jpg); width:100;height:100%;">
+        <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#0F577B; position:absolute; left:0; padding:5px; color:white; margin:5px;">CIENCIA</p>
+        <div class="absolute bottom-0 text-left text-white p-2" style="position:absolute; bottom:0; text-align:left; color:white; padding:5px;">
+          <h5 class="text-sm relative" style="z-index:5; position:relative;"> | Espacio de intercambio académico y prductivo</h5>
+          <p class="text-xl relative" style="z-index:5; position:relative;">Universidad Siglo 21 celebró “Semana 21” junto a múltiples empresas nacionales e internacionales</p>
 
 
-                        </div>
-                        <div class="absolute left-0 bottom-0 w-full" style=" z-index:0; background: rgb(0,0,0);
-background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height:100%;">
-                        </div>
-                    </div>
-                </div>
-                <div class="item3 relative">
-
-                    <div class="w-full h-full" style="background-image:url(https://picsum.photos/1200/700.jpg?page=5);">
-                        <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#0F577B;">UNIVERSIDAD PUBLICA</p>
-                        <div class="absolute bottom-0 text-left text-white p-2">
-                            <h5 class="text-sm relative" style="z-index:5;"> | Espacio de intercambio académico y prductivo</h5>
-                            <p class="text-xl relative" style="z-index:5;">El reconocido dibujante Rep brindará una charla en la UNLa</p>
+        </div>
+        <div class="absolute left-0 bottom-0 w-full" style=" z-index:0; background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height:100%; position:absolute; left:0; bottom:0; width:100%;">
+        </div>
+      </div>
 
 
-                        </div>
-                        <div class="absolute left-0 bottom-0 w-full" style=" z-index:0; background: rgb(0,0,0);
-background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height:100%;">
-                        </div>
-                    </div>
-                </div>
-                <div class="item4 relative">
 
-                    <div class="w-full h-full" style="background-image:url(https://picsum.photos/1200/700.jpg?page=6);">
-                        <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#0F577B;">UNIVERSIDAD PUBLICA</p>
-                        <div class="absolute bottom-0 text-left text-white p-2">
-                            <h5 class="text-sm relative" style="z-index:5;"> | Espacio de intercambio académico y prductivo</h5>
-                            <p class="text-xl relative" style="z-index:5;">Mammarella: “Estamos ratificando a la Educación como un derecho”</p>
+    </div>
 
 
-                        </div>
-                        <div class="absolute left-0 bottom-0 w-full" style=" z-index:0; background: rgb(0,0,0);
-background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height:100%;">
-                        </div>
-                    </div>
-                </div>
-                <div class="item5 relative">
+    <div class="item2 relative" style="position:relative;">
 
-                    <div class="w-full h-full" style="background-image:url(https://picsum.photos/1200/700.jpg?page=7);">
-                        <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#0F577B;">UNIVERSIDAD PUBLICA</p>
-                        <div class="absolute bottom-0 text-left text-white p-2">
-                            <h5 class="text-sm relative" style="z-index:5;"> | Espacio de intercambio académico y prductivo</h5>
-                            <p class="text-xl relative" style="z-index:5;">El verano ya está llegando al Centro Cultural Rojas</p>
+      <div class="w-full h-full" style="background-image:url(https://picsum.photos/1200/700.jpg?page=1); width:100;height:100%;">
+        <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#0F577B; position:absolute; left:0; padding:5px; color:white; margin:5px;">SOCIEDAD</p>
+        <div class="absolute bottom-0 text-left text-white p-2" style="position:absolute; bottom:0; text-align:left; color:white; padding:5px;">
+          <h5 class="text-sm relative" style="z-index:5; position:relative;"> | Espacio de intercambio académico y prductivo</h5>
+          <p class="text-xl relative" style="z-index:5; position:relative;">Universidad Siglo 21 celebró “Semana 21” junto a múltiples empresas nacionales e internacionales</p>
 
 
-                        </div>
-                        <div class="absolute left-0 bottom-0 w-full" style=" z-index:0; background: rgb(0,0,0);
-background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height:100%;">
-                        </div>
-                    </div>
-                </div>
-                <div class="item6 relative">
-
-                    <div class="w-full h-full" style="background-image:url(https://picsum.photos/1200/700.jpg?page=8);">
-                        <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#0F577B;">UNIVERSIDAD PUBLICA</p>
-                        <div class="absolute bottom-0 text-left text-white p-2">
-                            <h5 class="text-sm relative" style="z-index:5;"> | Espacio de intercambio académico y prductivo</h5>
-                            <p class="text-xl relative" style="z-index:5;">Preocupan resultados de estudios sobre resistencia a los antimicrobianos</p>
+        </div>
+        <div class="absolute left-0 bottom-0 w-full" style=" z-index:0; background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height:100%; position:absolute; left:0; bottom:0; width:100%;">
+        </div>
+      </div>
 
 
-                        </div>
-                        <div class="absolute left-0 bottom-0 w-full" style=" z-index:0; background: rgb(0,0,0);
-background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height:100%;">
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+    </div>
+
+
+    <div class="item3 relative" style="position:relative;">
+
+      <div class="w-full h-full" style="background-image:url(https://picsum.photos/1200/700.jpg?page=2); width:100;height:100%;">
+        <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#0F577B; position:absolute; left:0; padding:5px; color:white; margin:5px;">CULTURA</p>
+        <div class="absolute bottom-0 text-left text-white p-2" style="position:absolute; bottom:0; text-align:left; color:white; padding:5px;">
+          <h5 class="text-sm relative" style="z-index:5; position:relative;"> | Espacio de intercambio académico y prductivo</h5>
+          <p class="text-xl relative" style="z-index:5; position:relative;">Universidad Siglo 21 celebró “Semana 21” junto a múltiples empresas nacionales e internacionales</p>
+
+
+        </div>
+        <div class="absolute left-0 bottom-0 w-full" style=" z-index:0; background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height:100%; position:absolute; left:0; bottom:0; width:100%;">
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+    <div class="item4 relative" style="position:relative;">
+
+      <div class="w-full h-full" style="background-image:url(https://picsum.photos/1200/700.jpg?page=3); width:100;height:100%;">
+        <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#0F577B; position:absolute; left:0; padding:5px; color:white; margin:5px;">ENTREVISTAS</p>
+        <div class="absolute bottom-0 text-left text-white p-2" style="position:absolute; bottom:0; text-align:left; color:white; padding:5px;">
+          <h5 class="text-sm relative" style="z-index:5; position:relative;"> | Espacio de intercambio académico y prductivo</h5>
+          <p class="text-xl relative" style="z-index:5; position:relative;">Universidad Siglo 21 celebró “Semana 21” junto a múltiples empresas nacionales e internacionales</p>
+
+
+        </div>
+        <div class="absolute left-0 bottom-0 w-full" style=" z-index:0; background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height:100%; position:absolute; left:0; bottom:0; width:100%;">
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+    <div class="item5 relative" style="position:relative;">
+
+      <div class="w-full h-full" style="background-image:url(https://picsum.photos/1200/700.jpg?page=4); width:100;height:100%;">
+        <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#0F577B; position:absolute; left:0; padding:5px; color:white; margin:5px;">UNSL</p>
+        <div class="absolute bottom-0 text-left text-white p-2" style="position:absolute; bottom:0; text-align:left; color:white; padding:5px;">
+          <h5 class="text-sm relative" style="z-index:5; position:relative;"> | Espacio de intercambio académico y prductivo</h5>
+          <p class="text-xl relative" style="z-index:5; position:relative;">Universidad Siglo 21 celebró “Semana 21” junto a múltiples empresas nacionales e internacionales</p>
+
+
+        </div>
+        <div class="absolute left-0 bottom-0 w-full" style=" z-index:0; background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height:100%; position:absolute; left:0; bottom:0; width:100%;">
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+    <div class="item6 relative" style="position:relative;">
+
+      <div class="w-full h-full" style="background-image:url(https://picsum.photos/1200/700.jpg?page=5); width:100;height:100%;">
+        <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#0F577B; position:absolute; left:0; padding:5px; color:white; margin:5px;">AGENDA UNIVERSITARIA</p>
+        <div class="absolute bottom-0 text-left text-white p-2" style="position:absolute; bottom:0; text-align:left; color:white; padding:5px;">
+          <h5 class="text-sm relative" style="z-index:5; position:relative;"> | Espacio de intercambio académico y prductivo</h5>
+          <p class="text-xl relative" style="z-index:5; position:relative;">Universidad Siglo 21 celebró “Semana 21” junto a múltiples empresas nacionales e internacionales</p>
+
+
+        </div>
+        <div class="absolute left-0 bottom-0 w-full" style=" z-index:0; background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height:100%; position:absolute; left:0; bottom:0; width:100%;">
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+  </div>
+</div>
 
 <?php
 
@@ -263,8 +308,8 @@ $videos = obtener_videos_de_youtube();
             ?>
               <div class="flex h-full" style="flex-direction:column; height:100%;">
                 <iframe id="videoPlayer" class="w-full h-full" height="315" src="https://www.youtube.com/embed/<?php echo $videoId; ?>" frameborder="0" allowfullscreen></iframe>
-                <!-- <p class="text-xl py-5"><?php echo $videos['items'][0]['snippet']['title']; ?></p> -->
-              </div>
+                <p id="titulo"><?php echo $videos['items'][0]['snippet']['title']; ?></p>
+                </div>
 
             <?php
             }
@@ -277,7 +322,7 @@ $videos = obtener_videos_de_youtube();
             $thumbnail_url = $thumbnails['medium']['url'];
           ?>
             <!-- Contenido de la miniatura -->
-            <div style="cursor:pointer;" class="miniatura item<?php echo ($index + 2); ?>" data-video-id="<?php echo $video['snippet']['resourceId']['videoId']; ?>">
+            <div style="cursor:pointer;" class="miniatura item<?php echo ($index + 2); ?>" data-video-id="<?php echo $video['snippet']['resourceId']['videoId']; ?> " data-video-title="<?php echo $video['snippet']['title']; ?>">
               <div class="grid items-center gap-3 grid-cols-2" style="display:grid; align-items:center; gap:5px; grid-template-columns:1fr 1fr;">
                 <div class="relative w-full h-full" style="position:relative; width:100%;height:100%;">
 
@@ -287,7 +332,7 @@ $videos = obtener_videos_de_youtube();
                 </div>
 
 
-                <p class="text"><?php echo $video['snippet']['title']; ?></p>
+               <p class="text"><?php echo $video['snippet']['title']; ?></p> 
               </div>
             </div>
           <?php
@@ -299,6 +344,10 @@ $videos = obtener_videos_de_youtube();
   </div>
 </div>
 <style>
+
+  .sys img {
+    height: 190px;
+  }
   iframe {
     width: 100%;
     height: 100%;
@@ -329,6 +378,17 @@ $videos = obtener_videos_de_youtube();
     grid-area: f;
   }
 
+  .grid-container-1 {
+    height: 700px;
+    display: grid;
+    grid-template-areas:
+      'a a b'
+      'a a c'
+      'd e f';
+    gap: 10px;
+    padding: 10px;
+  }
+
   .grid-container-3 {
     gap: 10px;
     grid-template-columns: 1fr 1fr 1fr;
@@ -341,17 +401,55 @@ $videos = obtener_videos_de_youtube();
       'a a e'
       'a a f';
   }
+
+
+  @media screen and (max-width:550px) {
+
+    .grid-container-2 {
+      height: 100%;
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        'a'
+        'b'
+        'c'
+        'd'
+        'e';
+    }
+
+    .grid-container-1 {
+      height: 1750px;
+      grid-template-areas:
+        'a a'
+        'b b'
+        'c c'
+        'd d'
+        'e e'
+        'f f';
+    }
+
+    .grid-container-3 {
+      display: flex;
+      flex-direction: column;
+    }
+    iframe {
+      height:revert-layer;
+
+    }
+  }
 </style>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    //var item1 = document.querySelector("#titulo-miniatura");
     var videoPlayer = document.querySelector("#videoPlayer");
     var miniaturas = document.querySelectorAll(".miniatura");
-    //   console.log(miniaturas);
+    var titulo = document.querySelector("#titulo");
+
     miniaturas.forEach(function(miniatura) {
       miniatura.addEventListener("click", function() {
         var videoId = this.getAttribute("data-video-id");
+        var videoTitle = this.getAttribute("data-video-title");
+
         videoPlayer.src = "https://www.youtube.com/embed/" + videoId;
+        titulo.innerHTML = videoTitle;
       });
     });
   });
@@ -362,7 +460,7 @@ $videos = obtener_videos_de_youtube();
 
 /* Fila Ciencia y Sociedad
 ------------------------------------------------------------------------------------------------------*/
-printf('<div class="container">
+printf('<div class="container sys">
 			<div class="row">');
 
 get_template_part('parts/home', 'science');
@@ -379,8 +477,16 @@ printf('
 // Sección Laboratorios
 get_template_part('parts/home', 'laboratorios');
 
+
+
+
 // Sección Entrevistas
 get_template_part('parts/home', 'interview');
+
+
+
+
+
 
 // Sección Cultura y Agenda Cultural
 get_template_part('parts/home', 'culture');

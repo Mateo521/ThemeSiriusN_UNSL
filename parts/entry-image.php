@@ -4,7 +4,7 @@ $post_format = get_post_format();
 $sirius_blog_feed_sidebar_show = sirius_get_option('sirius_blog_feed_sidebar_show');
 $sirius_blog_feed_post_images = sirius_get_option('sirius_blog_feed_post_images');
 
-$image_size = 'sirius-large';
+$image_size = 'full';
 /*if(is_front_page() && ! is_home() ) {$image_size = 'sirius-thumb';} 
 else { $image_size = $sirius_blog_feed_sidebar_show == 1 ? 'sirius-large' : 'sirius-thumb'; }*/
 
