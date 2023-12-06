@@ -148,7 +148,7 @@ $latest_posts = get_posts($args);
 
 
     <?php
-    $categories = array('ciencia', 'sociedad', 'cultura', 'institucional', 'entrevistas', 'principal'); // Asegúrate de reemplazar estos nombres con los de tus categorías
+    $categories = array('principal', 'sociedad', 'cultura', 'institucional', 'entrevistas', 'ciencia'); // Asegúrate de reemplazar estos nombres con los de tus categorías
 
     foreach ($categories as $index => $category) {
       $args = array(
@@ -162,28 +162,42 @@ $latest_posts = get_posts($args);
 
       if ($query->have_posts()) {
         while ($query->have_posts()) {
+
+
+
           $query->the_post();
           // Aquí dentro del bucle, puedes acceder a la información de la última noticia de la categoría
           $title = get_the_title();
+
+          $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+
           $content = get_the_content();
           $permalink = get_permalink();
-
+          // Elimina los códigos cortos y limita el texto a 20 palabras
+          $trimmed_content = wp_trim_words(strip_shortcodes($content), 10, '...');
+          // Muestra el contenido recortado
     ?>
+
+
           <div class="item<?php echo ($index + 1); ?> relative" style="position:relative;">
-            <div class="w-full h-full" style="background-image:url(https://picsum.photos/1200/700.jpg); width:100;height:100%;">
-              <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#0F577B; position:absolute; left:0; padding:5px; color:white; margin:5px; text-transform:uppercase;"><?php echo $category ?></p>
-              <div class="absolute bottom-0 text-left text-white p-2" style="position:absolute; bottom:0; text-align:left; color:white; padding:5px;">
-                <h5 class="text-sm relative" style="z-index:5; position:relative;"> | Espacio de intercambio académico y prductivo</h5>
-                <p class="text-xl relative" style="z-index:5; position:relative;">Universidad Siglo 21 celebró “Semana 21” junto a múltiples empresas nacionales e internacionales</p>
-              </div>
-              <div class="absolute left-0 bottom-0 w-full" style=" z-index:0; background: rgb(0,0,0);
+            <a href="<?php echo ($permalink); ?>">
+              <div class="w-full h-full" style="background-image:url(<?php echo esc_url($thumbnail_url); ?>); width:100%;height:100%;">
+                <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#0F577B; position:absolute; left:0; padding:5px; color:white; margin:5px; text-transform:uppercase;"><?php echo $category ?></p>
+                <div class="absolute bottom-0 text-left text-white p-2" style="position:absolute; bottom:0; text-align:left; color:white; padding:5px;">
+                  <h5 class="text-sm relative" style="z-index:5; position:relative;"> | <?php echo $title ?></h5>
+                  <p class="text-xl relative" style="z-index:5; position:relative;"><?php echo  $trimmed_content ?></p>
+                </div>
+                <div class="absolute left-0 bottom-0 w-full" style=" z-index:0; background: rgb(0,0,0);
 background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height:100%; position:absolute; left:0; bottom:0; width:100%;">
+                </div>
               </div>
-            </div>
+            </a>
           </div>
     <?php
         }
       }
+
+
 
       wp_reset_postdata(); // Restaurar el objeto global $post
     }
