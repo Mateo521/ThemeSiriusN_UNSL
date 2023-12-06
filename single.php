@@ -21,7 +21,6 @@
                             <script>
                                 function cambiarIcono() {
                                     var icono = document.getElementById('icono');
-                                    var icono2 = document.getElementById('icono2');
                                     // Verificar el icono actual y cambiarlo al nuevo
                                     if (icono.classList.contains('fa-volume-off')) {
                                         icono.classList.remove('fa-volume-off');
@@ -30,19 +29,9 @@
                                         icono.classList.remove('fa-volume-up');
                                         icono.classList.add('fa-volume-off');
                                     }
-
-                                    if (icono2.classList.contains('fa-toggle-off')) {
-                                        icono2.classList.remove('fa-toggle-off');
-                                        icono2.classList.add('fa-toggle-on');
-                                    } else {
-                                        icono2.classList.remove('fa-toggle-on');
-                                        icono2.classList.add('fa-toggle-off');
-                                    }
-
-
                                 }
+                               
                             </script>
-
                             <!-- Imprimir categorías -->
                             <div class="post-categories">
                                 <?php the_category(', '); ?>
