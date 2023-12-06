@@ -260,6 +260,11 @@ get_template_part('parts/home', 'outstanding');
 get_template_part('parts/home', 'media');
 
 
+// Sección Entrevistas
+get_template_part('parts/home', 'interview');
+
+
+
 $videos = obtener_videos_de_youtube();
 ?>
 
@@ -452,10 +457,6 @@ printf('
 get_template_part('parts/home', 'laboratorios');
 
 
-
-
-// Sección Entrevistas
-get_template_part('parts/home', 'interview');
 
 
 

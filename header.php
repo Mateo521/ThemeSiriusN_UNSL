@@ -193,7 +193,7 @@
 			jQuery(document).ready(function($) {
 				if ($(window).width() < 766 || $(window).height() < 480) {
 					var prevScrollpos = window.pageYOffset;
-					var sensitivity = 30; // Ajusta este valor
+					var sensitivity = 15; // Ajusta este valor
 
 					$(window).scroll(function() {
 						var currentScrollPos = window.pageYOffset;

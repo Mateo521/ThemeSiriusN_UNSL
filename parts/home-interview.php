@@ -27,7 +27,7 @@ if ($noticia) {
 				<section class="tarjeta-inicio seccion-entrevistas">
 					<div class="entry tarjeta-inicio__fondo-blanco entr">
 				
-						<div class="row" style="position:relative;">
+						<div class="row img-entrevista" style="position:relative;">
 						<div class="entrevista-r" style="position:absolute; z-index:55; bottom:10px;">
 							<div class="col-md-12 categoria-seccion" style="color:white;">
 								<a href="%s">
@@ -75,25 +75,43 @@ if ($noticia) {
 ?>
 <style>
 	.entrevista-r {
-	/*	background: rgb(0, 0, 0); */
+		/*	background: rgb(0, 0, 0); */
 		background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 1, 0) 100%);
 	}
-/* Ver el ancho de la imagen seccion entrevistas */
 
-.seccion-entrevistas img {
-    width: 100%; 
-  /*  height: 525px; 
+	@media screen and (max-width:766px) {
+
+		.img-entrevista img {
+			height: 200px;
+		}
+
+		.entrevista-r h3 {
+			font-size: 15px;
+		}
+
+	}
+
+
+
+	/* Ver el ancho de la imagen seccion entrevistas */
+
+	.seccion-entrevistas img {
+		width: 100%;
+		/*  height: 525px; 
     object-fit: cover;
     object-position: 0 50%;
 	*/
-   /* animation: desplazar 60s linear infinite;*/
-}
-
-
-	.entrevista-r,.entrevista-r a ,.entrevista-r p    {
-	color:white !important;
+		/* animation: desplazar 60s linear infinite;*/
 	}
-	.entr{
+
+
+	.entrevista-r,
+	.entrevista-r a,
+	.entrevista-r p {
+		color: white !important;
+	}
+
+	.entr {
 		padding: 0 0 30px 0 !important;
 	}
 </style>
