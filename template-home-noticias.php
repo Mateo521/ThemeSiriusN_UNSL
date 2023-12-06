@@ -56,7 +56,7 @@ $latest_posts = get_posts($args);
 
       if (!$thumbnail_url) {
 
-        $thumbnail_url = 'img.img'; 
+        $thumbnail_url = 'img.img';
       }
       ?>
 
@@ -146,126 +146,76 @@ $latest_posts = get_posts($args);
 <div style="max-width:1170px; left:50%;transform:translateX(-50%);position:relative; padding:10px;">
   <div class="grid-container-1 w-full" style="width:100%;">
 
-    <div class="item1 relative" style="position:relative;">
 
-      <div class="w-full h-full" style="background-image:url(https://picsum.photos/1200/700.jpg); width:100;height:100%;">
-        <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#0F577B; position:absolute; left:0; padding:5px; color:white; margin:5px;">CIENCIA</p>
-        <div class="absolute bottom-0 text-left text-white p-2" style="position:absolute; bottom:0; text-align:left; color:white; padding:5px;">
-          <h5 class="text-sm relative" style="z-index:5; position:relative;"> | Espacio de intercambio académico y prductivo</h5>
-          <p class="text-xl relative" style="z-index:5; position:relative;">Universidad Siglo 21 celebró “Semana 21” junto a múltiples empresas nacionales e internacionales</p>
+    <?php
+    $categories = array('ciencia', 'sociedad', 'cultura', 'institucional', 'entrevistas', 'principal'); // Asegúrate de reemplazar estos nombres con los de tus categorías
 
+    foreach ($categories as $index => $category) {
+      $args = array(
+        'category_name' => $category,
+        'posts_per_page' => 1,
+        'order' => 'DESC',
+        'orderby' => 'date',
+      );
 
-        </div>
-        <div class="absolute left-0 bottom-0 w-full" style=" z-index:0; background: rgb(0,0,0);
+      $query = new WP_Query($args);
+
+      if ($query->have_posts()) {
+        while ($query->have_posts()) {
+          $query->the_post();
+          // Aquí dentro del bucle, puedes acceder a la información de la última noticia de la categoría
+          $title = get_the_title();
+          $content = get_the_content();
+          $permalink = get_permalink();
+
+    ?>
+          <div class="item<?php echo ($index + 1); ?> relative" style="position:relative;">
+            <div class="w-full h-full" style="background-image:url(https://picsum.photos/1200/700.jpg); width:100;height:100%;">
+              <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#0F577B; position:absolute; left:0; padding:5px; color:white; margin:5px; text-transform:uppercase;"><?php echo $category ?></p>
+              <div class="absolute bottom-0 text-left text-white p-2" style="position:absolute; bottom:0; text-align:left; color:white; padding:5px;">
+                <h5 class="text-sm relative" style="z-index:5; position:relative;"> | Espacio de intercambio académico y prductivo</h5>
+                <p class="text-xl relative" style="z-index:5; position:relative;">Universidad Siglo 21 celebró “Semana 21” junto a múltiples empresas nacionales e internacionales</p>
+              </div>
+              <div class="absolute left-0 bottom-0 w-full" style=" z-index:0; background: rgb(0,0,0);
 background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height:100%; position:absolute; left:0; bottom:0; width:100%;">
-        </div>
-      </div>
+              </div>
+            </div>
+          </div>
+    <?php
+        }
+      }
+
+      wp_reset_postdata(); // Restaurar el objeto global $post
+    }
+    ?>
 
 
-
-    </div>
-
-
+    <!--
     <div class="item2 relative" style="position:relative;">
-
       <div class="w-full h-full" style="background-image:url(https://picsum.photos/1200/700.jpg?page=1); width:100;height:100%;">
         <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#0F577B; position:absolute; left:0; padding:5px; color:white; margin:5px;">SOCIEDAD</p>
         <div class="absolute bottom-0 text-left text-white p-2" style="position:absolute; bottom:0; text-align:left; color:white; padding:5px;">
           <h5 class="text-sm relative" style="z-index:5; position:relative;"> | Espacio de intercambio académico y prductivo</h5>
           <p class="text-xl relative" style="z-index:5; position:relative;">Universidad Siglo 21 celebró “Semana 21” junto a múltiples empresas nacionales e internacionales</p>
-
-
         </div>
         <div class="absolute left-0 bottom-0 w-full" style=" z-index:0; background: rgb(0,0,0);
 background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height:100%; position:absolute; left:0; bottom:0; width:100%;">
         </div>
       </div>
-
-
-
     </div>
-
-
     <div class="item3 relative" style="position:relative;">
-
       <div class="w-full h-full" style="background-image:url(https://picsum.photos/1200/700.jpg?page=2); width:100;height:100%;">
         <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#0F577B; position:absolute; left:0; padding:5px; color:white; margin:5px;">CULTURA</p>
         <div class="absolute bottom-0 text-left text-white p-2" style="position:absolute; bottom:0; text-align:left; color:white; padding:5px;">
           <h5 class="text-sm relative" style="z-index:5; position:relative;"> | Espacio de intercambio académico y prductivo</h5>
           <p class="text-xl relative" style="z-index:5; position:relative;">Universidad Siglo 21 celebró “Semana 21” junto a múltiples empresas nacionales e internacionales</p>
-
-
         </div>
         <div class="absolute left-0 bottom-0 w-full" style=" z-index:0; background: rgb(0,0,0);
 background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height:100%; position:absolute; left:0; bottom:0; width:100%;">
         </div>
       </div>
-
-
-
     </div>
-
-
-    <div class="item4 relative" style="position:relative;">
-
-      <div class="w-full h-full" style="background-image:url(https://picsum.photos/1200/700.jpg?page=3); width:100;height:100%;">
-        <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#0F577B; position:absolute; left:0; padding:5px; color:white; margin:5px;">ENTREVISTAS</p>
-        <div class="absolute bottom-0 text-left text-white p-2" style="position:absolute; bottom:0; text-align:left; color:white; padding:5px;">
-          <h5 class="text-sm relative" style="z-index:5; position:relative;"> | Espacio de intercambio académico y prductivo</h5>
-          <p class="text-xl relative" style="z-index:5; position:relative;">Universidad Siglo 21 celebró “Semana 21” junto a múltiples empresas nacionales e internacionales</p>
-
-
-        </div>
-        <div class="absolute left-0 bottom-0 w-full" style=" z-index:0; background: rgb(0,0,0);
-background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height:100%; position:absolute; left:0; bottom:0; width:100%;">
-        </div>
-      </div>
-
-
-
-    </div>
-
-
-    <div class="item5 relative" style="position:relative;">
-
-      <div class="w-full h-full" style="background-image:url(https://picsum.photos/1200/700.jpg?page=4); width:100;height:100%;">
-        <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#0F577B; position:absolute; left:0; padding:5px; color:white; margin:5px;">UNSL</p>
-        <div class="absolute bottom-0 text-left text-white p-2" style="position:absolute; bottom:0; text-align:left; color:white; padding:5px;">
-          <h5 class="text-sm relative" style="z-index:5; position:relative;"> | Espacio de intercambio académico y prductivo</h5>
-          <p class="text-xl relative" style="z-index:5; position:relative;">Universidad Siglo 21 celebró “Semana 21” junto a múltiples empresas nacionales e internacionales</p>
-
-
-        </div>
-        <div class="absolute left-0 bottom-0 w-full" style=" z-index:0; background: rgb(0,0,0);
-background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height:100%; position:absolute; left:0; bottom:0; width:100%;">
-        </div>
-      </div>
-
-
-
-    </div>
-
-
-    <div class="item6 relative" style="position:relative;">
-
-      <div class="w-full h-full" style="background-image:url(https://picsum.photos/1200/700.jpg?page=5); width:100;height:100%;">
-        <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#0F577B; position:absolute; left:0; padding:5px; color:white; margin:5px;">AGENDA UNIVERSITARIA</p>
-        <div class="absolute bottom-0 text-left text-white p-2" style="position:absolute; bottom:0; text-align:left; color:white; padding:5px;">
-          <h5 class="text-sm relative" style="z-index:5; position:relative;"> | Espacio de intercambio académico y prductivo</h5>
-          <p class="text-xl relative" style="z-index:5; position:relative;">Universidad Siglo 21 celebró “Semana 21” junto a múltiples empresas nacionales e internacionales</p>
-
-
-        </div>
-        <div class="absolute left-0 bottom-0 w-full" style=" z-index:0; background: rgb(0,0,0);
-background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height:100%; position:absolute; left:0; bottom:0; width:100%;">
-        </div>
-      </div>
-
-
-
-    </div>
-
-
+  -->
 
 
 
@@ -273,6 +223,15 @@ background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height
 
 
   </div>
+
+
+
+
+
+
+
+
+</div>
 </div>
 
 <?php
@@ -309,7 +268,7 @@ $videos = obtener_videos_de_youtube();
               <div class="flex h-full" style="flex-direction:column; height:100%;">
                 <iframe id="videoPlayer" class="w-full h-full" height="315" src="https://www.youtube.com/embed/<?php echo $videoId; ?>" frameborder="0" allowfullscreen></iframe>
                 <p id="titulo"><?php echo $videos['items'][0]['snippet']['title']; ?></p>
-                </div>
+              </div>
 
             <?php
             }
@@ -332,7 +291,7 @@ $videos = obtener_videos_de_youtube();
                 </div>
 
 
-               <p class="text"><?php echo $video['snippet']['title']; ?></p> 
+                <p class="text"><?php echo $video['snippet']['title']; ?></p>
               </div>
             </div>
           <?php
@@ -344,10 +303,10 @@ $videos = obtener_videos_de_youtube();
   </div>
 </div>
 <style>
-
   .sys img {
     height: 190px;
   }
+
   iframe {
     width: 100%;
     height: 100%;
@@ -431,8 +390,9 @@ $videos = obtener_videos_de_youtube();
       display: flex;
       flex-direction: column;
     }
+
     iframe {
-      height:revert-layer;
+      height: revert-layer;
 
     }
   }
