@@ -15,10 +15,33 @@
 
                             <div class="flex items-center gap-3" style="display: flex; align-items:center; gap:5px; padding:10px;">
                                 <button onclick="tipografia();"><i class="fa fa-eye" aria-hidden="true"></i> Dislexia</button>
-                                <button onclick="blancoynegro();"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Blanco y negro</button>
-                                <button id="boton"><i class="fa fa-music" aria-hidden="true"></i> Síntesis de voz</button>
+                                <button onclick="blancoynegro();"><i id="icono2" class="fa fa-toggle-off" aria-hidden="true"></i> Blanco y negro</button>
+                                <button id="boton1" onclick="cambiarIcono()"><i id="icono" class="fa fa-volume-off" aria-hidden="true"></i> Síntesis de voz</button>
                             </div>
+                            <script>
+                                function cambiarIcono() {
+                                    var icono = document.getElementById('icono');
+                                    var icono2 = document.getElementById('icono2');
+                                    // Verificar el icono actual y cambiarlo al nuevo
+                                    if (icono.classList.contains('fa-volume-off')) {
+                                        icono.classList.remove('fa-volume-off');
+                                        icono.classList.add('fa-volume-up');
+                                    } else {
+                                        icono.classList.remove('fa-volume-up');
+                                        icono.classList.add('fa-volume-off');
+                                    }
 
+                                    if (icono2.classList.contains('fa-toggle-off')) {
+                                        icono2.classList.remove('fa-toggle-off');
+                                        icono2.classList.add('fa-toggle-on');
+                                    } else {
+                                        icono2.classList.remove('fa-toggle-on');
+                                        icono2.classList.add('fa-toggle-off');
+                                    }
+
+
+                                }
+                            </script>
 
                             <!-- Imprimir categorías -->
                             <div class="post-categories">
@@ -123,7 +146,7 @@
         }
     }
 
-    document.getElementById('boton').addEventListener('click', synthesisVoice);
+    document.getElementById('boton1').addEventListener('click', synthesisVoice);
 
 
     /*
@@ -166,13 +189,14 @@
     .related-post h2 {
         font-size: 18px;
         margin: 0;
-        
-       
+
+
     }
-    .related-post{
-        padding: 10px; 
+
+    .related-post {
+        padding: 10px;
         margin: 5px;
-        background-color: white; 
+        background-color: white;
         border: solid whitesmoke 1px;
     }
 
