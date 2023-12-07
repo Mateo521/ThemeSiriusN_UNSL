@@ -93,6 +93,26 @@
 </div><!-- /Main Wrapper -->
 
 <?php wp_footer(); ?>
+<style>
+	    .related-post {
+        padding: 10px;
+        margin: 5px;
+    
+        background-color: white;
+        border: solid whitesmoke 1px;
+    }
+    .related-posts{
+        grid-template-columns: repeat(4, 1fr);
+    }
 
+    @media screen and (max-width:766px) {
+
+        .related-posts{
+
+            grid-template-columns: 1fr;
+        }
+    }
+
+</style>
 </body>
 </html>
