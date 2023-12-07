@@ -251,6 +251,8 @@ background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height
 <?php
 
 
+get_template_part('parts/home', 'interview');
+
 get_template_part('parts/home', 'institutional');
 
 // Sección Destacada
@@ -261,7 +263,7 @@ get_template_part('parts/home', 'media');
 
 
 // Sección Entrevistas
-get_template_part('parts/home', 'interview');
+
 
 
 

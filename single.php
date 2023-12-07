@@ -56,7 +56,7 @@
 
 
 
-                        
+
                             <!-- Contenido principal -->
                             <?php get_template_part('parts/single', 'content'); ?>
                             <?php if (comments_open()) {
@@ -74,13 +74,14 @@
                 </div>
 
                 <!-- Noticias relacionadas o seguir leyendo -->
-                <h3>Noticias relacionadas</h3>
-                <div class="related-posts">
+                <h3>También te puede interesar</h3>
+                <hr style="padding: 0;  margin :0;">
+                <div class="related-posts" style="display: grid; grid-template-columns:repeat(4, 1fr); justify-content:center;">
                     <?php
                     $current_post_id = get_the_ID();
 
                     $related_posts = new WP_Query(array(
-                        'posts_per_page' => 5,
+                        'posts_per_page' => 4,
                         'post__not_in' => array($current_post_id),
                         'post_type' => 'post',
                         'orderby' => 'rand',
@@ -90,14 +91,23 @@
                         while ($related_posts->have_posts()) : $related_posts->the_post();
                     ?>
                             <article class="related-post">
-                                <!-- Imprimir categorías de noticias relacionadas -->
-                                <div class="related-post-categories">
-                                    <?php the_category(', '); ?>
-                                </div>
+
+                                <?php
+                                $thumbnail = get_the_post_thumbnail(get_the_ID(), 'thumbnail');
+
+                                if ($thumbnail) :
+                                ?><a href="<?php the_permalink(); ?>">
+                                        <img style="width:100%;height:175px;" src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" alt="#">
+                                    </a>
+                                <?php endif; ?>
 
                                 <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                                <p><?php the_excerpt(); ?></p>
-                                <a href="<?php the_permalink(); ?>">Seguir leyendo</a>
+                                <!--p><?php the_excerpt(); ?></p-->
+
+
+                                <!--div class="related-post-categories">
+                                    <?php the_category(', '); ?>
+                                </div-->
                             </article>
                     <?php
                         endwhile;
@@ -160,14 +170,9 @@
 
 
     /*
-        jQuery(document).ready(function($) {
-        $('#noticia img').each(function() {
-            var imgSrc = $(this).attr('src');
-            var imgLink = $('<a href="' + imgSrc + '"></a>'); // Corrección: cerrar la comilla en 'href'
-            $(this).wrap(imgLink);
-        });
-    });
 
+
+    
 
 
     */

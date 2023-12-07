@@ -28,7 +28,7 @@ if ($noticia) {
 					<div class="entry tarjeta-inicio__fondo-blanco entr">
 				
 						<div class="row img-entrevista" style="position:relative;">
-						<div class="entrevista-r" style="position:absolute; z-index:55; bottom:10px;">
+						<div class="entrevista-r" style="position:absolute; z-index:55;">
 							<div class="col-md-12 categoria-seccion" style="color:white;">
 								<a href="%s">
 									<p>%s</p>
@@ -75,6 +75,9 @@ if ($noticia) {
 ?>
 <style>
 	.entrevista-r {
+		width: 100%;
+		bottom: 0;
+
 		/*	background: rgb(0, 0, 0); */
 		background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 1, 0) 100%);
 	}
