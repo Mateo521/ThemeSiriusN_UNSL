@@ -56,10 +56,7 @@
 
 
 
-                            <!-- Imprimir categorías -->
-                            <div class="post-categories">
-                                <?php the_category(', '); ?>
-                            </div>
+                        
                             <!-- Contenido principal -->
                             <?php get_template_part('parts/single', 'content'); ?>
                             <?php if (comments_open()) {
