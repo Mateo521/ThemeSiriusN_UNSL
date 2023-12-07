@@ -9,9 +9,12 @@
 	<?php if (is_singular() && 'open' === get_option('default_ping_status')) : ?>
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 	<?php endif; ?>
-	<?php wp_head(); ?>
-</head>
 
+	<?php wp_head(); ?>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <body <?php body_class(); ?>>
 	<script>
 		(function(i, s, o, g, r, a, m) {

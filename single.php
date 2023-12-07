@@ -10,9 +10,6 @@
                 <div class="row">
                     <div class="col-md-8 noticia-sin-bordes-laterales">
                         <div class="main-column two-columns" id="noticia">
-
-
-
                             <div class="flex items-center gap-3" style="display: flex; align-items:center; gap:5px; padding:10px;">
                                 <button class="boton" id="boton1" onclick="tipografia(); cambiarIcono('icono1')">
                                     <i id="icono1" class="fa fa-eye" aria-hidden="true" onclick="event.stopPropagation();"></i> Dislexia
@@ -24,8 +21,6 @@
                                     <i id="icono3" class="fa fa-volume-off" aria-hidden="true" onclick="event.stopPropagation();"></i> Síntesis de voz
                                 </button>
                             </div>
-
-
                             <style>
                                 .boton {
                                     cursor: pointer;
@@ -76,7 +71,7 @@
                 <!-- Noticias relacionadas o seguir leyendo -->
                 <h3>También te puede interesar</h3>
                 <hr style="padding: 0;  margin :0;">
-                <div class="related-posts" style="display: grid; grid-template-columns:repeat(4, 1fr); justify-content:center;">
+                <div class="related-posts" style="display: grid; justify-content:center;">
                     <?php
                     $current_post_id = get_the_ID();
 
@@ -170,12 +165,11 @@
 
 
     /*
-
-
-    
-
-
-    */
+     */
+    /*
+     */
+    /*
+     */
     jQuery(document).ready(function($) {
         $('#noticia img').each(function(index) {
             var imgSrc = $(this).attr('src');
@@ -208,11 +202,25 @@
 
     }
 
+
+
     .related-post {
         padding: 10px;
         margin: 5px;
+    
         background-color: white;
         border: solid whitesmoke 1px;
+    }
+    .related-posts{
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media screen and (max-width:766px) {
+
+        .related-posts{
+
+            grid-template-columns: 1fr;
+        }
     }
 
     /*

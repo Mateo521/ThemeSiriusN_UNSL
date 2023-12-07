@@ -12,14 +12,17 @@ $args = array(
   'post_type'      => 'post',
   'posts_per_page' => 5,
   'order'          => 'DESC',
-  'category__not_in' => array(get_category_by_slug('entrevistas')->term_id)
+  'category__not_in' => array(
+    get_category_by_slug('entrevistas')->term_id,
+    get_category_by_slug('fotogalerias')->term_id,
+  ),
 );
 
 $latest_posts = get_posts($args);
 
 ?>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
 <style>
   .swiper {
     width: 100%;
@@ -82,7 +85,6 @@ $latest_posts = get_posts($args);
   <div style="width:45px;" class="swiper-pagination"></div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 
 <script>
@@ -230,21 +232,7 @@ background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height
       </div>
     </div>
   -->
-
-
-
-
-
-
   </div>
-
-
-
-
-
-
-
-
 </div>
 </div>
 
@@ -260,12 +248,7 @@ get_template_part('parts/home', 'outstanding');
 
 // Sección Medios
 get_template_part('parts/home', 'media');
-
-
 // Sección Entrevistas
-
-
-
 
 $videos = obtener_videos_de_youtube();
 ?>
@@ -467,6 +450,21 @@ get_template_part('parts/home', 'laboratorios');
 
 // Sección Cultura y Agenda Cultural
 get_template_part('parts/home', 'culture');
+
+
+
+
+?>
+
+<div style="display:grid; grid-template-columns:repeat(3,1fr);">
+  <p>A</p>
+  <p>B</p>
+  <p>C</p>
+</div>
+
+<?php
+
+
 
 // Agenda Universitaria
 get_template_part('parts/home', 'university-agenda');
