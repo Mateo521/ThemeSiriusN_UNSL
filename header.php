@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 <body <?php body_class(); ?>>
 	<script>
 		(function(i, s, o, g, r, a, m) {
@@ -35,7 +36,7 @@
 	<div class="main-wrapper">
 
 		<!-- Header -->
-		<header >
+		<header>
 			<!-- Header Row 1: Eliminada -->
 
 			<!-- Header Row 2 -->
@@ -114,73 +115,80 @@
 						</div>
 					</div><!--/row-->
 				</div><!--/container-->
-				</header>
-			
-			</div><!-- /Header Row 2 -->
-			<div class="container-fluid fondo-menu"  id="navbar">
-					<div class="container">
-						<div class="row">
-							<!-- Main Menu -->
-							<div class="col-xs-12 col-sm-12">
-								<nav class="navbar navbar-default menu-principal">
-									<div class="navbar-header">
-										<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
-											<span class="sr-only"><?php echo esc_html__('Toggle Navigation', 'sirius-lite'); ?></span>
-											<span class="icon-bar"></span>
-											<span class="icon-bar"></span>
-											<span class="icon-bar"></span>
-										</button>
-									</div>
-									<?php
-									$args = array(
-										'theme_location'    => 'main',
-										'depth'             => 2,
-										'container'         => 'div',
-										'container_class'   => 'collapse navbar-collapse',
-										'menu_class'        => 'nav navbar-nav',
-										'fallback_cb'       => 'sirius_default_nav',
-										'walker'            => new wp_bootstrap_navwalker()
-									);
-									wp_nav_menu($args);
-									?>
-								</nav>
-							</div><!-- /Main Menu -->
+		</header>
+
+	</div><!-- /Header Row 2 -->
+	<div class="container-fluid fondo-menu" id="navbar">
+
+	
+		<div class="container">
+			<div class="row">
+				<!-- Main Menu -->
+				<div class="col-xs-12 col-sm-12">
+					<nav class="navbar navbar-default menu-principal">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+								<span class="sr-only"><?php echo esc_html__('Toggle Navigation', 'sirius-lite'); ?></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
 						</div>
-					</div>
-				</div>
-		<div class="head" style=" position:relative;width:100%;"></div>
-		<style>
+						<?php
+						$args = array(
+							'theme_location'    => 'main',
+							'depth'             => 2,
+							'container'         => 'div',
+							'container_class'   => 'collapse navbar-collapse',
+							'menu_class'        => 'nav navbar-nav',
+							'fallback_cb'       => 'sirius_default_nav',
+							'walker'            => new wp_bootstrap_navwalker()
+						);
+						wp_nav_menu($args);
+						?>
+					</nav>
+				</div><!-- /Main Menu -->
+			</div>
+		</div>
+
+
+
+	</div>
+	<!--div class="head" style=" position:relative;width:100%;"></div-->
+	<style>
+		.head {
+			height: 144px;
+		}
+
+		@media screen and (max-width:766px) {
 			.head {
-				height: 144px;
+				height: 215px;
 			}
-			@media screen and (max-width:766px) {
-				.head {
-					height: 215px;
-				}
-			}
-			.header-row-2 {
-				background-color: white !important;
-			}
+		}
 
-			#navbar {
-				position: sticky;
-				width: 100%;
-				z-index: 9999;
-top: 0;
+		.header-row-2 {
+			background-color: white !important;
+		}
 
-				transition: top 0.65s;
+		#navbar {
+			position: sticky;
+			width: 100%;
+			z-index: 9999;
+			top: 0;
 
-			}
+			transition: top 0.65s;
 
-			body {
-				background-color: whitesmoke !important;
-			}
+		}
 
-			.tarjeta-inicio .entry img {
-				width: 100%;
-			}
+		body {
+			background-color: whitesmoke !important;
+		}
 
-			/*
+		.tarjeta-inicio .entry img {
+			width: 100%;
+		}
+
+		/*
 			.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img{
 				width: 100% !important;
 			}
@@ -192,9 +200,9 @@ top: 0;
 			.tarjeta-inicio__fondo-blanco img {
 				height: 200px;
 			}*/
-		</style>
-		<script>
-			/*
+	</style>
+	<script>
+		/*
 			jQuery(document).ready(function($) {
 				if ($(window).width() < 766 || $(window).height() < 480) {
 					var prevScrollpos = window.pageYOffset;
@@ -219,20 +227,20 @@ top: 0;
 
 
 
-			const diasSemana = ['DOMINGO', 'LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO'];
-			const meses = ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
+		const diasSemana = ['DOMINGO', 'LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO'];
+		const meses = ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
 
-			const obtenerFechaFormateada = () => {
-				const fecha = new Date();
-				const diaSemana = diasSemana[fecha.getDay()];
-				const dia = fecha.getDate();
-				const mes = meses[fecha.getMonth()];
-				const año = fecha.getFullYear();
+		const obtenerFechaFormateada = () => {
+			const fecha = new Date();
+			const diaSemana = diasSemana[fecha.getDay()];
+			const dia = fecha.getDate();
+			const mes = meses[fecha.getMonth()];
+			const año = fecha.getFullYear();
 
-				return `${diaSemana} ${dia} de ${mes} ${año}`;
-			};
+			return `${diaSemana} ${dia} de ${mes} ${año}`;
+		};
 
-			const fechaParrafo = document.getElementById('fechaParrafo');
-			fechaParrafo.textContent = obtenerFechaFormateada();
-		</script>
-		<!-- /Header -->
+		const fechaParrafo = document.getElementById('fechaParrafo');
+		fechaParrafo.textContent = obtenerFechaFormateada();
+	</script>
+	<!-- /Header -->
