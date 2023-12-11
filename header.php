@@ -119,9 +119,16 @@
 
 	</div><!-- /Header Row 2 -->
 	<div class="container-fluid fondo-menu" id="navbar">
-		<a style="position:absolute;pointer-events:all;z-index: 999; height:100%;" href="#">
-			<img style="height:100%; width:100%; top: 5px; position: relative;"   src="https://scivz.unsl.edu.ar/noticias/wp-content/themes/sirius-lite2/assets/img/logonoticiasweb2.jpg" alt="">
-		</a>
+		<div id="fixedLogo" style="display: none;">
+			<a style="position:absolute; pointer-events: all; z-index: 999; height:100%;" href="<?php echo esc_url(home_url('/')); ?>">
+				<img style="height:100%; width:100%; padding:6px 0; max-height: 55px; position: relative;" src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/logonoticiastextoblanco.png" alt="">
+			</a>
+
+		</div>
+
+
+
+
 		<div class="container">
 			<div class="row">
 				<!-- Main Menu -->
@@ -203,6 +210,19 @@
 			}*/
 	</style>
 	<script>
+		jQuery(document).ready(function($) {
+			var logo = $('#fixedLogo');
+
+			$(window).scroll(function() {
+				var scroll = $(window).scrollTop();
+
+				if (scroll >= 145) {
+					logo.fadeIn(); // Mostrar el logo con una animación de opacidad
+				} else {
+					logo.fadeOut(); // Ocultar el logo con una animación de opacidad
+				}
+			});
+		});
 		/*
 			jQuery(document).ready(function($) {
 				if ($(window).width() < 766 || $(window).height() < 480) {
