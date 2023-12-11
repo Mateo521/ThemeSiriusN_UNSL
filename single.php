@@ -10,45 +10,10 @@
                 <div class="row">
                     <div class="col-md-8 noticia-sin-bordes-laterales">
                         <div class="main-column two-columns" id="noticia">
-                            <div class="flex items-center gap-3" style="display: flex; align-items:center; gap:5px; padding:10px;">
-                                <button class="boton" id="boton1" onclick="tipografia(); cambiarIcono('icono1')">
-                                    <i id="icono1" class="fa fa-eye" aria-hidden="true" onclick="event.stopPropagation();"></i> Dislexia
-                                </button>
-                                <button class="boton" id="boton2" onclick="blancoynegro(); cambiarIcono('icono2')">
-                                    <i id="icono2" class="fa fa-toggle-off" aria-hidden="true" onclick="event.stopPropagation();"></i> Blanco y negro
-                                </button>
-                                <button class="boton" id="boton3" onclick="cambiarIcono('icono3')">
-                                    <i id="icono3" class="fa fa-volume-off" aria-hidden="true" onclick="event.stopPropagation();"></i> Síntesis de voz
-                                </button>
-                            </div>
-                            <style>
-                                .boton {
-                                    cursor: pointer;
-                                }
-                            </style>
+                        
 
 
-                            <script>
-                                function cambiarIcono(iconoId) {
-                                    var icono = document.getElementById(iconoId);
-
-                                    // Verificar si ya hemos almacenado un estado para este icono
-                                    if (icono.classList.contains('fa-eye')) {
-                                        icono.classList = 'fa fa-eye-slash';
-                                    } else if (icono.classList.contains('fa-eye-slash')) {
-                                        icono.classList = 'fa fa-eye';
-                                    } else if (icono.classList.contains('fa-toggle-off')) {
-                                        icono.classList = 'fa fa-toggle-on';
-                                    } else if (icono.classList.contains('fa-toggle-on')) {
-                                        icono.classList = 'fa fa-toggle-off';
-                                    } else if (icono.classList.contains('fa-volume-off')) {
-                                        icono.classList = 'fa fa-volume-up';
-                                    } else if (icono.classList.contains('fa-volume-up')) {
-                                        icono.classList = 'fa fa-volume-off';
-                                    }
-                                }
-                            </script>
-
+                       
 
 
 
@@ -126,6 +91,25 @@
 
 <?php endwhile; ?>
 <script>
+         function cambiarIcono(iconoId) {
+                                    var icono = document.getElementById(iconoId);
+
+                                    // Verificar si ya hemos almacenado un estado para este icono
+                                    if (icono.classList.contains('fa-eye')) {
+                                        icono.classList = 'fa fa-eye-slash';
+                                    } else if (icono.classList.contains('fa-eye-slash')) {
+                                        icono.classList = 'fa fa-eye';
+                                    } else if (icono.classList.contains('fa-toggle-off')) {
+                                        icono.classList = 'fa fa-toggle-on';
+                                    } else if (icono.classList.contains('fa-toggle-on')) {
+                                        icono.classList = 'fa fa-toggle-off';
+                                    } else if (icono.classList.contains('fa-volume-off')) {
+                                        icono.classList = 'fa fa-volume-up';
+                                    } else if (icono.classList.contains('fa-volume-up')) {
+                                        icono.classList = 'fa fa-volume-off';
+                                    }
+                                }
+
     function tipografia() {
         document.body.classList.toggle("tipog");
     }
@@ -163,13 +147,6 @@
 
     document.getElementById('boton3').addEventListener('click', synthesisVoice);
 
-
-    /*
-     */
-    /*
-     */
-    /*
-     */
     jQuery(document).ready(function($) {
         $('#noticia img').each(function(index) {
             var imgSrc = $(this).attr('src');

@@ -35,7 +35,7 @@
 	<div class="main-wrapper">
 
 		<!-- Header -->
-		<header id="navbar">
+		<header >
 			<!-- Header Row 1: Eliminada -->
 
 			<!-- Header Row 2 -->
@@ -114,7 +114,10 @@
 						</div>
 					</div><!--/row-->
 				</div><!--/container-->
-				<div class="container-fluid fondo-menu">
+				</header>
+			
+			</div><!-- /Header Row 2 -->
+			<div class="container-fluid fondo-menu"  id="navbar">
 					<div class="container">
 						<div class="row">
 							<!-- Main Menu -->
@@ -145,8 +148,6 @@
 						</div>
 					</div>
 				</div>
-			</div><!-- /Header Row 2 -->
-		</header>
 		<div class="head" style=" position:relative;width:100%;"></div>
 		<style>
 			.head {
@@ -162,10 +163,10 @@
 			}
 
 			#navbar {
-				position: fixed;
+				position: sticky;
 				width: 100%;
 				z-index: 9999;
-
+top: 0;
 
 				transition: top 0.65s;
 
@@ -193,6 +194,7 @@
 			}*/
 		</style>
 		<script>
+			/*
 			jQuery(document).ready(function($) {
 				if ($(window).width() < 766 || $(window).height() < 480) {
 					var prevScrollpos = window.pageYOffset;
@@ -213,6 +215,7 @@
 					});
 				}
 			});
+			*/
 
 
 

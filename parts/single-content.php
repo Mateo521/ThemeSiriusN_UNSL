@@ -13,9 +13,30 @@ $banner_size = $sirius_posts_featured_image_full == 1 ? 'full' : 'sirius-thumb';
 <!-- Post Content -->
 <div id="post-<?php the_ID(); ?>" <?php post_class('entry details entry-single tarjeta-inicio__fondo-blanco tarjeta-principal'); ?>>
     <!-- Imprimir categorías -->
-    <div class="post-categories">
-                                <?php the_category(', '); ?>
-                            </div>
+    <div style="display:flex; align-items:center; justify-content:space-between;">
+        <div class="post-categories" style="padding:25px 0;">
+            <?php the_category(', '); ?>
+        </div>
+
+        <div class="flex items-center gap-3" style="display: flex; align-items:center; gap:5px; padding:10px;">
+            <button class="boton" id="boton1" onclick="tipografia(); cambiarIcono('icono1')">
+                <i id="icono1" class="fa fa-eye" aria-hidden="true" onclick="event.stopPropagation();"></i> Dislexia
+            </button>
+            <button class="boton" id="boton2" onclick="blancoynegro(); cambiarIcono('icono2')">
+                <i id="icono2" class="fa fa-toggle-off" aria-hidden="true" onclick="event.stopPropagation();"></i> Blanco y negro
+            </button>
+            <button class="boton" id="boton3" onclick="cambiarIcono('icono3')">
+                <i id="icono3" class="fa fa-volume-off" aria-hidden="true" onclick="event.stopPropagation();"></i> Síntesis de voz
+            </button>
+        </div>
+    </div>
+    <style>
+        .boton {
+            cursor: pointer;
+        }
+    </style>
+
+
     <div class="entry-body">
         <!-- Breadcrumbs -->
         <div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
