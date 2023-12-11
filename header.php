@@ -119,14 +119,15 @@
 
 	</div><!-- /Header Row 2 -->
 	<div class="container-fluid fondo-menu" id="navbar">
-
-	
+		<a style="position:absolute;pointer-events:all;z-index: 999; height:100%;" href="#">
+			<img style="height:100%; width:100%; top: 5px; position: relative;"   src="https://scivz.unsl.edu.ar/noticias/wp-content/themes/sirius-lite2/assets/img/logonoticiasweb2.jpg" alt="">
+		</a>
 		<div class="container">
 			<div class="row">
 				<!-- Main Menu -->
 				<div class="col-xs-12 col-sm-12">
 					<nav class="navbar navbar-default menu-principal">
-						<div class="navbar-header">
+						<div class="navbar-header" style="position:relative;z-index:0;">
 							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
 								<span class="sr-only"><?php echo esc_html__('Toggle Navigation', 'sirius-lite'); ?></span>
 								<span class="icon-bar"></span>

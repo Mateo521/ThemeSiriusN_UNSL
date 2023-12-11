@@ -13,7 +13,7 @@ $banner_size = $sirius_posts_featured_image_full == 1 ? 'full' : 'sirius-thumb';
 <!-- Post Content -->
 <div id="post-<?php the_ID(); ?>" <?php post_class('entry details entry-single tarjeta-inicio__fondo-blanco tarjeta-principal'); ?>>
     <!-- Imprimir categorías -->
-    <div style="display:flex; align-items:center; justify-content:space-between;">
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;">
         <div class="post-categories" style="padding:25px 0;">
             <?php the_category(', '); ?>
         </div>
