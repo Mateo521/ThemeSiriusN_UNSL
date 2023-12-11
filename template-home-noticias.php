@@ -453,7 +453,7 @@ get_template_part('parts/home', 'culture');
 
 
 
-
+// Sección Pruebas
 ?>
 <div class="container">
 
@@ -507,7 +507,7 @@ get_template_part('parts/home', 'culture');
       echo 'No hay noticias relacionadas.';
     endif;
     ?>
-  </div>
+   </div>
 
 
 </div>
@@ -524,6 +524,23 @@ get_template_part('parts/home', 'culture');
     }
   }
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <?php
 
 
