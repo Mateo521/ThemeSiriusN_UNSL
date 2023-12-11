@@ -184,7 +184,7 @@ $latest_posts = get_posts($args);
           <div class="item<?php echo ($index + 1); ?> relative" style="position:relative;">
             <a href="<?php echo ($permalink); ?>">
               <div class="w-full h-full" style="background-image:url(<?php echo esc_url($thumbnail_url); ?>); width:100%;height:100%;">
-                <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#0F577B; position:absolute; left:0; padding:5px; color:white; margin:5px; text-transform:uppercase;"><?php echo $category ?></p>
+                <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#1794d3; position:absolute; left:0; padding:5px; color:white; margin:5px; text-transform:uppercase;"><?php echo $category ?></p>
                 <div class="absolute bottom-0 text-left text-white p-2" style="position:absolute; bottom:0; text-align:left; color:white; padding:5px;">
                   <h5 class="text-sm relative" style="z-index:5; position:relative;"> | <?php echo $title ?></h5>
                   <p class="text-xl relative" style="z-index:5; position:relative;"><?php echo  $trimmed_content ?></p>
