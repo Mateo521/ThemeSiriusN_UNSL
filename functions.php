@@ -553,12 +553,6 @@ add_action('rss2_item', function () {
 });
 add_filter('the_excerpt_rss', 'wcs_post_thumbnails_in_feeds');
 add_filter('the_content_feed', 'wcs_post_thumbnails_in_feeds');
-
-
-
-
-
-
 function obtener_videos_de_youtube()
 {
     $cached_results = get_transient('youtube_api_cache');
@@ -568,6 +562,7 @@ function obtener_videos_de_youtube()
     } else {
         $max = '6';
         $playlistid = 'PLPHjzCOfwhCU8wJYO-SazoXjbzYV780UE'; //institucional
+ 
         $api_url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=$playlistid&maxResults=$max&key=$key&order=date";
         $response = wp_remote_get($api_url);
 

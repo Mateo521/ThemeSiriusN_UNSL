@@ -242,58 +242,58 @@ background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height
 get_template_part('parts/home', 'interview');
 
 ?>
-
+<!--
 
 <div class="flex justify-center container" style="background-color: #164f81; padding:15px 0; color:#fff; margin:15px auto;">
-  <div class="w-full">
+<p>Etiquetas populares</p>
+<div class="w-full">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto w-full">
       <div class="grid-container-2 w-full mx-2 text-white">
         <div class="item7 p-2">
-          <img class="w-full" src="https://picsum.photos/1200/700.jpg?page=9" alt="" style="width: 100%;">
+          <img class="w-full" src="https://picsum.photos/1200/700.jpg?page=1" alt="" style="width: 100%;">
           <div>
-            <h2 class="text-2xl title-c">Lo destaca Warren Buffet.</h2>
-            <p>Cuanto influye la suerte para tener una carrera profesional exitosa</p>
+            <h3 class="text-2xl title-c">A</h3>
+            <p>Ecobioetica</p>
           </div>
         </div>
         <div class="item8 p-2">
-          <img class="w-full" src="https://picsum.photos/1200/700.jpg?page=10" alt="" style="width: 100%;">
+          <img class="w-full" src="https://picsum.photos/1200/700.jpg?page=2" alt="" style="width: 100%;">
           <div>
-            <h2 class="text-2xl title-c">Lo destaca Warren Buffet.</h2>
-            <p>Preocupan resultados de estudios sobre resistencia a los antimicrobianos</p>
+            <h3 class="text-2xl title-c">B</h3>
+            <p>FaPsi</p>
           </div>
         </div>
         <div class="item9 p-2">
-          <img class="w-full" src="https://picsum.photos/1200/700.jpg?page=11" alt="" style="width: 100%;">
+          <img class="w-full" src="https://picsum.photos/1200/700.jpg?page=3" alt="" style="width: 100%;">
           <div>
-            <h2 class="text-2xl title-c">Lo destaca Warren Buffet.</h2>
-            <p>Preocupan resultados de estudios sobre resistencia a los antimicrobianos</p>
+            <h3 class="text-2xl title-c">C</h3>
+            <p>Colacion</p>
           </div>
         </div>
         <div class="item10 p-2">
-          <img class="w-full" src="https://picsum.photos/1200/700.jpg?page=12" alt="" style="width: 100%;">
+          <img class="w-full" src="https://picsum.photos/1200/700.jpg?page=4" alt="" style="width: 100%;">
           <div>
-            <h2 class="text-2xl title-c">Lo destaca Warren Buffet.</h2>
-            <p>Preocupan resultados de estudios sobre resistencia a los antimicrobianos</p>
+            <h3 class="text-2xl title-c">D</h3>
+            <p>Especializacion</p>
           </div>
         </div>
         <div class="item11 p-2">
-          <img class="w-full" src="https://picsum.photos/1200/700.jpg?page=13" alt="" style="width: 100%;">
+          <img class="w-full" src="https://picsum.photos/1200/700.jpg?page=5" alt="" style="width: 100%;">
           <div>
-            <h2 class="text-2xl title-c">Lo destaca Warren Buffet.</h2>
-            <p>Preocupan resultados de estudios sobre resistencia a los antimicrobianos</p>
+            <h3 class="text-2xl title-c">E</h3>
+            <p>Educacion</p>
           </div>
         </div>
       </div>
 
-
-    </div>
+   </div>
   </div>
 </div>
 
 <style>
   .item7 {
     grid-area: a;
-    border-bottom: 1px solid white;
+   
     width: 100%;
   }
 
@@ -306,14 +306,13 @@ get_template_part('parts/home', 'interview');
   .item9 {
     grid-area: c;
     width: 100%;
-    border-left: 1px solid white;
-    border-right: 1px solid white;
+  
   }
 
   .item10 {
     grid-area: d;
     width: 100%;
-    border-bottom: 1px solid white;
+   
   }
 
   .item11 {
@@ -349,6 +348,44 @@ get_template_part('parts/home', 'interview');
     }
   }
 </style>
+-->
+
+
+<?php
+/*
+Template Name: Etiquetas Populares
+*/
+
+
+// Función para obtener las últimas noticias
+
+
+// Función para obtener las etiquetas más usadas
+function obtener_etiquetas_populares() {
+    $etiquetas_populares = get_tags(array(
+        'orderby' => 'count',
+        'order' => 'DESC',
+        'number' => 10, // Obtener las 5 etiquetas más populares
+    ));
+
+    if ($etiquetas_populares) {
+        echo '<div class="container" style="margin:20px auto ;"><h2>Etiquetas Populares</h2><ul style="display:flex;gap:7px;flex-wrap:wrap;">';
+        foreach ($etiquetas_populares as $etiqueta) {
+            echo '<li style="list-style-type:none;"><a href="' . get_tag_link($etiqueta->term_id) . '">' . $etiqueta->name . '</a></li>';
+        }
+        echo '</ul></div>';
+    } else {
+        echo '<p>No hay etiquetas populares disponibles.</p>';
+    }
+}
+
+// Mostrar las últimas noticias y etiquetas populares
+obtener_etiquetas_populares();
+
+
+
+?>
+
 
 <?php
 
