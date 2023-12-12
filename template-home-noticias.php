@@ -244,7 +244,7 @@ get_template_part('parts/home', 'interview');
 ?>
 
 
-<div class="flex justify-center py-8 container">
+<div class="flex justify-center container" style="background-color: #164f81; padding:15px 0; color:#fff; margin:15px auto;">
   <div class="w-full">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto w-full">
       <div class="grid-container-2 w-full mx-2 text-white">
