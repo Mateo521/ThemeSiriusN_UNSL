@@ -568,7 +568,7 @@ function obtener_videos_de_youtube()
     } else {
         $max = '6';
         $playlistid = 'PLPHjzCOfwhCU8wJYO-SazoXjbzYV780UE'; //institucional
-     
+        $key = 'AIzaSyAvh2BevU2XW1faitCTmmBKzJAaRLMBRY0';
         $api_url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=$playlistid&maxResults=$max&key=$key&order=date";
         $response = wp_remote_get($api_url);
 
@@ -576,8 +576,6 @@ function obtener_videos_de_youtube()
             // Manejar errores de solicitud
             error_log('Error al obtener videos de YouTube: ' . $response->get_error_message());
             return array();
-
-            
         }
         $body = wp_remote_retrieve_body($response);
         $data = json_decode($body, true);
