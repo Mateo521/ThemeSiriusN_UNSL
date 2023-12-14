@@ -671,8 +671,18 @@ get_template_part('parts/home', 'culture');
 
   
   </div>
+  <?php
+  $nombre_categoria = 'fotogalerias';
+  $term = get_term_by('name', $nombre_categoria, 'category');
+  if ($term) {
+    $id_categoria = $term->term_id;
+    $enlace_categoria = esc_url(get_category_link($id_categoria));
+  }
 
-  <hr><a class="btn-ver-mas" href="%s">VER MÁS</a>
+
+  ?>
+
+  <hr><a class="btn-ver-mas" href="<?php echo $enlace_categoria ?>">VER MÁS</a>
 </div>
 <style>
   .fotogal-posts {

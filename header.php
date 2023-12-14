@@ -210,19 +210,25 @@
 			}*/
 	</style>
 	<script>
-		jQuery(document).ready(function($) {
-			var logo = $('#fixedLogo');
+	jQuery(document).ready(function($) {
+    var logo = $('#fixedLogo');
 
-			$(window).scroll(function() {
-				var scroll = $(window).scrollTop();
+    // Verifica el ancho de la ventana antes de asignar el evento scroll
+    if ($(window).width() < 766) {
+        $(window).scroll(function() {
+            var scroll = $(window).scrollTop();
 
-				if (scroll >= 145) {
-					logo.fadeIn(); // Mostrar el logo con una animación de opacidad
-				} else {
-					logo.fadeOut(); // Ocultar el logo con una animación de opacidad
-				}
-			});
-		});
+            if (scroll >= 145) {
+                logo.fadeIn(); // Mostrar el logo con una animación de opacidad
+            } else {
+                logo.fadeOut(); // Ocultar el logo con una animación de opacidad
+            }
+        });
+    }
+});
+	
+
+
 		/*
 			jQuery(document).ready(function($) {
 				if ($(window).width() < 766 || $(window).height() < 480) {
