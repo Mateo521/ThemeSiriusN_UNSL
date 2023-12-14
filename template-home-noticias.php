@@ -698,22 +698,6 @@ get_template_part('parts/home', 'culture');
   }
 </style>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <?php
 
 

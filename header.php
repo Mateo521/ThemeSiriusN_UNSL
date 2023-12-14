@@ -212,23 +212,19 @@
 	<script>
 	jQuery(document).ready(function($) {
     var logo = $('#fixedLogo');
-
-    // Verifica el ancho de la ventana antes de asignar el evento scroll
     if ($(window).width() < 766) {
         $(window).scroll(function() {
             var scroll = $(window).scrollTop();
 
             if (scroll >= 145) {
-                logo.fadeIn(); // Mostrar el logo con una animación de opacidad
+                logo.fadeIn(); 
             } else {
-                logo.fadeOut(); // Ocultar el logo con una animación de opacidad
+                logo.fadeOut(); 
             }
         });
     }
 });
 	
-
-
 		/*
 			jQuery(document).ready(function($) {
 				if ($(window).width() < 766 || $(window).height() < 480) {
@@ -251,9 +247,6 @@
 				}
 			});
 			*/
-
-
-
 		const diasSemana = ['DOMINGO', 'LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO'];
 		const meses = ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
 
@@ -266,7 +259,6 @@
 
 			return `${diaSemana} ${dia} de ${mes} ${año}`;
 		};
-
 		const fechaParrafo = document.getElementById('fechaParrafo');
 		fechaParrafo.textContent = obtenerFechaFormateada();
 	</script>
