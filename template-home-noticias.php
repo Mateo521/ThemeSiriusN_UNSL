@@ -89,13 +89,15 @@ $latest_posts = get_posts($args);
 
 <script>
   var swiper = new Swiper(".mySwiper", {
-    pagination: {
-      el: ".swiper-pagination",
-      type: "fraction",
-    },
+    spaceBetween: 30,
+    effect: "fade",
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
     },
   });
 </script>
@@ -361,22 +363,23 @@ Template Name: Etiquetas Populares
 
 
 // Función para obtener las etiquetas más usadas
-function obtener_etiquetas_populares() {
-    $etiquetas_populares = get_tags(array(
-        'orderby' => 'count',
-        'order' => 'DESC',
-        'number' => 10, // Obtener las 5 etiquetas más populares
-    ));
+function obtener_etiquetas_populares()
+{
+  $etiquetas_populares = get_tags(array(
+    'orderby' => 'count',
+    'order' => 'DESC',
+    'number' => 10, // Obtener las 5 etiquetas más populares
+  ));
 
-    if ($etiquetas_populares) {
-        echo '<div class="container" style="margin:20px auto ;"><h2>Etiquetas Populares</h2><ul style="display:flex;gap:7px;flex-wrap:wrap;">';
-        foreach ($etiquetas_populares as $etiqueta) {
-            echo '<li style="list-style-type:none;"><a href="' . get_tag_link($etiqueta->term_id) . '">' . $etiqueta->name . '</a></li>';
-        }
-        echo '</ul></div>';
-    } else {
-        echo '<p>No hay etiquetas populares disponibles.</p>';
+  if ($etiquetas_populares) {
+    echo '<div class="container" style="margin:20px auto ;"><h2>Etiquetas Populares</h2><ul style="display:flex;gap:7px;flex-wrap:wrap;">';
+    foreach ($etiquetas_populares as $etiqueta) {
+      echo '<li style="list-style-type:none;"><a href="' . get_tag_link($etiqueta->term_id) . '">' . $etiqueta->name . '</a></li>';
     }
+    echo '</ul></div>';
+  } else {
+    echo '<p>No hay etiquetas populares disponibles.</p>';
+  }
 }
 
 // Mostrar las últimas noticias y etiquetas populares
@@ -608,7 +611,7 @@ get_template_part('parts/home', 'culture');
 
 // Sección Pruebas
 ?>
-<div class="container">
+<div class="container" style="background-color: #fff; margin: 15px auto;" >
 
   <?php
   $nombre_categoria = 'fotogalerias';
@@ -626,6 +629,9 @@ get_template_part('parts/home', 'culture');
   </a>
 
   <div class="fotogal-posts" style="display: grid; justify-content:center; margin:0 0 25px 0 ;">
+
+
+
     <?php
     $current_post_id = get_the_ID();
 
@@ -634,7 +640,7 @@ get_template_part('parts/home', 'culture');
       'post__not_in'   => array($current_post_id),
       'post_type'      => 'post',
       'orderby'        => 'rand',
-      'category_name'  => 'fotogalerias', // Ajusta el nombre de la categoría según tu configuración
+      'category_name'  => 'fotogalerias',
     ));
 
     if ($related_posts->have_posts()) :
@@ -660,9 +666,13 @@ get_template_part('parts/home', 'culture');
       echo 'No hay noticias relacionadas.';
     endif;
     ?>
+
+
+
+  
   </div>
 
-
+  <hr><a class="btn-ver-mas" href="%s">VER MÁS</a>
 </div>
 <style>
   .fotogal-posts {
