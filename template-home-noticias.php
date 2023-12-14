@@ -1,8 +1,4 @@
 <?php
-
-/**
- * Template Name: Página de Inicio Noticias
- */
 get_header();
 
 global $post;
@@ -54,7 +50,6 @@ $latest_posts = get_posts($args);
   <div class="swiper-wrapper">
     <?php foreach ($latest_posts as $post) : setup_postdata($post); ?>
       <?php
-      // Obtener la URL de la imagen destacada
       $thumbnail_url = get_the_post_thumbnail_url($post->ID, 'full');
 
       if (!$thumbnail_url) {
@@ -152,7 +147,7 @@ $latest_posts = get_posts($args);
 
 
     <?php
-    $categories = array('principal', 'sociedad', 'cultura', 'institucional', 'entrevistas', 'ciencia'); // Asegúrate de reemplazar estos nombres con los de tus categorías
+    $categories = array('principal', 'sociedad', 'cultura', 'institucional', 'fotogalerias', 'ciencia'); // Asegúrate de reemplazar estos nombres con los de tus categorías
 
     foreach ($categories as $index => $category) {
       $args = array(
@@ -160,7 +155,9 @@ $latest_posts = get_posts($args);
         'posts_per_page' => 1,
         'order' => 'DESC',
         'orderby' => 'date',
+
       );
+
 
       $query = new WP_Query($args);
 
@@ -170,16 +167,15 @@ $latest_posts = get_posts($args);
 
 
           $query->the_post();
-          // Aquí dentro del bucle, puedes acceder a la información de la última noticia de la categoría
           $title = get_the_title();
 
           $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
 
           $content = get_the_content();
           $permalink = get_permalink();
-          // Elimina los códigos cortos y limita el texto a 20 palabras
+       
           $trimmed_content = wp_trim_words(strip_shortcodes($content), 10, '...');
-          // Muestra el contenido recortado
+       
     ?>
 
 
@@ -203,7 +199,7 @@ background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height
 
 
 
-      wp_reset_postdata(); // Restaurar el objeto global $post
+      wp_reset_postdata(); 
     }
     ?>
 
@@ -368,7 +364,7 @@ function obtener_etiquetas_populares()
   $etiquetas_populares = get_tags(array(
     'orderby' => 'count',
     'order' => 'DESC',
-    'number' => 10, // Obtener las 5 etiquetas más populares
+    'number' => 10, 
   ));
 
   if ($etiquetas_populares) {
@@ -382,7 +378,7 @@ function obtener_etiquetas_populares()
   }
 }
 
-// Mostrar las últimas noticias y etiquetas populares
+
 obtener_etiquetas_populares();
 
 
@@ -419,7 +415,7 @@ $videos = obtener_videos_de_youtube();
           <div class="item1" id="item1">
 
 
-            <!-- Aquí se mostrará el primer video de la API -->
+
             <?php if (!empty($videos)) {
               $videoId = $videos['items'][0]['snippet']['resourceId']['videoId'];
               $thumbnails = $primer_video['snippet']['thumbnails'];
@@ -440,7 +436,7 @@ $videos = obtener_videos_de_youtube();
             $thumbnails = $video['snippet']['thumbnails'];
             $thumbnail_url = $thumbnails['medium']['url'];
           ?>
-            <!-- Contenido de la miniatura -->
+   
             <div style="cursor:pointer;" class="miniatura item<?php echo ($index + 2); ?>" data-video-id="<?php echo $video['snippet']['resourceId']['videoId']; ?> " data-video-title="<?php echo $video['snippet']['title']; ?>">
               <div class="grid items-center gap-3 grid-cols-2" style="display:grid; align-items:center; gap:5px; grid-template-columns:1fr 1fr;">
                 <div class="relative w-full h-full" style="position:relative; width:100%;height:100%;">
