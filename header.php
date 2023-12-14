@@ -120,7 +120,7 @@
 	</div><!-- /Header Row 2 -->
 	<div class="container-fluid fondo-menu" id="navbar">
 		<div id="fixedLogo" style="display: none;">
-			<a style="position:absolute; pointer-events: all; z-index: 999; height:100%;" href="<?php echo esc_url(home_url('/')); ?>">
+			<a style="position:absolute; pointer-events: all; z-index: 999;" href="<?php echo esc_url(home_url('/')); ?>">
 				<img style="height:100%; width:100%; padding:6px 0; max-height: 55px; position: relative;" src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/logonoticiastextoblanco.png" alt="">
 			</a>
 
