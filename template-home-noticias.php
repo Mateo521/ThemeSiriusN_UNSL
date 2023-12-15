@@ -6,9 +6,9 @@ get_header();
 
 //get_template_part('parts/home', 'main');
 
-// Sección Institucional
+// Sección Slider
 get_template_part('parts/home', 'slider');
-
+// Sección Info slider
 get_template_part('parts/home', 'info');
 
 // Sección Entrevistas
