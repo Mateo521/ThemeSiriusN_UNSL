@@ -127,7 +127,7 @@ get_template_part('parts/home', 'interview');
 <?php
 get_template_part('parts/home', 'etiquetas');
 
-
+// Sección Institucional
 get_template_part('parts/home', 'institutional');
 
 // Sección Destacada
@@ -136,13 +136,8 @@ get_template_part('parts/home', 'outstanding');
 // Sección Medios
 get_template_part('parts/home', 'media');
 
-
 // Sección audiovisual
 get_template_part('parts/home', 'audiovisual');
-
-
-
-
 
 /* Fila Ciencia y Sociedad
 ------------------------------------------------------------------------------------------------------*/
