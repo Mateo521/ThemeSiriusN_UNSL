@@ -10,10 +10,10 @@
                 <div class="row">
                     <div class="col-md-8 noticia-sin-bordes-laterales">
                         <div class="main-column two-columns" id="noticia">
-                        
 
 
-                       
+
+
 
 
 
@@ -91,24 +91,24 @@
 
 <?php endwhile; ?>
 <script>
-         function cambiarIcono(iconoId) {
-                                    var icono = document.getElementById(iconoId);
+    function cambiarIcono(iconoId) {
+        var icono = document.getElementById(iconoId);
 
-                                    // Verificar si ya hemos almacenado un estado para este icono
-                                    if (icono.classList.contains('fa-eye')) {
-                                        icono.classList = 'fa fa-eye-slash';
-                                    } else if (icono.classList.contains('fa-eye-slash')) {
-                                        icono.classList = 'fa fa-eye';
-                                    } else if (icono.classList.contains('fa-toggle-off')) {
-                                        icono.classList = 'fa fa-toggle-on';
-                                    } else if (icono.classList.contains('fa-toggle-on')) {
-                                        icono.classList = 'fa fa-toggle-off';
-                                    } else if (icono.classList.contains('fa-volume-off')) {
-                                        icono.classList = 'fa fa-volume-up';
-                                    } else if (icono.classList.contains('fa-volume-up')) {
-                                        icono.classList = 'fa fa-volume-off';
-                                    }
-                                }
+        // Verificar si ya hemos almacenado un estado para este icono
+        if (icono.classList.contains('fa-eye')) {
+            icono.classList = 'fa fa-eye-slash';
+        } else if (icono.classList.contains('fa-eye-slash')) {
+            icono.classList = 'fa fa-eye';
+        } else if (icono.classList.contains('fa-toggle-off')) {
+            icono.classList = 'fa fa-toggle-on';
+        } else if (icono.classList.contains('fa-toggle-on')) {
+            icono.classList = 'fa fa-toggle-off';
+        } else if (icono.classList.contains('fa-volume-off')) {
+            icono.classList = 'fa fa-volume-up';
+        } else if (icono.classList.contains('fa-volume-up')) {
+            icono.classList = 'fa fa-volume-off';
+        }
+    }
 
     function tipografia() {
         document.body.classList.toggle("tipog");
@@ -178,16 +178,6 @@
 
 
     }
-
-
-
-
-    /*
-    a, a:hover, a:focus, a:visited{
-        color: inherit;
-        text-decoration: none;
-    }
-    */
     @font-face {
         font-family: 'OpenDyslexic-Regular';
         src: url(<?php echo get_template_directory_uri() . '/assets/fonts/OpenDyslexic-Regular.otf'; ?>) format('opentype');

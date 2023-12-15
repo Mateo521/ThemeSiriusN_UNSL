@@ -1,11 +1,8 @@
 <?php
 get_header();
 
-// Sección Principal
-
 
 //get_template_part('parts/home', 'main');
-
 // Sección Slider
 get_template_part('parts/home', 'slider');
 // Sección Info slider
