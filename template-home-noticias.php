@@ -135,9 +135,9 @@ get_template_part('parts/home', 'outstanding');
 
 // Sección Medios
 get_template_part('parts/home', 'media');
-// Sección Entrevistas
 
 
+// Sección audiovisual
 get_template_part('parts/home', 'audiovisual');
 
 
@@ -163,23 +163,11 @@ printf('
 // Sección Laboratorios
 get_template_part('parts/home', 'laboratorios');
 
-
-
-
-
-
-
-
 // Sección Cultura y Agenda Cultural
 get_template_part('parts/home', 'culture');
 
-
-
 // Sección Pruebas
-
-
-
-
+get_template_part('parts/home', 'fotogalerias');
 
 // Agenda Universitaria
 get_template_part('parts/home', 'university-agenda');
