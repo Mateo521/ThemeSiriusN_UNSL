@@ -11,7 +11,7 @@ get_template_part('parts/home', 'slider');
 
 get_template_part('parts/home', 'info');
 
-
+// Sección Entrevistas
 get_template_part('parts/home', 'interview');
 
 // Sección Etiquetas
