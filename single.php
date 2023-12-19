@@ -41,7 +41,7 @@
                     $current_post_id = get_the_ID();
 
                     $related_posts = new WP_Query(array(
-                        'posts_per_page' => 4,
+                        'posts_per_page' => 8,
                         'post__not_in' => array($current_post_id),
                         'post_type' => 'post',
                         'orderby' => 'rand',
@@ -169,15 +169,20 @@
             $(this).wrap(imgLink).after(imgElement).remove();
         });
     });
+
+
+    
+
 </script>
+
+
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/lightbox2-2.11.4/dist/js/lightbox-plus-jquery.js"></script>
 <style>
     .related-post h2 {
         font-size: 18px;
         margin: 0;
-
-
     }
+
     @font-face {
         font-family: 'OpenDyslexic-Regular';
         src: url(<?php echo get_template_directory_uri() . '/assets/fonts/OpenDyslexic-Regular.otf'; ?>) format('opentype');
