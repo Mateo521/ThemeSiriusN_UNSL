@@ -9,6 +9,7 @@ Template Name: Etiquetas Populares
 
 
 // Función para obtener las etiquetas más usadas
+/*
 function obtener_etiquetas_populares()
 {
   $etiquetas_populares = get_tags(array(
@@ -32,8 +33,9 @@ function obtener_etiquetas_populares()
 obtener_etiquetas_populares();
 
 
-
+*/
 ?>
+
 <!--
 
 <div class="flex justify-center container" style="background-color: #164f81; padding:15px 0; color:#fff; margin:15px auto;">

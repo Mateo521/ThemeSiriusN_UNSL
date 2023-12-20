@@ -177,6 +177,30 @@
 
 
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/lightbox2-2.11.4/dist/js/lightbox-plus-jquery.js"></script>
+
+<script>
+  // Función para manejar la apertura del modal
+  function onOpen() {
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Función para manejar el cierre del modal
+  function onClose() {
+    document.body.style.overflow = 'visible';
+  }
+
+  // Asignar funciones a los eventos de Lightbox
+  $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+    event.preventDefault();
+    $(this).ekkoLightbox({
+      onShown: onOpen,
+      onNavigate: onClose,
+      onClose: onClose
+    });
+  });
+</script>
+
+
 <style>
     .related-post h2 {
         font-size: 18px;
@@ -204,3 +228,6 @@
     }
 </style>
 <?php get_footer(); ?>
+
+
+
