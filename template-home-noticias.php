@@ -58,3 +58,6 @@ get_template_part('parts/home', 'university-agenda');
 //get_template_part('parts/home', 'unsltv');
 
 get_footer();
+
+
+?>

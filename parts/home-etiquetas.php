@@ -84,6 +84,9 @@ obtener_etiquetas_populares();
   </div>
 </div>
 
+
+
+
 <style>
   .item7 {
     grid-area: a;
