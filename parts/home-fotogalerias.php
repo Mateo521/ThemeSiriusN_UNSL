@@ -1,86 +1,74 @@
-<div class="container" style="background-color: #fff; margin: 15px auto;" >
+  <!-- Swiper -->
+  <div class="contenedor" style="padding:0;">
+    <div class="swiper1 mySwiper3">
+      <div class="swiper-wrapper">
 
-  <?php
-  $nombre_categoria = 'fotogalerias';
-  $term = get_term_by('name', $nombre_categoria, 'category');
-  if ($term) {
-    $id_categoria = $term->term_id;
-    $enlace_categoria = esc_url(get_category_link($id_categoria));
-  }
+        <?php $i = 0;
+        for ($i; $i < 3; $i++) {
 
+        ?>
 
-  ?>
+          <div class="swiper-slide">
+            <div>
+              <img src="https://picsum.photos/900/900?random=<?php echo ($i); ?>" alt="">
+              <div class="bk"></div>
+            </div>
 
-  <a href="<?php echo $enlace_categoria ?>">
-    <h3>Fotogalerías</h3>
-  </a>
+          </div>
+        <?php } ?>
 
-  <div class="fotogal-posts" style="display: grid; justify-content:center; margin:0 0 25px 0 ;">
-
-
-
-    <?php
-    $current_post_id = get_the_ID();
-
-    $related_posts = new WP_Query(array(
-      'posts_per_page' => 3,
-      'post__not_in'   => array($current_post_id),
-      'post_type'      => 'post',
-      'orderby'        => 'rand',
-      'category_name'  => 'fotogalerias',
-    ));
-
-    if ($related_posts->have_posts()) :
-      while ($related_posts->have_posts()) : $related_posts->the_post();
-    ?>
-        <article class="related-post">
-          <?php
-          $thumbnail = get_the_post_thumbnail(get_the_ID(), 'thumbnail');
-
-          if ($thumbnail) :
-          ?>
-            <a href="<?php the_permalink(); ?>">
-              <img style="width:100%;height:175px;" src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" alt="#">
-            </a>
-          <?php endif; ?>
-
-          <!--h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2-->
-        </article>
-    <?php
-      endwhile;
-      wp_reset_postdata();
-    else :
-      echo 'No hay noticias relacionadas.';
-    endif;
-    ?>
-
-
-
-  
+        <div class="swiper-slide">
+          <img class="filtered" src="https://picsum.photos/900/900?random=<?php echo ($i + 1); ?>" alt="">
+          <div class="bk"></div>
+        </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
   </div>
-  <?php
-  $nombre_categoria = 'fotogalerias';
-  $term = get_term_by('name', $nombre_categoria, 'category');
-  if ($term) {
-    $id_categoria = $term->term_id;
-    $enlace_categoria = esc_url(get_category_link($id_categoria));
-  }
 
 
-  ?>
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper3", {
+      pagination: {
+        el: ".swiper-pagination",
+        type: "fraction",
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  </script>
 
-  <hr><a class="btn-ver-mas" href="<?php echo $enlace_categoria ?>">VER MÁS</a>
-</div>
-<style>
-  .fotogal-posts {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  <style>
+    .bk {
+      width: 100%;
+      position: absolute;
+      height: 100%;
+      background-color: #0000008f;
+      top: 0;
+      left: 0;
 
-  @media screen and (max-width:766px) {
-
-    .fotogal-posts {
-
-      grid-template-columns: 1fr;
     }
-  }
-</style>
+
+    .filtered {
+      filter: blur(10px);
+    }
+
+    .swiper1 {
+      width: 100%;
+      max-height: 450px;
+    }
+
+    
+    .swiper1 .swiper-slide img {
+      width: 100%;
+    }
+
+    .swiper1 .swiper-pagination {
+      color: white;
+    }
+  </style>

@@ -4,7 +4,7 @@ Theme URI: https://www.lyrathemes.com/sirius/
 Author: LyraThemes
 Author URI: https://www.lyrathemes.com/
 Description: Sirius is a clean, simple, material design business theme. This multipurpose theme is built on the Bootstrap framework, making it fully responsive and mobile friendly. It has a special front page template that can be used to set up a one page website. With featured pages (with images and icons), two call to action sections, and two open content sections, Sirius is extremely flexible and easy to set up and use. It has a top navigation with an option to show social media icons and a smaller navigation. Sirius is a perfect choice to set up a small business website, landing page, business portfolio, or a creative agency website.  You can set the background color for each front page section, and control the filter/overlay color for the CTA sections. This simple theme gives you complete control and flexibility to create any kind of website. Backed by awesome one-on-one support, Sirius is an excellent choice for your next project.
-Version: 1.2.76
+Version: 1.2.86
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
 Text Domain: sirius-lite
@@ -980,16 +980,27 @@ max-width: 30%;
 
   .item1 {
     grid-area: a;
+	height:100%;
   }
 
   .item2 {
     grid-area: b;
+	height:275px;
   }
 
   .item3 {
     grid-area: c;
+	height:275px;
   }
 
+ 
+
+  .contenedor{
+overflow: hidden;
+	max-width:1200px; left:50%;transform:translateX(-50%);position:relative; padding:10px;
+
+  }
+/*
   .item4 {
     grid-area: d;
   }
@@ -1001,14 +1012,15 @@ max-width: 30%;
   .item6 {
     grid-area: f;
   }
+  */
 
   .grid-container-1 {
-    height: 700px;
+	
+    height: 100%;
     display: grid;
     grid-template-areas:
       'a a b'
-      'a a c'
-      'd e f';
+      'a a c';
     gap: 10px;
     padding: 10px;
   }
@@ -1020,10 +1032,7 @@ max-width: 30%;
     display: grid;
     grid-template-areas:
       'a a b'
-      'a a c'
-      'a a d'
-      'a a e'
-      'a a f';
+      'a a c';
   }
 
 
@@ -1041,14 +1050,13 @@ max-width: 30%;
     }
 
     .grid-container-1 {
-      height: 1750px;
-      grid-template-areas:
+		grid-template-areas:
         'a a'
         'b b'
-        'c c'
-        'd d'
-        'e e'
-        'f f';
+        'c c';
+    grid-template-rows: 1fr 1fr 1fr;
+
+
     }
 
     .grid-container-3 {
@@ -1056,11 +1064,11 @@ max-width: 30%;
       flex-direction: column;
     }
 
+/*
     iframe {
       height: revert-layer;
 
-    }
+    }*/
+
+
   }
-
- 
-

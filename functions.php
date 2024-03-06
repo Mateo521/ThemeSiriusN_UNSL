@@ -101,7 +101,10 @@ function sirius_scripts()
 
     wp_register_style('bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css');
 
-    wp_register_style('font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css');
+    //wp_register_style('font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css');
+  
+    wp_register_style('font-awesome','https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+
     //wp_register_style('bootstrap-select', get_template_directory_uri().'/assets/css/bootstrap-select.css' );
 
     $sirius_custom_colors = 0;
@@ -428,7 +431,11 @@ function sirius_default_nav()
         $i++;
     }
     echo '</ul>';
-    echo '</div>';
+    echo '</div>'
+    
+    
+    
+    ;
 }
 
 #sirius_rand_page
@@ -583,5 +590,33 @@ function obtener_videos_de_youtube()
     }
 }
 
+function obtener_datos_desde_pagina() {
+    // URL de la página de la que quieres obtener datos
+    $url = 'https://seu.unsl.edu.ar/';
+    
+    // Obtener el contenido de la página
+    $contenido = file_get_contents($url);
+
+    // Si no puedes obtener el contenido, devuelve un mensaje de error
+    if (!$contenido) {
+        return 'No se pudo obtener el contenido de la página.';
+    }
+
+    // Analizar el HTML para extraer los datos relevantes
+    // Puedes usar técnicas como expresiones regulares o librerías como DOMDocument o SimpleXMLElement
+
+    // Aquí deberías poner tu código para extraer los datos que necesitas
+    
+    // Por ejemplo, si quieres imprimir el contenido de la página, podrías hacerlo así:
+    // echo $contenido;
+
+    // Retornar los datos que hayas extraído
+    return $datos_extraidos;
+}
+
+// Llamar a la función y almacenar los datos en una variable
+$datos_obtenidos = obtener_datos_desde_pagina();
+
 
 ?>
+

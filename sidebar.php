@@ -59,11 +59,40 @@ endif;
 ?>
 
 
+<div class="fb-page">
+  <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fnoticias.unsl&tabs=timeline&width=350&height=900&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+</div>
+
+
+
 <style>
+   .fb-page {
+  width: 100%;
+  height: 500px;
+}
+.fb-page iframe {
+  width: 100%;
+}
     .sidebar-widget {
         padding: 10px;
         margin: 5px;
         background-color: white;
+    }
+
+    @media screen and (max-width:766px) {
+
+        .fb-page {
+  width: 100%;
+ 
+}
+
+
+
+
+.fb-page iframe{
+    height: 100%;
+}
+        
     }
 </style>
 

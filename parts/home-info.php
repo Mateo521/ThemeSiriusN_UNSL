@@ -1,15 +1,16 @@
 
-<div style="max-width:1170px; left:50%;transform:translateX(-50%);position:relative; padding:10px;">
+<div class="contenedor">
   <div class="grid-container-1 w-full" style="width:100%;">
 
 
     <?php
-    $categories = array('principal', 'sociedad', 'cultura', 'institucional', 'fotogalerias', 'ciencia'); // Asegúrate de reemplazar estos nombres con los de tus categorías
-
+    $categories = array('institucional'); 
+    $item = 0;
     foreach ($categories as $index => $category) {
+    
       $args = array(
         'category_name' => $category,
-        'posts_per_page' => 1,
+        'posts_per_page' => 3,
         'order' => 'DESC',
         'orderby' => 'date',
 
@@ -36,7 +37,7 @@
     ?>
 
 
-          <div class="item<?php echo ($index + 1); ?> relative" style="position:relative;">
+          <div class="item<?php echo ($item + 1); ?> relative" style="position:relative;">
             <a href="<?php echo ($permalink); ?>">
               <div class="w-full h-full" style="background-image:url(<?php echo esc_url($thumbnail_url); ?>); width:100%;height:100%; background-size:cover;">
                 <p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#1794d3; position:absolute; left:0; padding:5px; color:white; margin:5px; text-transform:uppercase;"><?php echo $category ?></p>
@@ -51,6 +52,7 @@ background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height
             </a>
           </div>
     <?php
+     $item++;
         }
       }
 
