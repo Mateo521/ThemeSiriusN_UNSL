@@ -590,33 +590,5 @@ function obtener_videos_de_youtube()
     }
 }
 
-function obtener_datos_desde_pagina() {
-    // URL de la página de la que quieres obtener datos
-    $url = 'https://seu.unsl.edu.ar/';
-    
-    // Obtener el contenido de la página
-    $contenido = file_get_contents($url);
 
-    // Si no puedes obtener el contenido, devuelve un mensaje de error
-    if (!$contenido) {
-        return 'No se pudo obtener el contenido de la página.';
-    }
-
-    // Analizar el HTML para extraer los datos relevantes
-    // Puedes usar técnicas como expresiones regulares o librerías como DOMDocument o SimpleXMLElement
-
-    // Aquí deberías poner tu código para extraer los datos que necesitas
-    
-    // Por ejemplo, si quieres imprimir el contenido de la página, podrías hacerlo así:
-    // echo $contenido;
-
-    // Retornar los datos que hayas extraído
-    return $datos_extraidos;
-}
-
-// Llamar a la función y almacenar los datos en una variable
-$datos_obtenidos = obtener_datos_desde_pagina();
-
-
-?>
 

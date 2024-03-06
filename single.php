@@ -57,7 +57,7 @@
 
                                 if ($thumbnail) :
                                 ?><a href="<?php the_permalink(); ?>">
-                                        <img style="width:100%;height:175px;" src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" alt="#">
+                                        <img style="width:100%;height:175px;object-fit:cover;" src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" alt="#">
                                     </a>
                                 <?php endif; ?>
 

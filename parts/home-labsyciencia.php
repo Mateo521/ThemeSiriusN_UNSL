@@ -116,7 +116,7 @@
         border-top: 10px solid;
         border-bottom: 10px solid;
         border-image: linear-gradient(to right, #26b1e7 0% 25%, #8136d0 25% 50%, #e83e8d 50% 100%) 10;
-        margin: 40px 0;
+       
 
 
     }

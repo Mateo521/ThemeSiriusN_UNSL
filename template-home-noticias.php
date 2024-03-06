@@ -10,7 +10,7 @@ get_template_part('parts/home', 'info');
 
 get_template_part('parts/home', 'labsyciencia');
 
-get_template_part('parts/home', 'etiquetas');
+get_template_part('parts/home', 'culturaysociedad');
 
 get_template_part('parts/home', 'interview');
 
