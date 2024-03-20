@@ -4,6 +4,7 @@
 
 <?php while (have_posts()) : the_post(); ?>
 
+
     <section class="blog-post tarjeta-inicio">
         <div class="container">
             <?php if ($sirius_posts_sidebar == 1) { ?>
