@@ -1,4 +1,6 @@
-    <!-- Footer -->
+
+
+<!-- Footer -->
 	<footer>
 	
 	<div class="container" id="footer">
