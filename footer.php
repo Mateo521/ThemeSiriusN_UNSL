@@ -14,7 +14,7 @@
 
 
 					<p><b>Teléfono:</b> +54 (0266) 4520300 - 4530000</p>
-					<p><b>Dirección:</b> Ejército de Los Andes 950, San Luis, Argentina</p>
+					<p><b>Dirección:</b> </p>
 				</div>
 
 				<div class="col-md-3">
