@@ -17,6 +17,9 @@
 
 
 
+                            
+
+
 
                             <!-- Contenido principal -->
                             <?php get_template_part('parts/single', 'content'); ?>
