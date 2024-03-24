@@ -15,6 +15,9 @@
 
 * Had extra screenshot file
 
+
+
+
 = v 1.0.7
 * 02/06/2017
 * Added animations
