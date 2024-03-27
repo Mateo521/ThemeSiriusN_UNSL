@@ -11,8 +11,6 @@ if (is_single())
 
 <?php
 
-
-
 $popular_posts = pvc_get_most_viewed_posts();
 
 if ($popular_posts) :

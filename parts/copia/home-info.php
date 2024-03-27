@@ -1,8 +1,5 @@
 <section class="fond">
-<div style="display:flex; justify-content:center;">
-<div style="max-width:1200px">
-  <div class="stick">
-<div style="display:flex; flex-direction:column;">
+<div class="contenedor">
   <div class="grid-container-1 w-full" style="width:100%;">
 
 
@@ -93,3 +90,5 @@ background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,1,0) 100%);  height
     </div>
   -->
   </div>
+</div>
+</div>

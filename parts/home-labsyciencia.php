@@ -1,4 +1,4 @@
-<section class="cienciaylaboratorios">
+<section class="cienciaylaboratorios" style="padding: 0;">
 
 
 
@@ -7,14 +7,14 @@
     <div class="contenedor">
 
 
-
+        <h1>Ciencia y Laboratorios</h1>
 
         <div class="display-f">
             <div class="p">
                 <img src="https://scivz.unsl.edu.ar/noticias/wp-content/uploads/2024/03/62e7e39867567_450.png" alt="">
                 <div class="items">
-                    <p>Laboratorio</p>
-                    <p>Ciencia</p>
+                    <h3><a target="_blank" href="<?php echo esc_url(get_category_link(get_cat_ID('laboratorios'))); ?>"> → Laboratorios</a></h3>
+                    <h3><a target="_blank" href="<?php echo esc_url(get_category_link(get_cat_ID('ciencia'))); ?>"> → Ciencia</a></h3>
                 </div>
             </div>
             <div class="lab">
@@ -72,9 +72,13 @@
                 foreach ($science_posts as $science_post) {
                 ?>
                     <div class="item<?php echo $item; ?>">
-                        <img src="<?php echo $science_post['thumbnail_url']; ?>" alt="">
+
                         <h4>Ciencia</h4>
-                        <p><?php echo $science_post['title']; ?></p>
+                        <a style="color:white;" href="<?php echo esc_url($science_post['permalink']); ?>">
+                            <img src="<?php echo $science_post['thumbnail_url']; ?>" alt="">
+
+                            <p><?php echo $science_post['title']; ?></p>
+                        </a>
                     </div>
                 <?php
                     $item++;
@@ -85,10 +89,12 @@
                     $laboratory_post = array_shift($laboratory_posts);
                 ?>
                     <div class="item<?php echo $item; ?>">
-                        <img src="<?php echo $laboratory_post['thumbnail_url']; ?>" alt="">
                         <h4>Laboratorios</h4>
-                        <h3><?php echo $laboratory_post['title']; ?></h3>
-                        <p><?php echo $laboratory_post['content']; ?></p>
+                        <a style="color:white;" href="<?php echo esc_url($laboratory_post['permalink']); ?>">
+                            <img src="<?php echo $laboratory_post['thumbnail_url']; ?>" alt="">
+                            <h3><?php echo $laboratory_post['title']; ?></h3>
+                            <p><?php echo $laboratory_post['content']; ?></p>
+                        </a>
                     </div>
                 <?php
                     $item++;
@@ -109,6 +115,20 @@
 
 </section>
 <style>
+    @font-face {
+
+
+
+
+        font-family: 'Skema Pro Display';
+        src: local('Skema Pro Display SemiBold'), local('Skema-Pro-Display-SemiBold'),
+            url(<?php echo get_template_directory_uri() . '/assets/fonts/SkemaProDisplay-SemiBold.woff2'; ?>) format('woff2'),
+            url(<?php echo get_template_directory_uri() . '/assets/fonts/SkemaProDisplay-SemiBold.woff'; ?>) format('woff'),
+            url(<?php echo get_template_directory_uri() . '/assets/fonts/SkemaProDisplay-SemiBold.ttf'; ?>) format('truetype');
+        font-weight: 600;
+        font-style: normal;
+    }
+
     .cienciaylaboratorios {
         color: white;
         background-color: #164f71;
@@ -116,13 +136,18 @@
         border-top: 10px solid;
         border-bottom: 10px solid;
         border-image: linear-gradient(to right, #26b1e7 0% 25%, #8136d0 25% 50%, #e83e8d 50% 100%) 10;
-       
 
+        font-family: 'Skema Pro Display';
 
     }
 
     .items {
         padding: 25px;
+
+    }
+
+    .items a {
+        color: white !important;
     }
 
     .item4 {
@@ -152,7 +177,7 @@
     }
 
     .lab {
-        padding: 25px;
+        padding: 0 25px;
         display: grid;
         width: 100%;
         grid-template-areas: "a c c"
@@ -161,12 +186,16 @@
         grid-template-columns: 25% 75%;
     }
 
+    .lab h4 {
+        color: #70bcff;
+    }
+
     .p img {
         width: 245px;
     }
 
     .p {
-        padding: 35px;
+        padding: 0 35px;
     }
 
     .lab img {

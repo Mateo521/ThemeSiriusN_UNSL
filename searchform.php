@@ -22,7 +22,9 @@
         </div>
         <div class="idioma"></div>
     </div>
+    <a href="https://www.unsl.edu.ar/"  target="_blank">
     <img style="height:100%;" src="https://scivz.unsl.edu.ar/noticias/wp-content/uploads/2024/03/logoheaderright5e1f.jpg" alt="">
+    </a>
 </div>
 <!--form role="search" name="main-search" method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">
     <input type="text" class="form-control input-search" name="s" placeholder="Buscar" value="<?php echo get_search_query() ?>" />

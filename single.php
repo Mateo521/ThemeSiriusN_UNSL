@@ -4,7 +4,6 @@
 
 <?php while (have_posts()) : the_post(); ?>
 
-
     <section class="blog-post tarjeta-inicio">
         <div class="container">
             <?php if ($sirius_posts_sidebar == 1) { ?>
@@ -15,9 +14,6 @@
 
 
 
-
-
-                            
 
 
 
@@ -110,6 +106,7 @@
         } else if (icono.classList.contains('fa-volume-off')) {
             icono.classList = 'fa fa-volume-up';
         } else if (icono.classList.contains('fa-volume-up')) {
+
             icono.classList = 'fa fa-volume-off';
         }
     }
@@ -122,90 +119,193 @@
         document.documentElement.classList.toggle("grayscale");
     }
 
-    var button = true;
+
+    var isPlaying = false; // Variable para controlar si la síntesis de voz está en reproducción
+    var synth = window.speechSynthesis;
+    var utterance = new SpeechSynthesisUtterance();
+    var currentChunkIndex = 0;
+    var isPaused = false; // Variable para controlar si la síntesis de voz está en pausa
+    var pausedIndex; // Variable para guardar la posición de la pausa
 
     function synthesisVoice() {
-        var synth = window.speechSynthesis;
         var textContent = document.getElementById('noticia').innerText;
-        var voices = synth.getVoices();
-        var utterance = new SpeechSynthesisUtterance(textContent);
+        var chunkSize = 200;
+        var chunks = [];
 
-        console.log('Texto a sintetizar:', textContent);
-
-        if (button) {
-            utterance.voice = voices.find(function(voice) {
-                return voice.name === 'Monica';
-            }) || voices[0];
-
-            console.log('Voz seleccionada:', utterance.voice);
-
-            synth.speak(utterance);
-            button = false;
-            console.log('Iniciando síntesis de voz...');
-        } else {
-            button = !button;
-            synth.cancel();
-            console.log('Deteniendo síntesis de voz.');
+        for (var i = 0; i < textContent.length; i += chunkSize) {
+            chunks.push(textContent.substring(i, i + chunkSize));
         }
+
+        // Si está reproduciéndose, pausar la síntesis de voz
+        if (isPlaying && !isPaused) {
+            console.log('Índice actual:', currentChunkIndex); // Agregamos un console log para verificar el valor actual de currentChunkIndex
+            synth.pause();
+            console.log('Pausando síntesis de voz.');
+            pausedIndex = currentChunkIndex;
+            isPaused = true;
+            console.log('Índice de pausa:', pausedIndex);
+            return;
+        }
+
+        // Si está en pausa, reanudar la síntesis de voz
+        if (isPlaying && isPaused) {
+            synth.resume();
+            console.log('Reanudando síntesis de voz...');
+            isPaused = false;
+            console.log('Índice de pausa:', pausedIndex);
+            synthesisVoiceFromIndex(pausedIndex); // Reanudar desde la posición de pausa
+            return;
+        }
+
+        // Iniciar la síntesis de voz desde el principio
+        synthesisVoiceFromIndex(0);
     }
+
+    function synthesisVoiceFromIndex(startIndex) {
+        var textContent = document.getElementById('noticia').innerText;
+
+        
+        var chunkSize = 200;
+        var chunks = [];
+
+        for (var i = 0; i < textContent.length; i += chunkSize) {
+            chunks.push(textContent.substring(i, i + chunkSize));
+        }
+
+        // Configurar el evento onend para continuar la síntesis de voz desde el índice dado
+        utterance.onend = function() {
+            if (startIndex < chunks.length && isPlaying) {
+                var chunk = chunks[startIndex];
+                utterance.text = chunk;
+                synth.speak(utterance);
+                console.log('Iniciando síntesis de voz desde el índice:', startIndex);
+                startIndex++;
+            } else {
+                // Si es la última parte, actualizar el estado de reproducción
+                isPlaying = false;
+                document.getElementById('botonStop').style.display = 'none';
+            }
+        };
+
+        // Sintetizar la parte del texto desde el índice dado
+        var chunk = chunks[startIndex];
+        utterance.text = chunk;
+        utterance.voice = synth.getVoices().find(function(voice) {
+            return voice.name === 'Monica';
+        }) || synth.getVoices()[0];
+        synth.speak(utterance);
+        console.log('Iniciando síntesis de voz desde el índice:', startIndex);
+        currentChunkIndex = startIndex;
+        isPlaying = true;
+        document.getElementById('botonStop').style.display = 'block'; // Mostrar botón de detener
+    }
+
+    function resetSynthesis() {
+        // Cancelar la síntesis de voz si está en curso
+        if (isPlaying) {
+            synth.cancel();
+        }
+
+        // Restablecer variables relevantes
+        isPlaying = false;
+        currentChunkIndex = 0;
+        isPaused = false;
+    }
+
+    function stopSynthesis() {
+        resetSynthesis();
+        console.log('Deteniendo síntesis de voz.');
+
+    
+
+ 
+        var icono = document.getElementById('icono3');
+
+        // Verificar si ya hemos almacenado un estado para este icono
+
+        if (icono.classList.contains('fa-volume-off')) {
+            icono.classList = 'fa fa-volume-off';
+        } else if (icono.classList.contains('fa-volume-up')) {
+            icono.classList = 'fa fa-volume-off';
+        }
+    
+
+
+
+        document.getElementById('botonStop').style.display = 'none'; // Ocultar botón de detener
+    }
+
+    window.addEventListener('beforeunload', function() {
+        synth.cancel();
+        console.log('Síntesis de voz detenida al abandonar la página.');
+    });
 
     document.getElementById('boton3').addEventListener('click', synthesisVoice);
 
+
+
     jQuery(document).ready(function($) {
         $('#noticia img').each(function(index) {
-            var imgSrc = $(this).attr('src');
+            var $img = $(this);
+            var imgSrc = $img.attr('src');
+            var hasGalleryParent = $img.parents('figure.wp-block-gallery').length > 0;
+            var $figcaption = $img.next('figcaption');
 
-            // Verificar si la imagen tiene un componente padre <figure class="wp-block-gallery">
-            var hasGalleryParent = $(this).parents('figure.wp-block-gallery').length > 0;
-
-            // Crear el elemento <a> con el formato deseado
             var imgLink = $('<a>', {
-                href: imgSrc, // Utilizar la URL de la imagen como href
-                'data-lightbox': hasGalleryParent ? 'img-gallery' : 'img-' + (index + 1) // Utilizar un valor diferente si hay un componente padre de galería
+                href: imgSrc,
+                'data-lightbox': hasGalleryParent ? 'img-gallery' : 'img-' + (index + 1), // Utilizar un valor diferente si hay un componente padre de galería
+                'data-title': $figcaption.text().trim() // Establecer el contenido de la figcaption como el título del lightbox
             });
 
-            // Crear el elemento <img> y establecer su atributo src
             var imgElement = $('<img>', {
                 src: imgSrc
             });
 
-            // Envolver la imagen con el enlace y reemplazarla en el DOM
-            $(this).wrap(imgLink).after(imgElement).remove();
+            $img.wrap(imgLink).after(imgElement).remove();
         });
     });
-
-
-    
-
 </script>
 
 
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/lightbox2-2.11.4/dist/js/lightbox-plus-jquery.js"></script>
 
 <script>
-  // Función para manejar la apertura del modal
-  function onOpen() {
-    document.body.style.overflow = 'hidden';
-  }
+    function onOpen() {
+        document.body.style.overflow = 'hidden';
+    }
 
-  // Función para manejar el cierre del modal
-  function onClose() {
-    document.body.style.overflow = 'visible';
-  }
-
-  // Asignar funciones a los eventos de Lightbox
-  $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-    event.preventDefault();
-    $(this).ekkoLightbox({
-      onShown: onOpen,
-      onNavigate: onClose,
-      onClose: onClose
+    function onClose() {
+        document.body.style.overflow = 'visible';
+    }
+    // Asignar funciones a los eventos de Lightbox
+    /*
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox({
+            onShown: function() {
+                var $modal = $('.ekko-lightbox-modal');
+                var $figure = $modal.find('figure');
+                var $figcaption = $figure.find('figcaption');
+                if ($figcaption.length) {
+                    var caption = $figcaption.html();
+                    $modal.find('.modal-footer').append('<div class="ekko-lightbox-footer">' + caption + '</div>');
+                }
+            },
+            onNavigate: onClose,
+            onClose: onClose
+        });
     });
-  });
+    */
 </script>
 
 
 <style>
+    /*
+.lb-next, .lb-prev {
+    opacity: 1 !important;
+    display: block !important;
+}
+*/
     .related-post h2 {
         font-size: 18px;
         margin: 0;
@@ -232,6 +332,3 @@
     }
 </style>
 <?php get_footer(); ?>
-
-
-

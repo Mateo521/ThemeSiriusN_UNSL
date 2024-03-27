@@ -38,9 +38,10 @@ obtener_etiquetas_populares();
 
 
 
-<section style="background-color: #333;">
-  <div class=" contenedor" style=" padding:15px 0;">
+<section style="background-color: #07344d;font-family:'Skema Pro Display';">
 
+  <div class=" contenedor" style=" padding:15px 0;">
+  <h1 style="color:#4bb9ef;">Cultura y Sociedad</h1>
     <div class="w-full">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto w-full">
         <div class="grid-container-2 w-full mx-2 text-white">
@@ -49,7 +50,7 @@ obtener_etiquetas_populares();
           <?php
           $args = array(
             'post_type' => 'post',
-            'posts_per_page' => 3, 
+            'posts_per_page' => 3,
             'category_name' => 'sociedad',
             'orderby' => 'date',
             'order' => 'DESC'
@@ -57,7 +58,7 @@ obtener_etiquetas_populares();
 
           $query = new WP_Query($args);
 
-     
+
           $current_iteration = 0;
 
 
@@ -70,18 +71,17 @@ obtener_etiquetas_populares();
                 <a href="<?php echo get_permalink(); ?>" target="_blank">
                   <img class="w-full" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="" style="width: 100%;">
                   <div>
-                    <h3 class="text-2xl title-c"><b style="color:#fdb727;">Sociedad </b> →<?php the_title(); ?></h3>
+                    <h3 class="text-2xl title-c"><b style="color:#4bb9ef;">Sociedad </b> →<?php the_title(); ?></h3>
 
                     <?php
                     if ($current_iteration == 3) {
                       $excerpt = get_the_excerpt();
                     } else {
                       $excerpt = wp_trim_words(get_the_excerpt(), 20, '...');
-                     
                     }
                     ?>
                     <p style="color:white; font-size:16px;"><?php echo $excerpt; ?></p>
-                 
+
                   </div>
                 </a>
               </div>
@@ -89,7 +89,7 @@ obtener_etiquetas_populares();
           <?php }
             wp_reset_postdata();
           } else {
-        
+
             echo 'No se encontraron entradas en la categoría "sociedad".';
           }
           ?>
@@ -161,8 +161,8 @@ obtener_etiquetas_populares();
               <div class="item<?php echo ($i + 9) ?> p-2">
 
                 <a href=" <?php echo $titleLink; ?> " target="_blank">
-                  <p class="text-2xl title-c"><b style="color:#fdb727;">Cultura </b> → <?php echo $titleText; ?></p>
-                  <p style="color:white; font-size:16px;"><?php echo $paragraphText; ?></p>
+                  <p class="text-2xl title-c"><b style="color:#4bb9ef;">Cultura </b> → <?php echo $titleText; ?></p>
+                  <p style="color:white; font-size:16px;"><?php echo  wp_trim_words($paragraphText, 17, '...'); ?></p>
 
                 </a>
               </div>
@@ -260,6 +260,13 @@ obtener_etiquetas_populares();
   }
 
   @media screen and (max-width:550px) {
+
+    .item7, .item8, .item9 {
+      border: none;
+    }
+    .item10{
+      margin:50px 0 0;
+    }
 
     .grid-container-2 {
       height: 100%;

@@ -592,3 +592,39 @@ function obtener_videos_de_youtube()
 
 
 
+add_filter( 'jpeg_quality', function( $arg ) {
+    return 100;
+} );
+
+add_filter( 'wp_editor_set_quality', function( $arg ) {
+    return 100;
+} );
+
+add_filter( 'intermediate_image_sizes_advanced', function( $sizes ) {
+    // Eliminar tamaños de imagen intermedios
+    unset( $sizes['thumbnail'] );
+    unset( $sizes['medium'] );
+    unset( $sizes['large'] );
+    return $sizes;
+} );
+
+add_filter( 'wp_generate_attachment_metadata', 'prevent_image_resize', 10, 2 );
+
+function prevent_image_resize( $metadata, $attachment_id ) {
+    // Comprobar si estamos en una entrada individual
+    if ( is_single() ) {
+        // Si estamos en una entrada individual, eliminar los tamaños de imagen generados
+        unset( $metadata['sizes'] );
+    }
+    return $metadata;
+}
+add_filter( 'big_image_size_threshold', '__return_false' );
+
+function modificar_formato_fecha($fecha) {
+    // Reemplazar la coma con "de"
+    $fecha = str_replace(',', '', $fecha);
+    // Insertar la coma después del día
+    $fecha = preg_replace('/(\d{1,2}) (\w+) (\d{4})/', '$1 de $2, $3', $fecha);
+    return $fecha;
+}
+add_filter('get_the_date', 'modificar_formato_fecha');

@@ -25,8 +25,6 @@ $comment_form_args = array( 'fields'        =>  apply_filters( 'comment_form_def
     <?php if ( have_comments() ) { ?>
     <h2 class="comment-title">
     <?php $comments_number = get_comments_number();
-
-				  
         if ( 1 === $comments_number ) { _e('1 Comment', 'sirius-lite'); }
         else { printf( _nx( '%1$s Comment', '%1$s Comments', $comments_number, 'comments title', 'sirius-lite' ), number_format_i18n( $comments_number ) ); } ?>
     </h2>

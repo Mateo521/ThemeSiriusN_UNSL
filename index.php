@@ -13,13 +13,8 @@
 
         if (is_category('154')) :
 
-
-            
-            
-
-
-
-            
+        
+       
             
             // Obtener noticias relacionadas
             $related_posts = new WP_Query(array(

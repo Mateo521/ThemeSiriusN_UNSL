@@ -107,10 +107,12 @@ $latest_posts = get_posts($args);
 
         <div class="slide-mobile">
           <img src="<?php echo esc_url($thumbnail_url); ?>" alt="">
+          <a href="<?php echo esc_url(get_permalink($post->ID)); ?>">
           <div class="tarjeta">
             <h1 style="font-size:25px;     line-height: 25px;"><?php echo get_the_title($post->ID); ?></h1>
             <p><?php echo $trimmed_content; ?></p>
           </div>
+          </a>
         </div>
       </div>
 
@@ -163,7 +165,7 @@ $latest_posts = get_posts($args);
 
   .slide-mobile img {
     width: 100%;
-    height: 175px;
+    height: 250px;
     object-fit: cover;
   }
 
@@ -178,7 +180,7 @@ $latest_posts = get_posts($args);
 
   @media screen and (max-width:1000px) {
 
- 
+  
 
     .swiper [class^="swiper-button-"]::after{
     font-size: 30px;

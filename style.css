@@ -4,7 +4,7 @@ Theme URI: https://www.lyrathemes.com/sirius/
 Author: LyraThemes
 Author URI: https://www.lyrathemes.com/
 Description: Sirius is a clean, simple, material design business theme. This multipurpose theme is built on the Bootstrap framework, making it fully responsive and mobile friendly. It has a special front page template that can be used to set up a one page website. With featured pages (with images and icons), two call to action sections, and two open content sections, Sirius is extremely flexible and easy to set up and use. It has a top navigation with an option to show social media icons and a smaller navigation. Sirius is a perfect choice to set up a small business website, landing page, business portfolio, or a creative agency website.  You can set the background color for each front page section, and control the filter/overlay color for the CTA sections. This simple theme gives you complete control and flexibility to create any kind of website. Backed by awesome one-on-one support, Sirius is an excellent choice for your next project.
-Version: 1.2.86
+Version: 1.2.89
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
 Text Domain: sirius-lite
@@ -1072,3 +1072,5 @@ overflow: hidden;
 
 
   }
+
+ 

@@ -13,7 +13,7 @@ $sirius_frontpage_recent_posts_number = sirius_get_option('sirius_frontpage_rece
 ?>
 
 <section id="<?php echo esc_attr($sirius_frontpage_recent_posts_section_id); ?>" <?php if($sirius_frontpage_recent_posts_background_color != '') { ?> style="background-color:<?php echo esc_attr($sirius_frontpage_recent_posts_background_color); ?>" <?php } ?> class="frontpage-section frontpage-recent-posts">
-<!--Corregir-->
+
     <div class="container">
 
         <?php if($sirius_frontpage_recent_posts_heading != '') { ?>

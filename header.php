@@ -10,11 +10,6 @@
         <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
     <?php endif; ?>
 
-
-
-
-	
-
     <?php wp_head(); ?>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -22,14 +17,6 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <body <?php body_class(); ?>>
-
-
-
-
-
-
-	
-	
     <script>
         (function(i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
@@ -205,22 +192,22 @@
 
         <ul class='social'>
             <li class='facebook'>
-                <a>
+                <a href="https://www.facebook.com/noticias.unsl/?locale=es_LA" target="_blank">
                     <i class='fab fab-lg fa-facebook'></i>
                 </a>
             </li>
             <li class='twitter'>
-                <a>
+                <a href="https://twitter.com/noticiasUNSL/" target="_blank">
                     <i class='fab fab-lg fa-twitter'></i>
                 </a>
             </li>
             <li class='instagram'>
-                <a>
+                <a href="https://www.instagram.com/unslactiva/?hl=es" target="_blank">
                     <i class='fab fab-lg fa-instagram'></i>
                 </a>
             </li>
             <li class='tiktok'>
-                <a>
+                <a href="https://www.tiktok.com/@unslactiva?lang=es" target="_blank">
                     <i class='fab fab-lg fa-tiktok'></i>
                 </a>
             </li>
@@ -415,6 +402,7 @@
 
         .tarjeta-inicio .entry img {
             width: 100%;
+            object-fit: contain;
         }
 
         .main-wrapper {
@@ -498,6 +486,8 @@
             cursor: text;
         }
 
+
+
         .search input:not(:placeholder-shown),
         .search input:focus {
             width: 160px;
@@ -532,6 +522,23 @@
         ::-moz-selection {
             background: rgba(255, 255, 255, 0.2);
         }
+
+        #onesignal-bell-container.onesignal-reset .onesignal-bell-launcher.onesignal-bell-launcher-theme-inverse .onesignal-bell-launcher-button svg .foreground{
+
+            fill: #fff !important;
+        }
+
+
+/**/
+
+
+
+
+        #onesignal-bell-container.onesignal-reset .onesignal-bell-launcher.onesignal-bell-launcher-theme-inverse .onesignal-bell-launcher-button svg .stroke {
+    fill: none;
+    stroke: #ffffff !important;
+    stroke-width: 3px;
+    stroke-miterlimit: 10;
     </style>
     <script>
         jQuery(document).ready(function($) {

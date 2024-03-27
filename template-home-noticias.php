@@ -6,17 +6,29 @@ get_header();
 // Sección Slider
 get_template_part('parts/home', 'slider');
 // Sección Info slider
+
+
+/*NO */
 get_template_part('parts/home', 'info');
 
+get_template_part('parts/home', 'interview');
+/* MEZCLAR POR SECTION Y BACKGROUND*/
 get_template_part('parts/home', 'labsyciencia');
+
 
 get_template_part('parts/home', 'culturaysociedad');
 
-get_template_part('parts/home', 'interview');
+get_template_part('parts/home', 'fotogalerias');
+
+
+
+
+
+
 
 get_template_part('parts/home', 'university-agenda');
 
-get_template_part('parts/home', 'fotogalerias');
+
 
 // Sección Etiquetas
 
@@ -74,7 +86,7 @@ CONSTRUCCION*/
 // Sección UNSL TV
 //get_template_part('parts/home', 'unsltv');
 
-get_footer();
+get_footer(); 
 
 
 ?>

@@ -20,19 +20,35 @@ $banner_size = $sirius_posts_featured_image_full == 1 ? 'full' : 'sirius-thumb';
 
         <div class="flex items-center gap-3" style="display: flex; align-items:center; gap:5px; padding:10px;">
             <button class="boton" id="boton1" onclick="tipografia(); cambiarIcono('icono1')">
-                <i id="icono1" class="fa fa-eye" aria-hidden="true" onclick="event.stopPropagation();"></i> Dislexia
+                <i id="icono1" class="fa fa-eye" aria-hidden="true" onclick="event.stopPropagation();"></i>
             </button>
             <button class="boton" id="boton2" onclick="blancoynegro(); cambiarIcono('icono2')">
-                <i id="icono2" class="fa fa-toggle-off" aria-hidden="true" onclick="event.stopPropagation();"></i> Blanco y negro
+                <i id="icono2" class="fa fa-toggle-off" aria-hidden="true" onclick="event.stopPropagation();"></i>
             </button>
+
             <button class="boton" id="boton3" onclick="cambiarIcono('icono3')">
-                <i id="icono3" class="fa fa-volume-off" aria-hidden="true" onclick="event.stopPropagation();"></i> Síntesis de voz
+                <i id="icono3" class="fa fa-volume-off" aria-hidden="true" onclick="event.stopPropagation();"></i>
             </button>
+
+            <button class="boton" id="botonStop" style="display:none;" onclick="stopSynthesis()">
+            <i id="icono4" class="fa fa-stop" aria-hidden="true"></i>
+         
+            </button>
+
         </div>
     </div>
     <style>
         .boton {
             cursor: pointer;
+            width: 35px;
+            border: none;
+            background-color: white;
+            border-radius: 50%;
+            padding: 5px 10px;
+        }
+
+        .boton i {
+            pointer-events: none;
         }
     </style>
 
@@ -62,10 +78,28 @@ $banner_size = $sirius_posts_featured_image_full == 1 ? 'full' : 'sirius-thumb';
             <br>
         <?php } ?>
 
-        <?php /* Featured Image */
-        if ($sirius_posts_featured_image_show == 1 && has_post_thumbnail()) { ?>
-            <div class="entry-thumb"><?php the_post_thumbnail('full', array('alt' => the_title_attribute(array('echo' => false)), 'class' => 'img-responsive')); ?></div>
-        <?php } ?>
+        <?php 
+/* Featured Image */
+if ($sirius_posts_featured_image_show == 1 && has_post_thumbnail() && !in_category('entrevistas')) { 
+    $image_id = get_post_thumbnail_id();
+    $image_meta = wp_get_attachment_metadata($image_id);
+    $upload_dir = wp_upload_dir();
+    
+    if ($image_meta) {
+        $image_file = basename(get_attached_file($image_id));
+        $image_url = $upload_dir['baseurl'] . '/' . dirname($image_file) . '/' . $image_meta['file'];
+        $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true);
+        
+        // Aplicar filtro para establecer la calidad de la imagen
+        add_filter('jpeg_quality', function($arg){return 100;});
+
+        ?>
+        <div class="entry-thumb"><img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>" class="img-responsive"></div>
+    <?php }
+} ?>
+
+
+
 
 
         <div class="entry-content clearfix">
