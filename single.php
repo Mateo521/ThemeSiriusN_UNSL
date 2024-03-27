@@ -1,10 +1,42 @@
-<?php get_header(); ?>
+<?php get_header(); 
+$sirius_posts_featured_image_show = true; // Definir esta variable según la lógica de tu tema
+?>
 <?php $sirius_posts_sidebar = sirius_get_option('sirius_posts_sidebar'); ?>
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/js/lightbox2-2.11.4/dist/css/lightbox.min.css">
 
-<?php while (have_posts()) : the_post(); ?>
+<?php while (have_posts()) : the_post(); 
 
-    <section class="blog-post tarjeta-inicio">
+
+
+    if ($sirius_posts_featured_image_show == true && has_post_thumbnail()) { 
+        $image_id = get_post_thumbnail_id();
+        $image_meta = wp_get_attachment_metadata($image_id);
+        $upload_dir = wp_upload_dir();
+        
+        if ($image_meta) {
+            $image_file = basename(get_attached_file($image_id));
+            $image_url = $upload_dir['baseurl'] . '/' . dirname($image_file) . '/' . $image_meta['file'];
+            $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true);
+            
+            // Aplicar filtro para establecer la calidad de la imagen (movido fuera del bucle)
+            add_filter('jpeg_quality', function($arg){return 100;});
+
+            ?>
+            <div class="entry-thumb"><img style="max-height:570px; object-position:top; object-fit:cover;" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>" class="img-responsive"></div>
+        <?php 
+        }
+    } 
+
+?>
+
+
+
+
+
+
+
+
+<section class="blog-post tarjeta-inicio">
         <div class="container">
             <?php if ($sirius_posts_sidebar == 1) { ?>
                 <div class="row">
