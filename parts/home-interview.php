@@ -23,8 +23,9 @@ if ($noticia) {
 		setup_postdata($post);
 		printf(
 			'
-			<div style="padding:0 10px;">
-				<section class="tarjeta-inicio seccion-entrevistas">
+			<div>
+			<p style="margin:0 ; display:inline-flex;  padding:5px 10px; background-color:#1b5281; color:white;">ENTREVISTAS</p>
+				<section class="tarjeta-inicio seccion-entrevistas" style="border-top:solid #1b5281 3px;">
 					<div class="entry tarjeta-inicio__fondo-blanco entr">
 				
 						<div class="row img-entrevista" style="position:relative;margin:0;">
@@ -121,7 +122,14 @@ if ($noticia) {
 		display: grid;
 		gap: 10px;
 		grid-template-columns: 70% 30%;
+		justify-items: center;
 
+	}
+	@media screen and (max-width:800px) {
+		.stick {
+		grid-template-columns: 1fr;
+		}
+		
 	}
 
 	.fond {

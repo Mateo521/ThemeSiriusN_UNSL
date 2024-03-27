@@ -2,8 +2,8 @@
 <div style="display:flex; justify-content:center;">
 <div style="max-width:1200px">
   <div class="stick">
-<div style="display:flex; flex-direction:column; align-items:start;">
-<p style="margin: 0; display:inline-flex;  padding:5px 10px; background-color:#1b5281; color:white;">INSTITUCIONAL</p>
+<div style="display:flex; flex-direction:column; align-items:start;padding:10px;">
+<p style="margin:0 ; display:inline-flex;  padding:5px 10px; background-color:#1b5281; color:white;">INSTITUCIONAL</p>
   <div class="grid-container-1 w-full" style="width:100%;">
 
 
@@ -43,7 +43,7 @@
 
           <div class="item<?php echo ($item + 1); ?> relative" style="position:relative;">
             <a href="<?php echo ($permalink); ?>">
-              <div class="w-full h-full" style="background-image:url(<?php echo esc_url($thumbnail_url); ?>); width:100%;height:100%; background-size:cover;">
+              <div class="w-full h-full" style="background-image:url(<?php echo esc_url($thumbnail_url); ?>); width:100%;height:100%; background-size:cover; background-position:center; ">
                 <!--p class="absolute left-0 text-sm p-1 text-white m-2" style="background-color:#1794d3; position:absolute; left:0; padding:5px; color:white; margin:5px; text-transform:uppercase;"><?php echo $category ?></p-->
                 <div class="absolute bottom-0 text-left text-white p-2" style="position:absolute; bottom:0; text-align:left; color:white; padding:5px;">
                   <h5 class="text-sm relative" style="z-index:5; position:relative;"> | <?php echo $title ?></h5>

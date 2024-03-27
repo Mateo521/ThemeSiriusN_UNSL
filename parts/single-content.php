@@ -78,8 +78,11 @@ $banner_size = $sirius_posts_featured_image_full == 1 ? 'full' : 'sirius-thumb';
             <br>
         <?php } ?>
 
-        <?php 
-/* Featured Image */
+        <?php
+        
+          /*
+
+
 if ($sirius_posts_featured_image_show == 1 && has_post_thumbnail() && !in_category('entrevistas')) { 
     $image_id = get_post_thumbnail_id();
     $image_meta = wp_get_attachment_metadata($image_id);
@@ -95,8 +98,12 @@ if ($sirius_posts_featured_image_show == 1 && has_post_thumbnail() && !in_catego
 
         ?>
         <div class="entry-thumb"><img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>" class="img-responsive"></div>
-    <?php }
-} ?>
+
+        <?php }
+
+
+
+} */?>
 
 
 
