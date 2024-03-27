@@ -115,20 +115,7 @@
 
 </section>
 <style>
-    @font-face {
-
-
-
-
-        font-family: 'Skema Pro Display';
-        src: local('Skema Pro Display SemiBold'), local('Skema-Pro-Display-SemiBold'),
-            url(<?php echo get_template_directory_uri() . '/assets/fonts/SkemaProDisplay-SemiBold.woff2'; ?>) format('woff2'),
-            url(<?php echo get_template_directory_uri() . '/assets/fonts/SkemaProDisplay-SemiBold.woff'; ?>) format('woff'),
-            url(<?php echo get_template_directory_uri() . '/assets/fonts/SkemaProDisplay-SemiBold.ttf'; ?>) format('truetype');
-        font-weight: 600;
-        font-style: normal;
-    }
-
+  
     .cienciaylaboratorios {
         color: white;
         background-color: #164f71;

@@ -3,7 +3,7 @@
 <div style="max-width:1200px">
   <div class="stick">
 <div style="display:flex; flex-direction:column; align-items:start;padding:10px;">
-<p style="margin:0 ; display:inline-flex;  padding:5px 10px; background-color:#1b5281; color:white;">INSTITUCIONAL</p>
+<p style="margin:0 ; display:inline-flex;  padding:5px 10px; background-color:#1b5281; color:white;">Institucional</p>
   <div class="grid-container-1 w-full" style="width:100%;">
 
 

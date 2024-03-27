@@ -24,7 +24,7 @@ if ($noticia) {
 		printf(
 			'
 			<div>
-			<p style="margin:0 ; display:inline-flex;  padding:5px 10px; background-color:#1b5281; color:white;">ENTREVISTAS</p>
+			<p style="margin:0 ; display:inline-flex;  padding:5px 10px; background-color:#1b5281; color:white;">Entrevistas</p>
 				<section class="tarjeta-inicio seccion-entrevistas" style="border-top:solid #1b5281 3px;">
 					<div class="entry tarjeta-inicio__fondo-blanco entr">
 				
@@ -83,26 +83,67 @@ if ($noticia) {
   left: 0;
   align-self: start;">
 	<div class="tarjetas-info">
-		<a href="#">
-			<div style="padding: 0 10px;">
-				<p style="margin: 0; display:inline-flex;  padding:5px 10px; background-color:#1b5281; color:white;">PRINCIPAL</p>
-				<img style="width:100%; border-top: solid #1b5281 3px;" src="https://noticias.unsl.edu.ar/wp-content/uploads/2024/03/20240325-Firma-Convenio-UNSL-Poggi-22-1000x600.jpg" alt="">
-				<h3>→ La UNSL firmó un convenio marco con el Gobierno de San Luis</h3>
 
-				<p>Este convenio de asistencia recíproca permitirá la cooperación en mutuo interés, investigación, colaboración académica y técnica, entre otras acciones, para</p>
-			</div>
-		</a>
-		<a href="#">
-			<div style="padding: 0 10px;">
-			<p style="margin: 0; display:inline-flex;  padding:5px 10px; background-color:#1b5281; color:white;">DESTACADO</p>
-			
-				<img  style="width:100%; border-top: solid #1b5281 3px;" src="https://noticias.unsl.edu.ar/wp-content/uploads/2024/03/20240311-Nota-ciencia-de-Maria-Ines-Blanchet-1-1000x600.jpg" alt="">
-				<h3>→ Observatorio de la hemodonación en San Luis</h3>
-				<p>
-					Especialistas de la UNSL estudian determinantes que inciden en el proceso de la hemodonación en la Provincia, con el fin
-				</p>
-			</div>
-		</a>
+
+
+	<?php
+// Obtener la última entrada de la categoría "Principal"
+$principal_query = new WP_Query(array(
+    'category_name' => 'principal',
+    'posts_per_page' => 1,
+));
+
+// Verificar si hay entradas
+if ($principal_query->have_posts()) {
+    while ($principal_query->have_posts()) {
+        $principal_query->the_post(); ?>
+        <a href="<?php the_permalink(); ?>">
+            <div style="padding: 10px;">
+                <p style="margin: 0; display:inline-flex;  padding:5px 10px; background-color:#1b5281; color:white;">Principal</p>
+                <?php if (has_post_thumbnail()) {
+                    the_post_thumbnail('full', array('style' => 'width:100%; border-top: solid #1b5281 3px; max-height:150px;object-fit:cover;'));
+                } ?>
+                 <h4 style="margin:0;">→ <?php the_title(); ?></h4>
+                <!--p><?php the_excerpt(); ?></p-->
+            </div>
+        </a>
+<?php }
+}
+
+// Restaurar datos originales de la consulta principal
+wp_reset_postdata();
+
+// Obtener la última entrada de la categoría "Destacado"
+$destacado_query = new WP_Query(array(
+    'category_name' => 'destacado',
+    'posts_per_page' => 1,
+));
+
+// Verificar si hay entradas
+if ($destacado_query->have_posts()) {
+    while ($destacado_query->have_posts()) {
+        $destacado_query->the_post(); ?>
+        <a href="<?php the_permalink(); ?>">
+            <div style="padding: 10px;">
+                <p style="margin: 0; display:inline-flex;  padding:5px 10px; background-color:#1b5281; color:white;">Destacado</p>
+                <?php if (has_post_thumbnail()) {
+                    the_post_thumbnail('full', array('style' => 'width:100%; border-top: solid #1b5281 3px;  max-height:150px;object-fit:cover;'));
+                } ?>
+                <h4 style="margin:0;">→ <?php the_title(); ?></h4>
+                <!--p><?php the_excerpt(); ?></p-->
+            </div>
+        </a>
+<?php }
+}
+
+// Restaurar datos originales de la consulta principal
+wp_reset_postdata();
+?>
+
+
+
+
+
 	</div>
 </div>
 
