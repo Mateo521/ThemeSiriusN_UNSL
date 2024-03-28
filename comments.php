@@ -4,6 +4,9 @@ if ( post_password_required() ) { return; }
 $commenter = wp_get_current_commenter();
 $req = get_option( 'require_name_email' );
 
+
+
+
 $fields =  array(
     'author'    =>  '<div class="row"><div class="col-sm-5"><div class="form-group form-group-author"><label class="form-label form-label-author">'. esc_html__( 'Name', 'sirius-lite' ) . ($req ? '<span class="asterik">*</span>' : '') . '</label><input type="text" class="form-control" id="author" name="author" placeholder="" /></div>',
     'email'     =>  '<div class="form-group form-group-email"><label class="form-label form-label-email">'. esc_html__( 'Email Address', 'sirius-lite' ) .($req ? '<span class="asterik">*</span>' : '') . '</label><input type="email" class="form-control" name="email" id="email" placeholder="" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" /></div>',
