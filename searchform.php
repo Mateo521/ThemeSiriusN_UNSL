@@ -5,6 +5,8 @@
             <form role="search" name="main-search" method="get" class="search1" action="<?php echo esc_url(home_url('/')); ?>">
                 <input class="search__input" type="search" name="s" placeholder="Buscar" id="searchInput" value="<?php echo get_search_query() ?>">
 
+
+                
                 <div class="search__icon-container">
                     <label for="searchInput" class="search__label" aria-label="Search">
                         <svg viewBox="0 0 1000 1000" title="Search">
