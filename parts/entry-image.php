@@ -1,6 +1,7 @@
 <?php 
 $post_format = get_post_format();
 
+
 $sirius_blog_feed_sidebar_show = sirius_get_option('sirius_blog_feed_sidebar_show');
 $sirius_blog_feed_post_images = sirius_get_option('sirius_blog_feed_post_images');
 
