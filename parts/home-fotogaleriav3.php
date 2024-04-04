@@ -60,34 +60,30 @@
               $captions_count = count($captions[1]);
               $max_count = min($attachments_count, $captions_count);
               $counter = 0;
-              $link = [];
+              $link = [];          
+              $max_count = count($reversed_attachments);
               for ($i = 0; $i < $max_count; $i++) {
-
-                /*
-                if ($counter >= 2) {
-                  break;
-                }
-*/
-                $attachment = $reversed_attachments[$i];
-                $image_url = wp_get_attachment_image_url($attachment->ID, 'full');
-                $image_caption = !empty($captions[1][$i]) ? $captions[1][$i] : '';
-                $counter++;
-
-              ?>
-
-
-
-                <div class="swiper-slide" style="background-color: #0b2439; background-image: url('<?php echo esc_url($image_url); ?>');">
-                  <div class="title"><?php echo $counter + 1 ?></div>
-                  <div class="description"><?php echo $image_caption; ?></div>
-                </div>
-
-
-          <?php
-
-
-                array_push($link, $image_url);
+                  $attachment = $reversed_attachments[$i];
+                  $image_url = wp_get_attachment_image_url($attachment->ID, 'full');
+                  $image_caption = !empty($captions[1][$i]) ? $captions[1][$i] : '';
+                  $counter++;
+              
+                  ?>
+                  <div class="swiper-slide" style="background-color: #0b2439; background-image: url('<?php echo esc_url($image_url); ?>');">
+                      <?php if ($i == $max_count - 1) : ?>
+                          <a href="<?php echo esc_url(get_permalink($post->ID)); ?>">
+                      <?php endif; ?>
+                      <div class="title"><?php echo $counter + 1 ?></div>
+                      <div class="description"><?php echo $image_caption; ?></div>
+                      <?php if ($i == $max_count - 1) : ?>
+                          </a>
+                      <?php endif; ?>
+                  </div>
+                  <?php
+                  array_push($link, $image_url);
               }
+            
+              
             }
           }
           ?>
