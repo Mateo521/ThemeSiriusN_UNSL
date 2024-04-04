@@ -69,16 +69,26 @@
                   $counter++;
               
                   ?>
-                  <div class="swiper-slide" style="background-color: #0b2439; background-image: url('<?php echo esc_url($image_url); ?>');">
+
+
+                  <div class="swiper-slide" style="background-color: #0b2439;">
+                     
+                  <div style="background-image: url('<?php echo esc_url($image_url); ?>');position:absolute;width:100%;height:100%;left:0;bottom:0;background-position:center;background-size:contain;z-index:-1;background-repeat:no-repeat;"></div>
+                  
+                  
+                  <div class="title"><?php echo $counter + 1 ?></div>
                       <?php if ($i == $max_count - 1) : ?>
                           <a href="<?php echo esc_url(get_permalink($post->ID)); ?>">
-                      <?php endif; ?>
-                      <div class="title"><?php echo $counter + 1 ?></div>
+
+                         <?php endif; ?>
                       <div class="description"><?php echo $image_caption; ?></div>
                       <?php if ($i == $max_count - 1) : ?>
                           </a>
                       <?php endif; ?>
                   </div>
+
+
+
                   <?php
                   array_push($link, $image_url);
               }
