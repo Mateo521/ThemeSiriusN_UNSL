@@ -27,6 +27,7 @@ $sirius_posts_featured_image_show = true; // Definir esta variable según la ló
         }
     } 
 
+
 ?>
 
 
@@ -36,7 +37,32 @@ $sirius_posts_featured_image_show = true; // Definir esta variable según la ló
 
 
 
-<section class="blog-post tarjeta-inicio">
+<section class="blog-post tarjeta-inicio" style=" justify-items:center;">
+    <div class="redessticky">
+        <ul  style="list-style-type: none; position:sticky;top:100px; display:flex; flex-direction:column;align-items:center;">
+        <li>Compartir</li>
+        <li class="facebook">
+                <a href="https://www.facebook.com/noticias.unsl/?locale=es_LA" target="_blank">
+                    <i class="fab fab-lg fa-facebook"></i>
+                </a>
+            </li>
+            <li class="twitter">
+                <a href="https://twitter.com/noticiasUNSL/" target="_blank">
+                    <i class="fab fab-lg fa-twitter"></i>
+                </a>
+            </li>
+            <li class="instagram">
+                <a href="https://www.instagram.com/unslactiva/?hl=es" target="_blank">
+                    <i class="fab fab-lg fa-instagram"></i>
+                </a>
+            </li>
+            <li class="tiktok">
+                <a href="https://www.tiktok.com/@unslactiva?lang=es" target="_blank">
+                    <i class="fab fab-lg fa-tiktok"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
         <div class="container">
             <?php if ($sirius_posts_sidebar == 1) { ?>
                 <div class="row">
@@ -332,6 +358,20 @@ $sirius_posts_featured_image_show = true; // Definir esta variable según la ló
 
 
 <style>
+   
+  
+    .tarjeta-inicio{
+        display: grid; 
+        grid-template-columns:1fr 1fr 1fr;
+    }
+    @media screen and (max-width:766px) {
+    .redessticky{
+            display: none;
+    }
+    .tarjeta-inicio{
+        display: block;
+    }
+    }
     /*
 .lb-next, .lb-prev {
     opacity: 1 !important;
