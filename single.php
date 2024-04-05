@@ -40,20 +40,22 @@ $sirius_posts_featured_image_show = true; // Definir esta variable según la ló
 <section class="blog-post tarjeta-inicio" style=" justify-items:center;">
     <div class="redessticky">
         <ul  style="list-style-type: none; position:sticky;top:100px; display:flex; flex-direction:column;align-items:center;">
-        <li>Compartir</li>
+        <li style=" border-left: 3px solid #CCCCCC; height: 100px;"></li>
         <li class="facebook">
-                <a href="https://www.facebook.com/noticias.unsl/?locale=es_LA" target="_blank">
+        <a target="_blank" href="https://facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>" target="blank" rel="noopener noreferrer">
                     <i class="fab fab-lg fa-facebook"></i>
                 </a>
             </li>
             <li class="twitter">
-                <a href="https://twitter.com/noticiasUNSL/" target="_blank">
-                    <i class="fab fab-lg fa-twitter"></i>
+            <a href="https://twitter.com/intent/tweet?text=<?php the_permalink(); ?>" target="blank" rel="noopener noreferrer">
+                <i class="fab fab-lg fa-twitter"></i>
                 </a>
             </li>
             <li class="instagram">
-                <a href="https://www.instagram.com/unslactiva/?hl=es" target="_blank">
-                    <i class="fab fab-lg fa-instagram"></i>
+            <a href="mailto:?Título&body=Noticias Universidad Nacional de San Luis:%20<?php the_permalink(); ?>" target="blank">
+            <svg style="filter: invert(98%) sepia(3%) saturate(16%) hue-rotate(314deg) brightness(83%) contrast(95%);" width="25" height="25" viewBox="0 0 18 14" fill="#CCCCCC" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.667 0.333328H2.33366C1.41699 0.333328 0.675326 1.08333 0.675326 1.99999L0.666992 12C0.666992 12.9167 1.41699 13.6667 2.33366 13.6667H15.667C16.5837 13.6667 17.3337 12.9167 17.3337 12V1.99999C17.3337 1.08333 16.5837 0.333328 15.667 0.333328ZM15.667 3.66666L9.00033 7.83333L2.33366 3.66666V1.99999L9.00033 6.16666L15.667 1.99999V3.66666Z" fill="#282828"></path>
+            </svg>
                 </a>
             </li>
 
@@ -61,10 +63,11 @@ $sirius_posts_featured_image_show = true; // Definir esta variable según la ló
 
             
             <li class="tiktok">
-                <a href="https://www.tiktok.com/@unslactiva?lang=es" target="_blank">
-                    <i class="fab fab-lg fa-tiktok"></i>
+            <a target="_blank" href="https://wa.me/?text=<?php the_permalink(); ?>" target="blank" data-action="share/whatsapp/share">
+                    <i class="fab fab-lg fa-whatsapp"></i>
                 </a>
             </li>
+            <li style=" border-left: 3px solid #CCCCCC; height: 100px;"></li>
         </ul>
     </div>
         <div class="container">
@@ -367,6 +370,12 @@ $sirius_posts_featured_image_show = true; // Definir esta variable según la ló
     .tarjeta-inicio{
         display: grid; 
         grid-template-columns:1fr 1fr 1fr;
+    }
+    .redessticky li{
+        font-size: 25px;
+    }
+    .redessticky a{
+       color: #CCCCCC;
     }
     @media screen and (max-width:766px) {
     .redessticky{
