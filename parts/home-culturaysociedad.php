@@ -38,9 +38,9 @@ obtener_etiquetas_populares();
 
 
 
-<section style="background-color: #07344d;font-family:'Skema Pro Display';">
+<section class="cultysoc" style=" position:relative; padding:0;">
 
-  <div class=" contenedor" style=" padding:15px 0;">
+  <div class=" contenedor anchomaximo">
   <h1 style="color:#4bb9ef;">Cultura y Sociedad</h1>
     <div class="w-full">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto w-full">
@@ -80,7 +80,7 @@ obtener_etiquetas_populares();
                       $excerpt = wp_trim_words(get_the_excerpt(), 20, '...');
                     }
                     ?>
-                    <p style="color:white; font-size:16px;"><?php echo $excerpt; ?></p>
+                    <p style="color:black; font-size:16px;"><?php echo $excerpt; ?></p>
 
                   </div>
                 </a>
@@ -162,7 +162,7 @@ obtener_etiquetas_populares();
 
                 <a href=" <?php echo $titleLink; ?> " target="_blank">
                   <p class="text-2xl title-c"><b style="color:#4bb9ef;">Cultura </b> → <?php echo $titleText; ?></p>
-                  <p style="color:white; font-size:16px;"><?php echo  wp_trim_words($paragraphText, 17, '...'); ?></p>
+                  <p style="color:black; font-size:16px;"><?php echo  wp_trim_words($paragraphText, 17, '...'); ?></p>
 
                 </a>
               </div>
@@ -193,14 +193,25 @@ obtener_etiquetas_populares();
     </div>
   </div>
 
-
+  
 </section>
 
+
 <style>
+.cultysoc{
+ 
+
+  font-family: "Libre Franklin", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+}
+
+
   .title-c {
 
-    color: #fff;
-
+    color: #000;
+  
     font-size: 22px;
     line-height: normal;
   }
@@ -209,14 +220,15 @@ obtener_etiquetas_populares();
     grid-area: a;
     padding: 0 10px 10px 10px;
     width: 100%;
-    border-bottom: white 1px solid;
+ /*   border-bottom: #4bb9ef 3px solid;*/
   }
 
   .item8 {
     padding: 0 10px 10px 10px;
     grid-area: b;
     width: 100%;
-    border-bottom: white 1px solid;
+  /*
+    border-bottom: #4bb9ef 3px solid;*/
 
   }
 
@@ -224,8 +236,10 @@ obtener_etiquetas_populares();
     padding: 0 10px 10px 10px;
     grid-area: c;
     width: 100%;
-    border-left: white 1px solid;
-    border-right: white 1px solid;
+    /*
+    border-left: #4bb9ef 3px solid;
+    border-right: #4bb9ef 3px solid;
+    */
 
   }
 

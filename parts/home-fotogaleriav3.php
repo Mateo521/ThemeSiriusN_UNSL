@@ -1,4 +1,4 @@
-<section class="fotogaleria " style="font-family: 'Skema Pro Display';padding:0;">
+<section class="fotogaleria " style="font-family: 'Libre Franklin', sans-serif;padding:0;">
 
   <div class="anchomaximo contenedor">
     <h1>Fotogalerías</h1>
@@ -84,12 +84,9 @@
                       <div class="description"><?php echo $image_caption; ?></div>
 
                     <?php
-
-
                     } else {
                     ?>
                     
-
                         <div class="title"><?php echo $counter + 1 ?></div>
                         <a href="<?php echo esc_url(get_permalink($post->ID)); ?>">
                         <div class="description">→ Ver la noticia completa</div>

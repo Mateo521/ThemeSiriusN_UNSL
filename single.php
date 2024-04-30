@@ -6,8 +6,6 @@ $sirius_posts_featured_image_show = true; // Definir esta variable según la ló
 
 <?php while (have_posts()) : the_post(); 
 
-
-
     if ($sirius_posts_featured_image_show == true && has_post_thumbnail()) { 
         $image_id = get_post_thumbnail_id();
         $image_meta = wp_get_attachment_metadata($image_id);
@@ -22,24 +20,15 @@ $sirius_posts_featured_image_show = true; // Definir esta variable según la ló
             add_filter('jpeg_quality', function($arg){return 100;});
 
             ?>
-            <div class="entry-thumb"><img style="max-height:570px; object-position:top; object-fit:cover;" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>" class="img-responsive"></div>
+            <div class="entry-thumb"><img style="height:100%; object-position:top; object-fit:contain;" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>" class="img-responsive"></div>
         <?php 
         }
     } 
 
-
 ?>
-
-
-
-
-
-
-
-
 <section class="blog-post tarjeta-inicio" style=" justify-items:center;">
     <div class="redessticky">
-        <ul  style="list-style-type: none; position:sticky;top:100px; display:flex; flex-direction:column;align-items:center;">
+        <ul  style="list-style-type: none; position:sticky;top:100px; display:flex; flex-direction:column;align-items:center;padding:15px;">
         <li style=" border-left: 3px solid #CCCCCC; height: 100px;"></li>
         <li class="facebook">
         <a target="_blank" href="https://facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>" target="blank" rel="noopener noreferrer">
@@ -75,12 +64,6 @@ $sirius_posts_featured_image_show = true; // Definir esta variable según la ló
                 <div class="row">
                     <div class="col-md-8 noticia-sin-bordes-laterales">
                         <div class="main-column two-columns" id="noticia">
-
-
-
-
-
-
 
                             <!-- Contenido principal -->
                             <?php get_template_part('parts/single', 'content'); ?>
@@ -227,43 +210,48 @@ $sirius_posts_featured_image_show = true; // Definir esta variable según la ló
     }
 
     function synthesisVoiceFromIndex(startIndex) {
-        var textContent = document.getElementById('noticia').innerText;
+    var textContent = document.getElementById('noticia').innerText;
 
-        
-        var chunkSize = 200;
-        var chunks = [];
+    var chunkSize = 200;
+    var chunks = [];
 
-        for (var i = 0; i < textContent.length; i += chunkSize) {
-            chunks.push(textContent.substring(i, i + chunkSize));
-        }
-
-        // Configurar el evento onend para continuar la síntesis de voz desde el índice dado
-        utterance.onend = function() {
-            if (startIndex < chunks.length && isPlaying) {
-                var chunk = chunks[startIndex];
-                utterance.text = chunk;
-                synth.speak(utterance);
-                console.log('Iniciando síntesis de voz desde el índice:', startIndex);
-                startIndex++;
-            } else {
-                // Si es la última parte, actualizar el estado de reproducción
-                isPlaying = false;
-                document.getElementById('botonStop').style.display = 'none';
-            }
-        };
-
-        // Sintetizar la parte del texto desde el índice dado
-        var chunk = chunks[startIndex];
-        utterance.text = chunk;
-        utterance.voice = synth.getVoices().find(function(voice) {
-            return voice.name === 'Monica';
-        }) || synth.getVoices()[0];
-        synth.speak(utterance);
-        console.log('Iniciando síntesis de voz desde el índice:', startIndex);
-        currentChunkIndex = startIndex;
-        isPlaying = true;
-        document.getElementById('botonStop').style.display = 'block'; // Mostrar botón de detener
+    for (var i = 0; i < textContent.length; i += chunkSize) {
+        chunks.push(textContent.substring(i, i + chunkSize));
     }
+
+    // Configurar el evento onend para continuar la síntesis de voz desde el índice dado
+    utterance.onend = function() {
+        if (startIndex < chunks.length && isPlaying) {
+            var chunk = chunks[startIndex];
+            utterance.text = chunk;
+            synth.speak(utterance);
+            console.log('Iniciando síntesis de voz desde el índice:', startIndex);
+            startIndex++;
+        } else {
+            // Si es la última parte, actualizar el estado de reproducción
+            isPlaying = false;
+            document.getElementById('botonStop').style.display = 'none';
+        }
+    };
+
+    // Sintetizar la parte del texto desde el índice dado
+    var chunk = chunks[startIndex];
+    utterance.text = chunk;
+    
+    // Seleccionar la voz específica que deseas usar
+    var selectedVoice = synth.getVoices().find(function(voice) {
+        return voice.name === 'Monica' && voice.lang === 'es-ES'; // Cambia 'es-ES' por el idioma deseado
+    });
+    
+    utterance.voice = selectedVoice || synth.getVoices()[0]; // Si no se encuentra la voz específica, usa la primera voz disponible
+
+    synth.speak(utterance);
+    console.log('Iniciando síntesis de voz desde el índice:', startIndex);
+    currentChunkIndex = startIndex;
+    isPlaying = true;
+    document.getElementById('botonStop').style.display = 'block'; // Mostrar botón de detener
+}
+
 
     function resetSynthesis() {
         // Cancelar la síntesis de voz si está en curso

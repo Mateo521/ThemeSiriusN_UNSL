@@ -16,7 +16,7 @@
 </head>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-<body <?php body_class(); ?>>
+<body>
     <script>
         (function(i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
@@ -139,9 +139,14 @@
                     <nav class="navbar navbar-default menu-principal">
 
                         <div class="navbar-header" style="position:relative;z-index:0;">
-
-
-
+                            <a href="<?php echo esc_url(home_url('/')); ?>" style="    width: 60px;
+    padding: 5px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 60px;"><!--CAMBIAR-->
+                                <img src="https://scivz.unsl.edu.ar/noticias/wp-content/uploads/2023/12/cropped-512x512-1.png" alt="" style="width:100%;height:100%;">
+                            </a>
 
                             <form role="search" name="main-search" method="get" class="search1" action="<?php echo esc_url(home_url('/')); ?>">
 
@@ -161,9 +166,6 @@
                                     <path d="M32.9418651,-20.6880772 C37.9418651,-20.6880772 40.9418651,-16.6880772 40.9418651,-12.6880772 C40.9418651,-8.68807717 37.9418651,-4.68807717 32.9418651,-4.68807717 C27.9418651,-4.68807717 24.9418651,-8.68807717 24.9418651,-12.6880772 C24.9418651,-16.6880772 27.9418651,-20.6880772 32.9418651,-20.6880772 L32.9418651,-29.870624 C32.9418651,-30.3676803 33.3448089,-30.770624 33.8418651,-30.770624 C34.08056,-30.770624 34.3094785,-30.6758029 34.4782612,-30.5070201 L141.371843,76.386562" transform="translate(83.156854, 22.171573) rotate(-225.000000) translate(-83.156854, -22.171573)"></path>
                                 </symbol>
                             </svg>
-
-
-
 
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
                                 <span class="sr-only"><?php echo esc_html__('Toggle Navigation', 'sirius-lite'); ?></span>
@@ -217,19 +219,19 @@
 
     <!--div class="head" style=" position:relative;width:100%;"></div-->
     <style>
-          @font-face {
+        @font-face {
 
 
 
 
-font-family: 'Skema Pro Display';
-src: local('Skema Pro Display SemiBold'), local('Skema-Pro-Display-SemiBold'),
-    url(<?php echo get_template_directory_uri() . '/assets/fonts/SkemaProDisplay-SemiBold.woff2'; ?>) format('woff2'),
-    url(<?php echo get_template_directory_uri() . '/assets/fonts/SkemaProDisplay-SemiBold.woff'; ?>) format('woff'),
-    url(<?php echo get_template_directory_uri() . '/assets/fonts/SkemaProDisplay-SemiBold.ttf'; ?>) format('truetype');
-font-weight: 600;
-font-style: normal;
-}
+            font-family: 'Skema Pro Display';
+            src: local('Skema Pro Display SemiBold'), local('Skema-Pro-Display-SemiBold'),
+                url(<?php echo get_template_directory_uri() . '/assets/fonts/SkemaProDisplay-SemiBold.woff2'; ?>) format('woff2'),
+                url(<?php echo get_template_directory_uri() . '/assets/fonts/SkemaProDisplay-SemiBold.woff'; ?>) format('woff'),
+                url(<?php echo get_template_directory_uri() . '/assets/fonts/SkemaProDisplay-SemiBold.ttf'; ?>) format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
 
         .social {
             margin: 0;
@@ -363,6 +365,11 @@ font-style: normal;
             display: none;
         }
 
+        @media screen and (max-width:1390px) {
+            .social {
+                display: none;
+            }
+        }
         @media screen and (max-width:766px) {
             .encabezado__margen-superior {
                 padding: 10px;
@@ -382,9 +389,7 @@ font-style: normal;
                 justify-content: flex-end;
             }
 
-            .social {
-                display: none;
-            }
+          
 
             .logo.image-logo,
             .logo {
@@ -525,34 +530,25 @@ font-style: normal;
             stroke-dashoffset: 300;
         }
 
-        ::-moz-selection {
-            background: rgba(255, 255, 255, 0.2);
-        }
 
-        ::selection {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        ::-moz-selection {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        #onesignal-bell-container.onesignal-reset .onesignal-bell-launcher.onesignal-bell-launcher-theme-inverse .onesignal-bell-launcher-button svg .foreground{
+        #onesignal-bell-container.onesignal-reset .onesignal-bell-launcher.onesignal-bell-launcher-theme-inverse .onesignal-bell-launcher-button svg .foreground {
 
             fill: #fff !important;
         }
 
 
-/**/
+        /**/
 
 
 
 
         #onesignal-bell-container.onesignal-reset .onesignal-bell-launcher.onesignal-bell-launcher-theme-inverse .onesignal-bell-launcher-button svg .stroke {
-    fill: none;
-    stroke: #ffffff !important;
-    stroke-width: 3px;
-    stroke-miterlimit: 10;
+            fill: none;
+            stroke: #ffffff !important;
+            stroke-width: 3px;
+            stroke-miterlimit: 10;
+
+        }
     </style>
     <script>
         jQuery(document).ready(function($) {
@@ -570,5 +566,3 @@ font-style: normal;
             }
         });
     </script>
-
-    <!-- /Header -->

@@ -60,15 +60,25 @@ endif;
 
 
 <div class="fb-page">
-  <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fnoticias.unsl&tabs=timeline&width=350&height=900&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+
+<iframe class="pc-facebook" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fnoticias.unsl&tabs=timeline&width=350&height=900&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+
+
+
+<iframe class="mobile-facebook" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fnoticias.unsl&tabs=timeline&width=350&height=1200&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+
 </div>
 
 
 
 <style>
-   .fb-page {
+   .pc-facebook {
   width: 100%;
   height: 500px;
+}
+.mobile-facebook{
+height: 1200px !important;
+    display: none;
 }
 .fb-page iframe {
   width: 100%;
@@ -80,6 +90,16 @@ endif;
     }
 
     @media screen and (max-width:766px) {
+
+        .pc-facebook{
+            display:none;
+
+        }
+
+        .mobile-facebook{
+           
+        display: block;
+        }
 
         .fb-page {
   width: 100%;

@@ -1,6 +1,6 @@
   <!-- Swiper -->
   <section style="background-color:#07344d; padding:0; margin:0 0 25px 0;">
-    <div class="contenedor" style="padding: 0 0 25px 0;font-family:'Skema Pro Display'; color:white;">
+    <div class="contenedor" style="padding: 0 0 25px 0;font-family:'Libre Franklin', sans-serif; color:white;">
       <h1>Galería de fotos</h1>
       <?php
       $args = array(

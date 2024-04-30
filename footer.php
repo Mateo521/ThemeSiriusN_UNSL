@@ -152,7 +152,10 @@
     }
 
     footer {
-        font-family: 'Skema Pro Display';
+    font-family: "Libre Franklin", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
     }
 
     .footer-menu a {
