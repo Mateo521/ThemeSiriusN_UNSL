@@ -4,7 +4,7 @@ Theme URI: https://www.lyrathemes.com/sirius/
 Author: LyraThemes
 Author URI: https://www.lyrathemes.com/
 Description: Sirius is a clean, simple, material design business theme. This multipurpose theme is built on the Bootstrap framework, making it fully responsive and mobile friendly. It has a special front page template that can be used to set up a one page website. With featured pages (with images and icons), two call to action sections, and two open content sections, Sirius is extremely flexible and easy to set up and use. It has a top navigation with an option to show social media icons and a smaller navigation. Sirius is a perfect choice to set up a small business website, landing page, business portfolio, or a creative agency website.  You can set the background color for each front page section, and control the filter/overlay color for the CTA sections. This simple theme gives you complete control and flexibility to create any kind of website. Backed by awesome one-on-one support, Sirius is an excellent choice for your next project.
-Version: 1.3.21
+Version: 1.3.24
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
 Text Domain: sirius-lite
@@ -810,7 +810,11 @@ ul {
 }
 @media (min-width: 768px){
 	.tarjeta-principal{margin-top:30px}
-	.tarjeta-inicio .entry{padding-right:30px;padding-left:30px;}
+	.tarjeta-inicio .entry{
+		
+		padding:15px;
+	
+	}
 	.encabezado__margen-superior{margin:20px 0;}
 	.tarjeta-inicio{padding-top:0;padding-bottom:30px;}
 	hr{margin-top:25px;}
@@ -1006,12 +1010,18 @@ max-width: 30%;
 
   .item2 {
     grid-area: b;
+	/*
 	height:275px;
+	*/
+	height:100%;
   }
 
   .item3 {
     grid-area: c;
+	height:100%;
+	/*
 	height:275px;
+	*/
   }
 
  
@@ -1037,7 +1047,7 @@ overflow: hidden;
 
   .grid-container-1 {
 	
-    height: 100%;
+    height: 350px;
     display: grid;
     grid-template-areas:
       'a a b'
@@ -1079,7 +1089,7 @@ border-top:solid #1b5281 3px;
         'c c';
     grid-template-rows: 1fr 1fr 1fr;
 
-
+height:530px;
     }
 
     .grid-container-3 {

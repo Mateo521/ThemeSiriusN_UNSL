@@ -252,7 +252,9 @@
         padding: 10px;
         margin: 5px;
 
+/*
         background-color: white;
+        */
         border: solid whitesmoke 1px;
     }
 

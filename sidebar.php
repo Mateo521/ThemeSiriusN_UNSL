@@ -15,7 +15,7 @@ $popular_posts = pvc_get_most_viewed_posts();
 
 if ($popular_posts) :
 ?>
-    <div class="sidebar-widget">
+    <div class="sidebar-widget entry details entry-single tarjeta-inicio__fondo-blanco tarjeta-principal">
         <h3 style="margin:0; padding:0 0 10px 0;">Noticias más leídas</h3>
         <ul>
             <?php
@@ -72,6 +72,9 @@ endif;
 
 
 <style>
+    .fb-page{
+        padding: 35px 0;
+    }
    .pc-facebook {
   width: 100%;
   height: 500px;
@@ -86,7 +89,7 @@ height: 1200px !important;
     .sidebar-widget {
         padding: 10px;
         margin: 5px;
-        background-color: white;
+     
     }
 
     @media screen and (max-width:766px) {

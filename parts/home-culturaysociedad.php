@@ -71,7 +71,7 @@ obtener_etiquetas_populares();
                 <a href="<?php echo get_permalink(); ?>" target="_blank">
                   <img class="w-full" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="" style="width: 100%;">
                   <div>
-                    <h3 class="text-2xl title-c"><b style="color:#4bb9ef;">Sociedad </b> →<?php the_title(); ?></h3>
+                    <h3 class="text-2xl title-c"><b style="color:#4bb9ef;font-size:16px;">Sociedad </b> →<?php the_title(); ?></h3>
 
                     <?php
                     if ($current_iteration == 3) {
@@ -161,7 +161,7 @@ obtener_etiquetas_populares();
               <div class="item<?php echo ($i + 9) ?> p-2">
 
                 <a href=" <?php echo $titleLink; ?> " target="_blank">
-                  <p class="text-2xl title-c"><b style="color:#4bb9ef;">Cultura </b> → <?php echo $titleText; ?></p>
+                  <p class="text-2xl title-c"><b style="color:#4bb9ef;font-size:16px;">Cultura </b> → <?php echo $titleText; ?></p>
                   <p style="color:black; font-size:16px;"><?php echo  wp_trim_words($paragraphText, 17, '...'); ?></p>
 
                 </a>
