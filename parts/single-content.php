@@ -26,17 +26,36 @@ $banner_size = $sirius_posts_featured_image_full == 1 ? 'full' : 'sirius-thumb';
                 <i id="icono2" class="fa fa-toggle-off" aria-hidden="true" onclick="event.stopPropagation();"></i>
             </button>
 
-            <button class="boton" id="boton3" onclick="cambiarIcono('icono3')">
+
+            <script src="https://code.responsivevoice.org/responsivevoice.js?key=a8aJefCk"></script>
+            <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+            <button class="boton" id="boton3" onclick="handleButtonClick();">
+            <i id="icono3" class="fa fa-volume-off" aria-hidden="true" onclick="event.stopPropagation();"></i>
+        </button>
+
+            <!--button class="boton" id="boton3" onclick="cambiarIcono('icono3')">
                 <i id="icono3" class="fa fa-volume-off" aria-hidden="true" onclick="event.stopPropagation();"></i>
             </button>
 
             <button class="boton" id="botonStop" style="display:none;" onclick="stopSynthesis()">
             <i id="icono4" class="fa fa-stop" aria-hidden="true"></i>
-         
-            </button>
+
+            </button-->
 
         </div>
+
+
+
+
+
     </div>
+    <script>
+        function handleButtonClick() {
+            cambiarIcono('icono3');
+            readTextFromNoticia();
+        }
+    </script>
     <style>
         .boton {
             cursor: pointer;
@@ -79,8 +98,8 @@ $banner_size = $sirius_posts_featured_image_full == 1 ? 'full' : 'sirius-thumb';
         <?php } ?>
 
         <?php
-        
-          /*
+
+        /*
 
 
 if ($sirius_posts_featured_image_show == 1 && has_post_thumbnail() && !in_category('entrevistas')) { 
@@ -103,7 +122,7 @@ if ($sirius_posts_featured_image_show == 1 && has_post_thumbnail() && !in_catego
 
 
 
-} */?>
+} */ ?>
 
 
 
@@ -134,6 +153,9 @@ if ($sirius_posts_featured_image_show == 1 && has_post_thumbnail() && !in_catego
 
     </div>
 
+
+
+
     <div class="flex gap-5 items-center py-5">
         <p class="px-2 bold">COMPARTIR</p>
         <a href="mailto:?Título&body=Noticias Universidad Nacional de San Luis:%20<?php the_permalink(); ?>" target="blank">
@@ -160,6 +182,25 @@ if ($sirius_posts_featured_image_show == 1 && has_post_thumbnail() && !in_catego
             </svg>
         </a>
     </div>
+
+
+
+
+    <script>
+        function readTextFromNoticia() {
+            var text = $('#noticia').clone() // Clonar el contenido
+                .find('style, script, img') // Seleccionar y...
+                .remove() // Eliminar los elementos no deseados
+                .end() // Volver al clon original
+                .text() // Obtener el texto
+                .replace(/\s+/g, ' ') // Reemplazar múltiples espacios y saltos de línea con un solo espacio
+                .trim(); // Eliminar espacios en blanco al inicio y al final
+
+            responsiveVoice.speak(text, 'Spanish Latin American Male');
+        }
+    </script>
+
+
 
 </div>
 <!-- /Post Content -->
