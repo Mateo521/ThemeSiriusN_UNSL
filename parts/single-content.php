@@ -195,12 +195,8 @@ if ($sirius_posts_featured_image_show == 1 && has_post_thumbnail() && !in_catego
                 .text() // Obtener el texto
                 .replace(/\s+/g, ' ') // Reemplazar múltiples espacios y saltos de línea con un solo espacio
                 .trim(); // Eliminar espacios en blanco al inicio y al final
-
             responsiveVoice.speak(text, 'Spanish Latin American Male');
         }
     </script>
-
-
-
 </div>
 <!-- /Post Content -->

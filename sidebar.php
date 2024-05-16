@@ -11,7 +11,25 @@ if (is_single())
 
 <?php
 
-$popular_posts = pvc_get_most_viewed_posts();
+// Función para obtener y almacenar los posts más vistos en un transitorio
+function get_and_cache_most_viewed_posts() {
+    // Verifica si existe el transitorio
+    $popular_posts = get_transient('cached_popular_posts');
+    
+    // Si no existe, obtén los posts y almacénalos en el transitorio
+    if ($popular_posts === false) {
+        // Obtén los posts más vistos
+        $popular_posts = pvc_get_most_viewed_posts();
+
+        // Almacena los posts en un transitorio por 24 horas (86400 segundos)
+        set_transient('cached_popular_posts', $popular_posts, 86400);
+    }
+
+    return $popular_posts;
+}
+
+// Obtener los posts más vistos usando la función de transitorio
+$popular_posts = get_and_cache_most_viewed_posts();
 
 if ($popular_posts) :
 ?>
@@ -23,14 +41,12 @@ if ($popular_posts) :
 
             foreach ($popular_posts as $post) : setup_postdata($post);
                 if ($post_count >= 6) {
-
                     break;
                 }
             ?>
                 <li style="list-style-type: none; display:flex; justify-content:space-between;align-items:center; gap:10px; padding:5px 0 ;border-bottom: 1px dashed #999;">
                     <div style="display: flex;gap:15px;">
-                        <span style="color: #121263;
-    font-weight: 700;"><?php echo ($post_count + 1); ?></span>
+                        <span style="color: #121263; font-weight: 700;"><?php echo ($post_count + 1); ?></span>
                         <p>
                             <a href="<?php the_permalink(); ?>">
                                 <?php the_title(); ?>
@@ -56,7 +72,32 @@ if ($popular_posts) :
 <?php
     wp_reset_postdata();
 endif;
+
+// Función para restablecer las vistas
+function reset_post_views() {
+    // Aquí debes implementar el código específico para restablecer las vistas de tu plugin
+    // El siguiente es un ejemplo general
+    $all_posts = get_posts(array(
+        'numberposts' => -1, // Obtener todos los posts
+        'post_type'   => 'post', // Cambia esto si necesitas restablecer otro tipo de post
+        'post_status' => 'publish',
+    ));
+
+    foreach ($all_posts as $post) {
+        // Usar la función adecuada del plugin para restablecer las vistas
+        pvc_reset_post_views($post->ID);
+    }
+}
+
+// Programar la tarea para restablecer las vistas cada 24 horas
+if (!wp_next_scheduled('reset_post_views_event')) {
+    wp_schedule_event(time(), 'daily', 'reset_post_views_event');
+}
+
+// Enganchar la función a la tarea programada
+add_action('reset_post_views_event', 'reset_post_views');
 ?>
+
 
 
 <div class="fb-page">
