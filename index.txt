@@ -1,0 +1,81 @@
+Cabezal gris /*visto*/
+Celeste UNSL en fondo, escudo blanco cabezal /*visto*/
+Solo titulo carrusel /*visto*/
+Insititucional solo titulo /*visto*/
+color ciencia y laboratorio margen /*visto*/
+achicar imagen ancho /*visto*/
+Ciencia quitar uno, "Cambiar texto titulo" /* consultar*/
+"    /* line-height: 34px;" quitar en parrafo
+añadir margenes 10px 30px
+Texo cultura y sociedad
+
+Cultura y sociedad quitar thumbs "font-size: 19px" /*visto*/
+imagenes mismo tamaño. /*visto*/
+
+"misma tipografia, agenda universitaria" /*visto*/
+
+"flyers agregado" /*visto*/
+
+"footer igual", "mejorar" "iconos en gris", cambiar icono, fondo azul, cambiar redes tamaño intercambiar imagenes, /*visto*/
+
+padding :-24px" en entradas /*visto*/
+font-size: 27px; titulo
+
+
+
+font-size: 22px; en h3 noticias relacionadas
+
+
+h1.entry-title  /*visto*/
+    font-size: 27px;
+    line-height: 35px;
+""
+
+body {
+    /* font-family: "Libre Franklin", sans-serif; */ /*visto*/
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    color: #232322;
+    font-size: 13px;
+    background-color: #C0C0C0;
+    line-height: 1.3;
+}
+
+
+
+@media (min-width: 768px) {/*visto*/
+    .tarjeta-inicio .entry {
+        padding: 35px;
+    }
+}
+
+
+margin 20 px entre noticias relacionadas y noticias
+
+@media (min-width: 768px) {/* visto */
+    .tarjeta-inicio .entry {
+        padding: 10px 35px;
+    }
+}
+
+.tarjeta-inicio .entry {
+    margin-bottom: 0;
+    margin: 10px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+}
+
+
+.fb-page {
+    padding: 86px 10px;
+}
+
+
+    font-size: 13px !important; figcapture
+
+    "También te puede interesar" quitar
+
+
+

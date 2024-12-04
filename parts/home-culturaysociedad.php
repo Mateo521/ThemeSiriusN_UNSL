@@ -41,7 +41,7 @@ obtener_etiquetas_populares();
 <section class="cultysoc" style=" position:relative; padding:0;">
 
   <div class=" contenedor anchomaximo">
-  <h1 style="color:#4bb9ef;">Cultura y Sociedad</h1>
+  <h1 style="color:#4bb9ef; padding:0 25px;">Cultura y Sociedad</h1>
     <div class="w-full">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto w-full">
         <div class="grid-container-2 w-full mx-2 text-white">
@@ -67,20 +67,32 @@ obtener_etiquetas_populares();
               $query->the_post();
               $current_iteration++; ?>
 
-              <div class="item<?php echo $query->current_post + 7; ?> p-2">
-                <a href="<?php echo get_permalink(); ?>" target="_blank">
-                  <img class="w-full" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="" style="width: 100%;">
+              <div class="item<?php echo $query->current_post + 7; ?> p-2 ">
+                <a href="<?php echo get_permalink(); ?>" target="_blank" class="block">
+                  <?php
+                if ($current_iteration != 3) {
+                 ?> <img class="w-100" style="max-height: 215px;height:100%; object-fit:cover; width:100%;" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="" >
+               <?php }else{
+                 ?> <img class="w-100"  src="<?php echo get_the_post_thumbnail_url(); ?>" alt="" style="width: 100%;">
+             <?php
+                }
+                ?>
                   <div>
                     <h3 class="text-2xl title-c"><b style="color:#4bb9ef;font-size:16px;">Sociedad </b> →<?php the_title(); ?></h3>
 
                     <?php
                     if ($current_iteration == 3) {
                       $excerpt = get_the_excerpt();
-                    } else {
+                      ?>
+                     
+                      <p style="color:black; font-size:16px;"><?php echo $excerpt; ?></p>
+                 <?php   } else {
                       $excerpt = wp_trim_words(get_the_excerpt(), 20, '...');
-                    }
+?>
+                   
+  <?php                  }
                     ?>
-                    <p style="color:black; font-size:16px;"><?php echo $excerpt; ?></p>
+                    <!--p style="color:black; font-size:16px;"><?php echo $excerpt; ?></p-->
 
                   </div>
                 </a>
@@ -117,14 +129,14 @@ obtener_etiquetas_populares();
             libxml_clear_errors();
             $xpath = new DOMXPath($dom);
 
-            // Filtrar las secciones que contienen la clase 'col-md-8' (contenedor real)
+           
             $containers = $xpath->query('//div[contains(@class, "col-md-8")]');
 
             $limit = 2;
             $i = 0;
             foreach ($containers as $container) {
               if ($i < $limit) {
-                // Procesar cada contenedor que cumple con la clase 'col-md-8' (contenedor real)
+           
                 $titleElement = $container->getElementsByTagName('h5')->item(0);
                 $titleText = $titleElement ? utf8_decode($titleElement->textContent) : '';
 
@@ -146,23 +158,23 @@ obtener_etiquetas_populares();
                     $titleLink = $titleAnchor->getAttribute('href');
                   }
                 }
-                // Output o procesamiento adicional según lo que necesites hacer con los datos extraídos
+             
 
 
                 $i++;
               } else {
-                break; // Salir del bucle una vez que se haya alcanzado el límite
+                break; 
               }
 
 
           ?>
 
 
-              <div class="item<?php echo ($i + 9) ?> p-2">
+              <div class="item<?php echo ($i + 9) ?> p-2 ">
 
-                <a href=" <?php echo $titleLink; ?> " target="_blank">
+                <a href=" <?php echo $titleLink; ?> " target="_blank" class="block">
                   <p class="text-2xl title-c"><b style="color:#4bb9ef;font-size:16px;">Cultura </b> → <?php echo $titleText; ?></p>
-                  <p style="color:black; font-size:16px;"><?php echo  wp_trim_words($paragraphText, 17, '...'); ?></p>
+                  <!--p style="color:black; font-size:16px;"><?php echo  wp_trim_words($paragraphText, 17, '...'); ?></p-->
 
                 </a>
               </div>
@@ -180,13 +192,6 @@ obtener_etiquetas_populares();
  echo "Párrafo: <br>";
  */
           ?>
-
-
-
-
-
-
-
         </div>
 
       </div>
@@ -198,6 +203,10 @@ obtener_etiquetas_populares();
 
 
 <style>
+
+  .block{
+    display: block;
+  }
 .cultysoc{
  
 
@@ -212,7 +221,7 @@ obtener_etiquetas_populares();
 
     color: #000;
   
-    font-size: 22px;
+    font-size: 18px;
     line-height: normal;
   }
 
@@ -220,15 +229,16 @@ obtener_etiquetas_populares();
     grid-area: a;
     padding: 0 10px 10px 10px;
     width: 100%;
- /*   border-bottom: #4bb9ef 3px solid;*/
+    height: fit-content;
+
   }
 
   .item8 {
+    height: fit-content;
     padding: 0 10px 10px 10px;
     grid-area: b;
     width: 100%;
-  /*
-    border-bottom: #4bb9ef 3px solid;*/
+
 
   }
 

@@ -5,12 +5,11 @@ $sirius_posts_featured_image_show = true; // Definir esta variable según la ló
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/js/lightbox2-2.11.4/dist/css/lightbox.min.css">
 
 <?php while (have_posts()) : the_post();
-
+    /*
     if ($sirius_posts_featured_image_show == true && has_post_thumbnail()) {
         $image_id = get_post_thumbnail_id();
         $image_meta = wp_get_attachment_metadata($image_id);
         $upload_dir = wp_upload_dir();
-
         if ($image_meta) {
             $image_file = basename(get_attached_file($image_id));
             $image_url = $upload_dir['baseurl'] . '/' . dirname($image_file) . '/' . $image_meta['file'];
@@ -20,18 +19,17 @@ $sirius_posts_featured_image_show = true; // Definir esta variable según la ló
             add_filter('jpeg_quality', function ($arg) {
                 return 100;
             });
-
 ?>
             <div class="entry-thumb"><img style="height:100%; object-position:top; object-fit:contain;" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>" class="img-responsive"></div>
     <?php
         }
     }
-
-    ?>
+*/
+?>
     <section class="blog-post tarjeta-inicio" style=" justify-items:center;">
         <div class="redessticky">
             <ul style="list-style-type: none; position:sticky;top:100px; display:flex; flex-direction:column;align-items:center;padding:15px;">
-                <li style=" border-left: 3px solid #CCCCCC; height: 100px;"></li>
+                <li class="lis" style=" border-left: 3px solid #CCCCCC; height: 100px;"></li>
                 <li class="facebook">
                     <a target="_blank" href="https://facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>" target="blank" rel="noopener noreferrer">
                         <i class="fab fab-lg fa-facebook"></i>
@@ -49,16 +47,12 @@ $sirius_posts_featured_image_show = true; // Definir esta variable según la ló
                         </svg>
                     </a>
                 </li>
-
-
-
-
                 <li class="tiktok">
                     <a target="_blank" href="https://wa.me/?text=<?php the_permalink(); ?>" target="blank" data-action="share/whatsapp/share">
                         <i class="fab fab-lg fa-whatsapp"></i>
                     </a>
                 </li>
-                <li style=" border-left: 3px solid #CCCCCC; height: 100px;"></li>
+                <li class="lis" style=" border-left: 3px solid #CCCCCC; height: 100px;"></li>
             </ul>
         </div>
         <div class="container">
@@ -83,58 +77,118 @@ $sirius_posts_featured_image_show = true; // Definir esta variable según la ló
                     </div>
                 </div>
 
-                <!-- Noticias relacionadas o seguir leyendo -->
-                <h3>También te puede interesar</h3>
-                <hr style="padding: 0;  margin :0;">
-                <div class="related-posts " style="display: grid; justify-content:center;">
-                    <?php
-                    $current_post_id = get_the_ID();
 
-                    $related_posts = new WP_Query(array(
-                        'posts_per_page' => 8,
-                        'post__not_in' => array($current_post_id),
+                <style>
+                    .entry-thumb {
+                        padding: 0 0 25px 0;
+                        background-color: #3d7ecf00;
+                    }
+
+                    .contenedor1 {
+                        display: grid;
+                        border-top: 3px solid #1b5281;
+                        grid-template-columns: repeat(2, 1fr);
+                        width: 100%;
+                        height: 100%;
+                        justify-items: center;
+                    }
+
+                    .contenedor1 p {
+                        margin: 0;
+                    }
+
+                    @media screen and (max-width:766px) {
+                        .contenedor1 {
+                            grid-template-columns: 1fr;
+                            padding: 5px;
+                        }
+                    }
+                </style>
+
+
+                <?php
+
+
+                function obtener_noticias_relacionadas($post_id, $cantidad = 10)
+                {
+                    $args = array(
                         'post_type' => 'post',
-                        'orderby' => 'rand',
-                    ));
+                        'posts_per_page' => $cantidad,
+                        'post__not_in' => array($post_id),
+                        'orderby' => 'rand'
+                    );
 
-                    if ($related_posts->have_posts()) :
-                        while ($related_posts->have_posts()) : $related_posts->the_post();
-                    ?>
-                            <article class="related-post entry details entry-single tarjeta-inicio__fondo-blanco tarjeta-principal">
+                    $query = new WP_Query($args);
 
-                                <?php
-                                $thumbnail = get_the_post_thumbnail(get_the_ID(), 'thumbnail');
-
-                                if ($thumbnail) :
-                                ?><a href="<?php the_permalink(); ?>">
-                                        <img style="width:100%;height:175px;object-fit:cover;" src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" alt="#">
-                                    </a>
-                                <?php endif; ?>
-
-                                <h2 style="    font-weight: 400;
-    line-height: 1;
-    padding: 10px 5px;"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                               
-                               <?php
-                               $trimmed_content = wp_trim_words(strip_shortcodes(get_the_content()), 10, '...');
-                           ?>
-
-                               <p style=" line-height: 1;"><?php echo( $trimmed_content) ; ?></p>
+                    if ($query->have_posts()) {
+                        return $query->posts;
+                    } else {
+                        return array();
+                    }
+                }
 
 
-                                <!--div class="related-post-categories">
-                                    <?php the_category(', '); ?>
-                                </div-->
-                            </article>
-                    <?php
-                        endwhile;
-                        wp_reset_postdata();
-                    else :
-                        echo 'No hay noticias relacionadas.';
-                    endif;
-                    ?>
-                </div>
-                <!-- Fin de noticias relacionadas o seguir leyendo -->
+
+                $post_id = get_the_ID(); // Obtener el ID del post actual
+                $noticias_relacionadas = obtener_noticias_relacionadas($post_id);
+                ?>
+
+                <!--div class="conn" style="display: flex; justify-content: center;">
+                    <div style="max-width: 1200px; width: 100%; padding: 15px;">
+                        <p style="background-color: #1b5281; display: inline-flex; padding: 5px; color: white; margin: 0;">También te puede interesar</p>
+                        <div class="contenedor1">
+
+              
+                            <div style="padding: 5px; width: 100%;">
+                                <?php for ($i = 0; $i < 5; $i++): ?>
+                                    <?php if (isset($noticias_relacionadas[$i])): $noticia = $noticias_relacionadas[$i]; ?>
+                                        <div style="display:flex;gap: 10px; align-items: center; padding: 5px 0;">
+                                            <?php if (has_post_thumbnail($noticia->ID)): ?>
+                                                <img style="max-width:150px; width: 100%; height: 100px; object-fit: cover;" src="<?php echo get_the_post_thumbnail_url($noticia->ID, 'thumbnail'); ?>" alt="<?php echo get_the_title($noticia->ID); ?>">
+                                            <?php else: ?>
+                                                <img style="max-width:150px; width: 100%; height: 100px; object-fit: cover;" src="URL_DE_IMAGEN_POR_DEFECTO" alt="<?php echo get_the_title($noticia->ID); ?>">
+                                            <?php endif; ?>
+                                            <div style="margin: 0; display: flex; flex-direction: column; gap:5px;">
+                                                <div> <b class="links" style="color: #4bb9ef;font-size:16px;"><?php echo get_the_category_list(', ', '', $noticia->ID); ?></b>
+                                                    <a href="<?php the_permalink(); ?>">
+                                                        <p><?php echo wp_trim_words(strip_shortcodes(get_the_title($noticia->ID)), 10, '...'); ?></p>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php endfor; ?>
+                            </div>
+                         
+                            <div style="padding: 5px; width: 100%;">
+                                <?php for ($i = 5; $i < 10; $i++): ?>
+                                    <?php if (isset($noticias_relacionadas[$i])): $noticia = $noticias_relacionadas[$i]; ?>
+                                        <div style="display:flex;gap: 10px; align-items: center; padding: 5px 0;">
+                                            <?php if (has_post_thumbnail($noticia->ID)): ?>
+
+                                                <img style="max-width:150px; width: 100%; height: 100px; object-fit: cover;" src="<?php echo get_the_post_thumbnail_url($noticia->ID, 'thumbnail'); ?>" alt="<?php echo get_the_title($noticia->ID); ?>">
+
+                                            <?php else: ?>
+                                                <img style="max-width:150px; width: 100%; height: 100px; object-fit: cover;" src="URL_DE_IMAGEN_POR_DEFECTO" alt="<?php echo get_the_title($noticia->ID); ?>">
+                                            <?php endif; ?>
+                                            <div style="margin: 0; display: flex; flex-direction: column; gap:5px;">
+
+                                                <div> <b class="links" style="color: #4bb9ef;font-size:16px;"><?php echo get_the_category_list(', ', '', $noticia->ID); ?></b>
+
+                                                    <a href="<?php the_permalink(); ?>">
+
+                                                        <p><?php echo wp_trim_words(strip_shortcodes(get_the_title($noticia->ID)), 10, '...'); ?></p>
+
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php endfor; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div-->
             <?php } else { ?>
                 <?php get_template_part('parts/single', 'content'); ?>
                 <?php if (comments_open()) {
@@ -151,7 +205,7 @@ $sirius_posts_featured_image_show = true; // Definir esta variable según la ló
     function cambiarIcono(iconoId) {
         var icono = document.getElementById(iconoId);
 
-        // Verificar si ya hemos almacenado un estado para este icono
+
         if (icono.classList.contains('fa-eye')) {
             icono.classList = 'fa fa-eye-slash';
         } else if (icono.classList.contains('fa-eye-slash')) {
@@ -165,6 +219,12 @@ $sirius_posts_featured_image_show = true; // Definir esta variable según la ló
         } else if (icono.classList.contains('fa-volume-up')) {
 
             icono.classList = 'fa fa-volume-off';
+        } else if (icono.classList.contains('fa-play')) {
+            console.log("stop");
+            icono.classList = 'fa fa-pause';
+        } else if (icono.classList.contains('fa-pause')) {
+            console.log("play");
+            icono.classList = 'fa fa-play';
         }
     }
 
@@ -175,7 +235,7 @@ $sirius_posts_featured_image_show = true; // Definir esta variable según la ló
     function blancoynegro() {
         document.documentElement.classList.toggle("grayscale");
     }
-    
+
 
     jQuery(document).ready(function($) {
         $('#noticia img').each(function(index) {
@@ -183,17 +243,14 @@ $sirius_posts_featured_image_show = true; // Definir esta variable según la ló
             var imgSrc = $img.attr('src');
             var hasGalleryParent = $img.parents('figure.wp-block-gallery').length > 0;
             var $figcaption = $img.next('figcaption');
-
             var imgLink = $('<a>', {
                 href: imgSrc,
-                'data-lightbox': hasGalleryParent ? 'img-gallery' : 'img-' + (index + 1), // Utilizar un valor diferente si hay un componente padre de galería
-                'data-title': $figcaption.text().trim() // Establecer el contenido de la figcaption como el título del lightbox
+                'data-lightbox': hasGalleryParent ? 'img-gallery' : 'img-' + (index + 1),
+                'data-title': $figcaption.text().trim()
             });
-
             var imgElement = $('<img>', {
                 src: imgSrc
             });
-
             $img.wrap(imgLink).after(imgElement).remove();
         });
     });
@@ -211,7 +268,7 @@ $sirius_posts_featured_image_show = true; // Definir esta variable según la ló
     function onClose() {
         document.body.style.overflow = 'visible';
     }
-    // Asignar funciones a los eventos de Lightbox
+    // 
     /*
     $(document).on('click', '[data-toggle="lightbox"]', function(event) {
         event.preventDefault();
@@ -234,6 +291,10 @@ $sirius_posts_featured_image_show = true; // Definir esta variable según la ló
 
 
 <style>
+    body {
+        line-height: 1.5 !important;
+    }
+
     .tarjeta-inicio {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -248,8 +309,20 @@ $sirius_posts_featured_image_show = true; // Definir esta variable según la ló
     }
 
     @media screen and (max-width:766px) {
-        .redessticky {
+
+        .lis {
             display: none;
+        }
+
+        .redessticky {
+             display: none; 
+            position: fixed;
+            right: 17px;
+            bottom: 0;
+            z-index: 99;
+            bottom: 77px;
+            background-color: #1D70B7;
+            border-radius: 15px;
         }
 
         .tarjeta-inicio {
@@ -266,6 +339,11 @@ $sirius_posts_featured_image_show = true; // Definir esta variable según la ló
     .related-post h2 {
         font-size: 18px;
         margin: 0;
+    }
+
+    .links a {
+
+        color: #4bb9ef;
     }
 
     .tarjeta-inicio {

@@ -10,14 +10,14 @@ display: none;}
 </style>
 <?php while ( have_posts() ) : the_post(); ?>
 
-<section class="">
+<section style="    font-family: 'Libre Franklin', sans-serif;">
     <div class="" id="cta" style="padding-left: 100px;padding-right: 100px;">
 	<section class="tarjeta-inicio">
 		<div class="entry tarjeta-inicio__fondo-azul">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="categoria-seccion">
-						<p>AGENDA UNIVERSITARIA</p>
+						<p>Agenda Universitaria</p>
 					</div>												
 					<div class="col-md-12">
 						<div class="row">

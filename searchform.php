@@ -25,7 +25,7 @@
         <div class="idioma"></div>
     </div>
     <a href="https://www.unsl.edu.ar/"  target="_blank">
-    <img style="height:100%;" src="https://scivz.unsl.edu.ar/noticias/wp-content/uploads/2024/03/logoheaderright5e1f.jpg" alt="">
+    <img style="height:100px;" src="https://scivz.unsl.edu.ar/noticias/wp-content/uploads/2024/10/Sin-titulo-1.png" alt="">
     </a>
 </div>
 <!--form role="search" name="main-search" method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">

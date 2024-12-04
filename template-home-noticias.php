@@ -23,6 +23,12 @@ get_template_part('parts/home', 'culturaysociedad');
 /*
 get_template_part('parts/home', 'fotogalerias');
 */
+
+
+get_template_part('parts/home', 'flyers');
+
+
+
 get_template_part('parts/home', 'university-agenda');
 ?>
 </div>

@@ -11,9 +11,9 @@
 
         <div class="display-f">
             <div class="p">
-                <!--img src="https://scivz.unsl.edu.ar/noticias/wp-content/uploads/2024/03/62e7e39867567_450.png" alt=""-->
+
                 <div class="items" style="padding: 0;     min-width: max-content;">
-    <h2>Ciencia y <br> Laboratorios</h2>
+    <h2>Divulgación<br> científica</h2>
 
                     <h3 style="font-size:19px;"><a target="_blank" href="<?php echo esc_url(get_category_link(get_cat_ID('laboratorios'))); ?>"> → Laboratorios</a></h3>
                     <h3 style="font-size:19px;"><a target="_blank" href="<?php echo esc_url(get_category_link(get_cat_ID('ciencia'))); ?>"> → Ciencia</a></h3>
@@ -24,9 +24,9 @@
 
                 <?php
                 $categories = array('ciencia', 'ciencia', 'laboratorios');
-                $science_posts = array(); // Almacena las noticias de ciencia
-                $laboratory_posts = array(); // Almacena las noticias de laboratorios
-                $science_count = 0; // Contador de noticias de ciencia mostradas
+                $science_posts = array(); 
+                $laboratory_posts = array(); 
+                $science_count = 0; 
                 $item = 4;
                 foreach ($categories as $index => $category) {
                     $args = array(
@@ -72,16 +72,17 @@
 ?>
              
                    <div class="item4">
+                   <h4>Ciencia</h4>
                     <?php
                 foreach ($science_posts as $science_post) {
                 ?>
                  
 
-                        <h4>Ciencia</h4>
+                       
                         <a style="color:white;" href="<?php echo esc_url($science_post['permalink']); ?>">
                             <img src="<?php echo $science_post['thumbnail_url']; ?>" alt="">
 
-                            <p><?php echo $science_post['title']; ?></p>
+                            <p style="    margin: 5px 0 25px;"><?php echo $science_post['title']; ?></p>
                         </a>
 
 
@@ -95,7 +96,7 @@
                 ?>
                 </div>
                 <?php
-                // Mostrar una noticia de laboratorios
+            
                 if (!empty($laboratory_posts)) {
                     $laboratory_post = array_shift($laboratory_posts);
                 ?>
@@ -103,8 +104,8 @@
                         <h4>Laboratorios</h4>
                         <a style="color:white;" href="<?php echo esc_url($laboratory_post['permalink']); ?>">
                             <img src="<?php echo $laboratory_post['thumbnail_url']; ?>" alt="">
-                            <h3><?php echo $laboratory_post['title']; ?></h3>
-                            <p><?php echo $laboratory_post['content']; ?></p>
+                            <p style="    margin: 5px 0 25px;"><?php echo $laboratory_post['title']; ?></p>
+                            <!--p><?php echo $laboratory_post['content']; ?></p-->
                         </a>
                     </div>
                 <?php
@@ -133,7 +134,7 @@
         outline: 10px solid #0b2839;
         border-top: 10px solid;
         border-bottom: 10px solid;
-        border-image: linear-gradient(to right, #26b1e7 0% 25%, #8136d0 25% 50%, #e83e8d 50% 100%) 10;
+        border-image: linear-gradient(to right, #fff 0% 25%, #599ed4 25% 50%, #1d70b7 50% 100%) 10;
 
 
         background-color: #164F71;
@@ -176,6 +177,7 @@ background-size: cover;
     }
 
     .item6 img {
+      
         max-height: 350px;
     }
 
@@ -186,12 +188,20 @@ background-size: cover;
 
     .lab {
         padding: 0 25px;
+      
         display: grid;
+          /*
+        display: flex;
+        */
         width: 100%;
+        
         grid-template-areas: "a c c"
             "b c c";
+            
         gap: 0;
-        grid-template-columns: 25% 75%;
+        
+        grid-template-columns: 34% 1fr;
+        
     }
 
     .lab h4 {

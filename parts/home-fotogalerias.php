@@ -6,8 +6,8 @@
       $args = array(
         'post_type' => 'post',
         'posts_per_page' => 1,
-        'order' => 'DESC',  // Orden descendente por fecha de publicación
-        'orderby' => 'date', // Ordenar por fecha de publicación
+        'order' => 'DESC',  
+        'orderby' => 'date', 
         'category_name' => 'fotogalerias'
       );
       $query = new WP_Query($args);

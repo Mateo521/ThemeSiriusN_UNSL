@@ -10,6 +10,27 @@
         <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
     <?php endif; ?>
 
+
+    <?php
+
+    if (is_front_page() || is_home()) {
+        echo '<meta name="description" content="Últimas noticias relacionadas a la UNSL">';
+    }
+
+
+    if (is_single()) {
+
+        $meta_description = get_post_meta(get_the_ID(), 'meta_description', true);
+        if ($meta_description) {
+            echo '<meta name="description" content="' . esc_attr($meta_description) . '">';
+        } else {
+
+            echo '<meta name="description" content="' . esc_attr(get_the_excerpt()) . '">';
+        }
+    }
+    ?>
+
+
     <?php wp_head(); ?>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -33,6 +54,13 @@
         ga('create', 'UA-103162636-2', 'auto');
         ga('send', 'pageview');
     </script>
+
+
+<div id="loading-screen">
+    <img src="https://scivz.unsl.edu.ar/noticias/wp-content/uploads/2024/03/UNSL.png" alt="Cargando...">
+</div>
+
+
     <div class="main-wrapper">
 
         <!-- Header -->
@@ -219,6 +247,36 @@
 
     <!--div class="head" style=" position:relative;width:100%;"></div-->
     <style>
+
+
+
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+width: 100%;
+    height: 100%;
+    background-color: #fff; /* Cambia según tu diseño */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2147483001;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+#loading-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+ 
+#loading-screen img{
+    width: 45vw;
+    max-width: 250px;
+}
+
+
         @font-face {
 
 
@@ -345,16 +403,30 @@
 
         .logo.image-logo,
         .logo {
-            padding: 25px;
+            padding: 16px;
         }
 
         .encabezado__margen-superior {
             margin: 0 !important;
             padding: 0;
-            background-color: white;
+            background-color: whitesmoke;
             display: flex;
             align-items: center;
             justify-content: space-between;
+
+        }
+
+        .gt_selector {
+            background-color: whitesmoke;
+        }
+
+        .search__icon-container {
+            background-color: whitesmoke;
+            margin: 6px;
+        }
+
+        .container4 {
+            background-color: whitesmoke;
         }
 
         .head {
@@ -370,6 +442,7 @@
                 display: none;
             }
         }
+
         @media screen and (max-width:766px) {
             .encabezado__margen-superior {
                 padding: 10px;
@@ -389,7 +462,7 @@
                 justify-content: flex-end;
             }
 
-          
+
 
             .logo.image-logo,
             .logo {
@@ -421,7 +494,10 @@
 
         .tarjeta-inicio .entry img {
             width: 100%;
+            /*
             object-fit: contain;
+            */
+            object-fit: cover;
         }
 
         .main-wrapper {

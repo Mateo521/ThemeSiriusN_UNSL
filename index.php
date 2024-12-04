@@ -16,7 +16,6 @@
 
 
 
-            // Obtener noticias relacionadas
             $related_posts = new WP_Query(array(
                 'posts_per_page' => 3,
 
@@ -26,28 +25,28 @@
                 'category_name'  => 'fotogalerias',
             ));
 
-            // Verificar si hay noticias relacionadas
+         
             if ($related_posts->have_posts()) :
         ?>
-                <!-- Incluir el enlace al archivo CSS de Swiper -->
+          
                 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/js/lightbox2-2.11.4/dist/css/lightbox.min.css">
 
-                <!-- Inicializar el contenedor del slider -->
+          
                 <div class="swiper mySwiper3" style="margin:30px 0 ;">
                     <div class="swiper-wrapper">
                         <?php
-                        // Iterar sobre las noticias relacionadas
+                    
                         while ($related_posts->have_posts()) : $related_posts->the_post();
                         ?>
                             <div class="swiper-slide">
                                 <?php
-                                // Obtener la URL de la imagen destacada
+                            
                                 $thumbnail_url = esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full'));
 
-                                // Verificar si hay una imagen destacada
+                            
                                 if ($thumbnail_url) :
                                 ?>
-                                    <!-- Crear un enlace al detalle de la noticia con la imagen destacada -->
+                                    
                                     <a href="<?php the_permalink(); ?>" data-lightbox="img-<?php echo get_the_ID(); ?>">
                                         <img style="width:100%;" src="<?php echo $thumbnail_url; ?>" alt="#">
                                     </a>
@@ -67,7 +66,7 @@
             ?>
 
 
-            <!-- Initialize Swiper -->
+  
 
             <script>
                 jQuery(document).ready(function($) {
@@ -88,7 +87,7 @@
 
                         var imgElement = $('<img>', {
                             src: imgSrc,
-                            style: 'width: 100%;' // Añadir el estilo para ajustar el ancho al 100%
+                            style: 'width: 100%;' 
                         });
 
                         $(this).wrap(imgLink).after(imgElement).remove();

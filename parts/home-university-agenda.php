@@ -1,10 +1,10 @@
-<div class="container" id="cta">
+<div class="container" id="cta" style="    font-family: 'Libre Franklin', sans-serif !important;">
 	<section class="tarjeta-inicio">
 		<div class="entry tarjeta-inicio__fondo-azul">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="categoria-seccion">
-						<p>AGENDA UNIVERSITARIA</p>
+						<p>Agenda universitaria</p>
 					</div>
 					<div class="col-md-12">
 						<div class="row">

@@ -2,7 +2,19 @@
     <div class="contenedor">
         <div class="imagenesfooter">
 
-            
+            <div>
+                <a target="_blank" href="https://www.unsl.edu.ar/">
+                    <img style="max-width: 225px; width:100%; padding:10px; " src="<?php echo esc_url(get_site_url()); ?>/wp-content/uploads/2024/03/isologo_unsl_blanco.png" alt="">
+                </a>
+            </div>
+
+
+            <div>
+                <a href="<?php echo esc_url(home_url('/')); ?>">
+                    <img style="max-width: 225px; width:100%; padding:10px;" src="<?php echo esc_url(get_site_url()); ?>/wp-content/uploads/2024/03/logo-noticias-texto-blanco-1.png" alt="">
+                </a>
+            </div>
+
 
             <ul class='socialfooter'>
                 <li class='facebook'>
@@ -10,7 +22,7 @@
                         <i class='fab fab-lg fa-facebook'></i>
                     </a>
 
-                    
+
                 </li>
                 <li class='twitter'>
                     <a href="https://twitter.com/noticiasUNSL/" target="_blank">
@@ -31,34 +43,43 @@
 
 
 
-            <div>
-                <a href="<?php echo esc_url(home_url('/')); ?>">
-                    <img style="max-width: 225px; width:100%; padding:10px;" src="<?php echo esc_url(get_site_url()); ?>/wp-content/uploads/2024/03/logo-noticias-texto-blanco-1.png" alt="">
-                </a>
-            </div>
 
-            <div>
-                <a target="_blank" href="https://www.unsl.edu.ar/">
-                    <img style="max-width: 225px; width:100%; padding:10px; " src="<?php echo esc_url(get_site_url()); ?>/wp-content/uploads/2024/03/isologo_unsl_blanco.png" alt="">
-                </a>
-            </div>
+
+
         </div>
 
         <div class="contenidosfooter">
             <div>
-                <h3 style="margin:0 0 5px 0;">Categorías</h3>
-                <div class="categoriasfooter">
-                    <?php
-                    $categories = get_categories();
+                <h3 style="margin:0 0 5px 0;">Información institucional</h3>
 
-                    foreach ($categories as $category) {
-                        echo '<p><a style="color:white;" href="' . get_category_link($category->term_id) . '">' . $category->name . '</a></p>';
-                    }
-                    ?>
-                </div>
+                <p>
+                    <b> Teléfono:</b> +54 (0266) 4520300 - 4530000
+                </p>
 
+                <p>
+                    <b> Dirección:</b> Ejército de Los Andes 950, San Luis, Argentina
+                </p>
             </div>
+            <div>
+                <h3 style="margin:0 0 5px 0;">Contacto</h3>
 
+                <p>
+                    <b> Teléfono:</b> +54 (0266) 4520300 - 4530000
+                </p>
+
+                <p>
+                    <b> Interno:</b> 5216
+                </p>
+
+                <p>
+                    <b>Ubicación:</b> 2° Piso Edificio Rectorado - Ala A
+                </p>
+                <p><b> ¿Cómo llegar?</b>  <a style="color: white;" href="https://goo.gl/maps/JfpaQGqv7zH2" target="_blank">Ver úbicación en Google Maps</a></p>
+
+                <p>
+                    <b>Email:</b> <a style="color: white;" href="mailto:prensa@unsl.edu.ar">prensa@unsl.edu.ar</a> 
+                </p>
+            </div>
             <div>
                 <h3 style="margin:0 0 5px 0;">Mapa del sitio</h3>
                 <div style="display: flex; flex-direction: column;">
@@ -71,27 +92,6 @@
 
                 </div>
             </div>
-
-
-            <div>
-                <h3 style="margin:0 0 5px 0;">Contenidos</h3>
-                <div class="menubfooter">
-                    <?php
-                    $tags = get_tags(array(
-                        'orderby' => 'count',
-                        'order' => 'DESC',
-                        'number' => 16 // Cambia este número según la cantidad de etiquetas que desees mostrar
-                    ));
-
-                    foreach ($tags as $tag) {
-                        echo '<p><a style="color:white;" href="' . get_tag_link($tag->term_id) . '">' . $tag->name . '</a></p>';
-                    }
-                    ?>
-                </div>
-
-            </div>
-
-
 
         </div>
         <hr>
@@ -124,7 +124,7 @@
 
     .contenidosfooter {
         display: grid;
-        grid-template-columns: 25% 25% 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
         justify-items: center;
 
     }
@@ -152,10 +152,10 @@
     }
 
     footer {
-    font-family: "Libre Franklin", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: normal;
-    font-style: normal;
+        font-family: "Libre Franklin", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: normal;
+        font-style: normal;
     }
 
     .footer-menu a {
@@ -252,7 +252,7 @@
         padding: 10px;
         margin: 5px;
 
-/*
+        /*
         background-color: white;
         */
         border: solid whitesmoke 1px;

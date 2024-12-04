@@ -37,6 +37,16 @@ function sirius_custom_customize_enqueue()
  Setup
  ------------------------------*/
 
+
+ 
+function custom_loading_screen_scripts() {
+    wp_enqueue_script('loading-screen', get_template_directory_uri() . '/assets/js/loading-screen.js', array('jquery'), null, true);
+}
+add_action('wp_enqueue_scripts', 'custom_loading_screen_scripts');
+
+
+
+
 function sirius_setup()
 {
     global $sirius_defaults;
@@ -102,8 +112,8 @@ function sirius_scripts()
     wp_register_style('bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css');
 
     //wp_register_style('font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css');
-  
-    wp_register_style('font-awesome','https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+
+    wp_register_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
 
     //wp_register_style('bootstrap-select', get_template_directory_uri().'/assets/css/bootstrap-select.css' );
 
@@ -431,11 +441,7 @@ function sirius_default_nav()
         $i++;
     }
     echo '</ul>';
-    echo '</div>'
-    
-    
-    
-    ;
+    echo '</div>';
 }
 
 #sirius_rand_page
@@ -491,11 +497,16 @@ function displayHomePosts()
     //default values obj from post.php.
     //pass these in as args that you really want
     $defaults = array(
-        'numberposts' => 5, 'offset' => 0,
-        'category' => 0, 'orderby' => 'post_date',
-        'order' => 'DESC', 'include' => '',
-        'exclude' => '', 'meta_key' => '',
-        'meta_value' => '', 'post_type' => 'post',
+        'numberposts' => 5,
+        'offset' => 0,
+        'category' => 0,
+        'orderby' => 'post_date',
+        'order' => 'DESC',
+        'include' => '',
+        'exclude' => '',
+        'meta_key' => '',
+        'meta_value' => '',
+        'post_type' => 'post',
         'suppress_filters' => true
     );
 
@@ -568,20 +579,20 @@ function obtener_videos_de_youtube()
         return $cached_results;
     } else {
         $max = '6';
-        $playlistid = 'PLPHjzCOfwhCU8wJYO-SazoXjbzYV780UE'; //institucional
-      
+        $playlistid = 'PLPHjzCOfwhCU8wJYO-SazoXjbzYV780UE'; 
+
         $api_url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=$playlistid&maxResults=$max&key=$key&order=date";
         $response = wp_remote_get($api_url);
 
         if (is_wp_error($response)) {
-            // Manejar errores de solicitud
+         
             error_log('Error al obtener videos de YouTube: ' . $response->get_error_message());
             return array();
         }
         $body = wp_remote_retrieve_body($response);
         $data = json_decode($body, true);
         if (isset($data['error'])) {
-            // Manejar errores de la API de YouTube
+         
             error_log('Error en la API de YouTube: ' . json_encode($data['error']));
             return array();
         }
@@ -592,39 +603,202 @@ function obtener_videos_de_youtube()
 
 
 
-add_filter( 'jpeg_quality', function( $arg ) {
+add_filter('jpeg_quality', function ($arg) {
     return 100;
-} );
+});
 
-add_filter( 'wp_editor_set_quality', function( $arg ) {
+add_filter('wp_editor_set_quality', function ($arg) {
     return 100;
-} );
+});
 
-add_filter( 'intermediate_image_sizes_advanced', function( $sizes ) {
-    // Eliminar tamaños de imagen intermedios
-    unset( $sizes['thumbnail'] );
-    unset( $sizes['medium'] );
-    unset( $sizes['large'] );
+add_filter('intermediate_image_sizes_advanced', function ($sizes) {
+    
+    unset($sizes['thumbnail']);
+    unset($sizes['medium']);
+    unset($sizes['large']);
     return $sizes;
-} );
+});
 
-add_filter( 'wp_generate_attachment_metadata', 'prevent_image_resize', 10, 2 );
+add_filter('wp_generate_attachment_metadata', 'prevent_image_resize', 10, 2);
 
-function prevent_image_resize( $metadata, $attachment_id ) {
-    // Comprobar si estamos en una entrada individual
-    if ( is_single() ) {
-        // Si estamos en una entrada individual, eliminar los tamaños de imagen generados
-        unset( $metadata['sizes'] );
+function prevent_image_resize($metadata, $attachment_id)
+{
+   
+    if (is_single()) {
+       
+        unset($metadata['sizes']);
     }
     return $metadata;
 }
-add_filter( 'big_image_size_threshold', '__return_false' );
+add_filter('big_image_size_threshold', '__return_false');
 
-function modificar_formato_fecha($fecha) {
-    // Reemplazar la coma con "de"
+function modificar_formato_fecha($fecha)
+{
+    
     $fecha = str_replace(',', '', $fecha);
-    // Insertar la coma después del día
+  
     $fecha = preg_replace('/(\d{1,2}) (\w+) (\d{4})/', '$1 de $2, $3', $fecha);
     return $fecha;
 }
 add_filter('get_the_date', 'modificar_formato_fecha');
+
+
+
+
+function get_and_cache_most_viewed_posts()
+{
+    
+    $popular_posts = get_transient('cached_popular_posts');
+
+
+    if ($popular_posts === false) {
+      
+        $popular_posts = pvc_get_most_viewed_posts(array(
+            'limit' => 6, 
+            'post_type' => 'post'
+        ));
+      
+        set_transient('cached_popular_posts', $popular_posts, 86400);
+       
+        reset_post_views_counters();
+    }
+    return $popular_posts;
+}
+
+function reset_post_views_counters()
+{
+    
+    $args = array(
+        'post_type' => 'post',
+        'numberposts' => -1,
+        'fields' => 'ids'
+    );
+    $all_posts = get_posts($args);
+ 
+    foreach ($all_posts as $post_id) {
+    
+        delete_post_meta($post_id, 'pvc_views');
+    }
+}
+
+function my_schedule_event()
+{
+    if (!wp_next_scheduled('reset_post_views_counters_event')) {
+        wp_schedule_event(time(), 'daily', 'reset_post_views_counters_event');
+    }
+}
+add_action('wp', 'my_schedule_event');
+
+function my_clear_scheduled_event()
+{
+    wp_clear_scheduled_hook('reset_post_views_counters_event');
+}
+register_deactivation_hook(__FILE__, 'my_clear_scheduled_event');
+
+add_action('reset_post_views_counters_event', 'reset_post_views_counters');
+
+function mytheme_add_admin_menu()
+{
+    add_menu_page(
+        __('Galería Flyers', 'mytheme'), 
+        __('Galería Flyers', 'mytheme'), 
+        'manage_options',               
+        'swiper_gallery',                
+        'mytheme_swiper_gallery_page',   
+        'dashicons-format-gallery',      
+        20                              
+    );
+}
+add_action('admin_menu', 'mytheme_add_admin_menu');
+function mytheme_swiper_gallery_page()
+{
+?>
+    <div class="wrap">
+        <h1><?php _e('Galería Flyers', 'mytheme'); ?></h1>
+        <form method="post" action="options.php">
+            <?php
+            settings_fields('mytheme_swiper_gallery_settings');
+            do_settings_sections('swiper_gallery');
+            submit_button();
+            ?>
+        </form>
+    </div>
+    <?php
+}
+
+function mytheme_swiper_gallery_settings_init()
+{
+    register_setting(
+        'mytheme_swiper_gallery_settings', 
+        'swiper_gallery_images',            
+        'mytheme_sanitize_gallery_images'   
+    );
+    add_settings_section(
+        'mytheme_swiper_gallery_section',
+        __('Gestionar imágenes del carrusel', 'mytheme'),
+        null,
+        'swiper_gallery'
+    );
+    add_settings_field(
+        'swiper_gallery_images',
+        __('Imágenes del carrusel', 'mytheme'),
+        'mytheme_swiper_gallery_images_render',
+        'swiper_gallery',
+        'mytheme_swiper_gallery_section'
+    );
+}
+add_action('admin_init', 'mytheme_swiper_gallery_settings_init');
+function mytheme_swiper_gallery_images_render()
+{
+    $images = get_option('swiper_gallery_images', array());
+    echo '<div id="swiper-images-container">';
+    foreach ($images as $index => $image_data) {
+        $image_url = esc_url($image_data['url']);
+        $image_caption = esc_html($image_data['caption']);
+        $image_link = esc_url($image_data['link']);
+    ?>
+        <div class="swiper-image-row">
+            <input type="hidden" name="swiper_gallery_images[<?php echo $index; ?>][url]" value="<?php echo $image_url; ?>" />
+            <img src="<?php echo $image_url; ?>" alt="" width="100" height="100" />
+            <input type="text" name="swiper_gallery_images[<?php echo $index; ?>][caption]" value="<?php echo $image_caption; ?>" placeholder="<?php _e('Texto de la imagen', 'mytheme'); ?>" />
+            <input type="url" name="swiper_gallery_images[<?php echo $index; ?>][link]" value="<?php echo $image_link; ?>" placeholder="<?php _e('Enlace del botón Ver más', 'mytheme'); ?>" />
+            <button type="button" class="remove-image-button"><?php _e('Eliminar', 'mytheme'); ?></button>
+        </div>
+    <?php
+    }
+    echo '</div>';
+    echo '<button type="button" id="add-image-button">' . __('Añadir imagen', 'mytheme') . '</button>';
+}
+
+function mytheme_sanitize_gallery_images($input) {
+    $sanitized = array();
+    foreach ($input as $image_data) {
+      
+        if (isset($image_data['url']) && !empty($image_data['url'])) {
+            $sanitized[] = array(
+                'url' => esc_url_raw($image_data['url']),
+                'caption' => isset($image_data['caption']) ? sanitize_text_field($image_data['caption']) : '',
+                'link' => isset($image_data['link']) ? esc_url_raw($image_data['link']) : '',
+            );
+        }
+    }
+   
+    error_log(print_r($sanitized, true));
+    return $sanitized;
+}
+function mytheme_swiper_gallery_enqueue_scripts($hook)
+{
+    if ($hook != 'toplevel_page_swiper_gallery') {
+        return;
+    }
+
+    wp_enqueue_media();
+    wp_enqueue_script('mytheme-swiper-gallery', get_template_directory_uri() . '/swiper-gallery.js', array('jquery'), null, true);
+}
+add_action('admin_enqueue_scripts', 'mytheme_swiper_gallery_enqueue_scripts');
+
+
+
+
+
+
